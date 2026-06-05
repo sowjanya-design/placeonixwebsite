@@ -696,6 +696,92 @@
       .cover-topbar .cover-tagline { display: none; }
       .cover-stats { max-width: 100%; }
     }
+  
+    /* ── COURSE SYLLABUS MODAL ── */
+    .course-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 18, 32, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1.5rem;
+    }
+
+    .course-modal.open {
+      display: flex;
+    }
+
+    .course-modal-box {
+      width: min(720px, 100%);
+      max-height: 86vh;
+      overflow-y: auto;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .course-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--warm-white);
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+
+    .course-modal-title {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      padding-right: 2.5rem;
+    }
+
+    .course-modal-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .syllabus-list {
+      display: grid;
+      gap: 0.7rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .syllabus-list li {
+      background: var(--warm-white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      color: var(--ink2);
+      font-size: 0.9rem;
+    }
+
+    .prog-card {
+      cursor: pointer;
+    }
+
+    .view-syllabus {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--slate);
+    }
+
   </style>
 </head>
 <body>
@@ -935,28 +1021,28 @@
       <p class="sec-desc">Updated with SAP, technology programs and combo packages from your brochure.</p>
     </div>
     <div class="prog-grid">
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP BTP</h3><p>Cloud platform training with BTP + HANA fundamentals for working professionals.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>☁️ BTP + HANA</span></div><div class="course-price"><span>Course Fee</span><strong>₹68,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CPI</h3><p>Integration Suite, flows, APIs and practical enterprise integration scenarios.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🔗 Flows + APIs</span></div><div class="course-price"><span>Course Fee</span><strong>₹58,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CAPM</h3><p>Node.js, CDS and modern SAP cloud application programming model.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>💻 Node + CDS</span></div><div class="course-price"><span>Course Fee</span><strong>₹58,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">High Demand</span><h3>SAP RAP</h3><p>ABAP RESTful programming with OData v4 and clean enterprise development.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>⚙️ OData v4</span></div><div class="course-price"><span>Course Fee</span><strong>₹64,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Growing Demand</span><h3>SAP UI5 / Fiori</h3><p>Build Fiori apps with SAP UI5, modern UI patterns and real-time app practice.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🖥️ Fiori Apps</span></div><div class="course-price"><span>Course Fee</span><strong>₹48,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Core Module</span><h3>SAP ABAP on S/4HANA</h3><p>ABAP, RICEF and CDS basics for enterprise SAP development roles.</p><div class="prog-meta"><span>⏱ 8–12 weeks</span><span>🏢 RICEF + CDS</span></div><div class="course-price"><span>Course Fee</span><strong>₹45,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP FICO</h3><p>Finance module training for SAP functional consultant career paths.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📊 Finance</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP MM</h3><p>Materials management, procurement and supply-chain business processes.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📦 Supply Chain</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP SD</h3><p>Sales and distribution module training with practical process scenarios.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📈 Sales</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP BASIS</h3><p>SAP system administration, landscape basics and support activities.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>🛠️ IT Admin</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Data Science &amp; Analytics</h3><p>Python, ML guidance, analytics and real-world dataset projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>🐍 Python + ML</span></div><div class="course-price"><span>Course Fee</span><strong>₹80,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>DevOps &amp; Cloud Engineering</h3><p>AWS, Azure, Docker, CI/CD and modern cloud engineering practices.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ AWS + Azure</span></div><div class="course-price"><span>Course Fee</span><strong>₹75,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Full Stack Web Development</h3><p>MERN / Java basics for freshers and switchers with complete live projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💻 MERN / Java</span></div><div class="course-price"><span>Course Fee</span><strong>₹48,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Java Backend Development</h3><p>Java, Spring Boot, REST APIs and SQL for backend development roles.</p><div class="prog-meta"><span>⏱ 3–6 months</span><span>☕ Java + Spring</span></div><div class="course-price"><span>Course Fee</span><strong>₹38,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Cybersecurity Fundamentals</h3><p>Kali, ethical AI, web security basics and hands-on security labs.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🔐 AI + Web</span></div><div class="course-price"><span>Course Fee</span><strong>₹38,000</strong></div></div>
-      <div class="prog-card reveal"><span class="prog-tag pt-warm">Design</span><h3>UI/UX Design</h3><p>Figma, research, wireframing, prototypes and portfolio-oriented design practice.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🎨 All Levels</span></div><div class="course-price"><span>Course Fee</span><strong>₹30,000</strong></div></div>
-      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>SAP Integration Expert</h3><p>CPI + BTP combo for integration-focused SAP roles.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>💰 Save ₹21,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹99,000</strong></div></div>
-      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>AI + Data Science</h3><p>Gen AI + Data Science bundle for modern analytics and AI career paths.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹25,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹1,15,000</strong></div></div>
-      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>Cloud Dev Bundle</h3><p>DevOps + Full Stack training for cloud and application development roles.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹20,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹95,000</strong></div></div>
-      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>SAP Functional Analyst</h3><p>FICO + MM + SD combined program for SAP functional careers.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹21,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹90,000</strong></div></div>
-      <div class="prog-card sap-highlight reveal">
-        <div class="sap-inner"><div class="sap-icon">🏆</div><div><span class="prog-tag" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:.7rem">Highest Demand — 5 Modules</span><h3>SAP Full Stack Program</h3><p>SAP BTP, SAP CAPM, SAP UI5/Fiori and SAP CPI with complete SAP Cloud and Modern Dev Stack training.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ SAP Cloud</span><span>💻 Modern Dev Stack</span><span>🎯 Placement Support</span></div><div class="course-price" style="border-color:rgba(255,255,255,.15)"><span style="color:rgba(255,255,255,.6)">Program Fee</span><strong style="color:#fff">₹1,00,000</strong></div></div></div>
+      <div class="prog-card reveal" data-course="SAP BTP"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP BTP</h3><p>Cloud platform training with BTP + HANA fundamentals for working professionals.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>☁️ BTP + HANA</span></div></div>
+      <div class="prog-card reveal" data-course="SAP CPI"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CPI</h3><p>Integration Suite, flows, APIs and practical enterprise integration scenarios.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🔗 Flows + APIs</span></div></div>
+      <div class="prog-card reveal" data-course="SAP CAPM"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CAPM</h3><p>Node.js, CDS and modern SAP cloud application programming model.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>💻 Node + CDS</span></div></div>
+      <div class="prog-card reveal" data-course="SAP RAP"><span class="prog-tag pt-slate">High Demand</span><h3>SAP RAP</h3><p>ABAP RESTful programming with OData v4 and clean enterprise development.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>⚙️ OData v4</span></div></div>
+      <div class="prog-card reveal" data-course="SAP UI5 / Fiori"><span class="prog-tag pt-slate">Growing Demand</span><h3>SAP UI5 / Fiori</h3><p>Build Fiori apps with SAP UI5, modern UI patterns and real-time app practice.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🖥️ Fiori Apps</span></div></div>
+      <div class="prog-card reveal" data-course="SAP ABAP on S/4HANA"><span class="prog-tag pt-slate">Core Module</span><h3>SAP ABAP on S/4HANA</h3><p>ABAP, RICEF and CDS basics for enterprise SAP development roles.</p><div class="prog-meta"><span>⏱ 8–12 weeks</span><span>🏢 RICEF + CDS</span></div></div>
+      <div class="prog-card reveal" data-course="SAP FICO"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP FICO</h3><p>Finance module training for SAP functional consultant career paths.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📊 Finance</span></div></div>
+      <div class="prog-card reveal" data-course="SAP MM"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP MM</h3><p>Materials management, procurement and supply-chain business processes.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📦 Supply Chain</span></div></div>
+      <div class="prog-card reveal" data-course="SAP SD"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP SD</h3><p>Sales and distribution module training with practical process scenarios.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📈 Sales</span></div></div>
+      <div class="prog-card reveal" data-course="SAP BASIS"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP BASIS</h3><p>SAP system administration, landscape basics and support activities.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>🛠️ IT Admin</span></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Data Science &amp; Analytics</h3><p>Python, ML guidance, analytics and real-world dataset projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>🐍 Python + ML</span></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>DevOps &amp; Cloud Engineering</h3><p>AWS, Azure, Docker, CI/CD and modern cloud engineering practices.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ AWS + Azure</span></div></div>
+      <div class="prog-card reveal" data-course="Full Stack Web Development"><span class="prog-tag pt-slate">Technology</span><h3>Full Stack Web Development</h3><p>MERN / Java basics for freshers and switchers with complete live projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💻 MERN / Java</span></div></div>
+      <div class="prog-card reveal" data-course="Java Backend Development"><span class="prog-tag pt-slate">Technology</span><h3>Java Backend Development</h3><p>Java, Spring Boot, REST APIs and SQL for backend development roles.</p><div class="prog-meta"><span>⏱ 3–6 months</span><span>☕ Java + Spring</span></div></div>
+      <div class="prog-card reveal" data-course="Cybersecurity Fundamentals"><span class="prog-tag pt-slate">Technology</span><h3>Cybersecurity Fundamentals</h3><p>Kali, ethical AI, web security basics and hands-on security labs.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🔐 AI + Web</span></div></div>
+      <div class="prog-card reveal" data-course="UI/UX Design"><span class="prog-tag pt-warm">Design</span><h3>UI/UX Design</h3><p>Figma, research, wireframing, prototypes and portfolio-oriented design practice.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🎨 All Levels</span></div></div>
+      <div class="prog-card combo-card reveal" data-course="SAP Integration Expert"><span class="prog-tag">Combo Package</span><h3>SAP Integration Expert</h3><p>CPI + BTP combo for integration-focused SAP roles.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>💰 Save ₹21,000</span></div></div>
+      <div class="prog-card combo-card reveal" data-course="AI + Data Science"><span class="prog-tag">Combo Package</span><h3>AI + Data Science</h3><p>Gen AI + Data Science bundle for modern analytics and AI career paths.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹25,000</span></div></div>
+      <div class="prog-card combo-card reveal" data-course="Cloud Dev Bundle"><span class="prog-tag">Combo Package</span><h3>Cloud Dev Bundle</h3><p>DevOps + Full Stack training for cloud and application development roles.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹20,000</span></div></div>
+      <div class="prog-card combo-card reveal" data-course="SAP Functional Analyst"><span class="prog-tag">Combo Package</span><h3>SAP Functional Analyst</h3><p>FICO + MM + SD combined program for SAP functional careers.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹21,000</span></div></div>
+      <div class="prog-card sap-highlight reveal" data-course="SAP Full Stack Program">
+        <div class="sap-inner"><div class="sap-icon">🏆</div><div><span class="prog-tag" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:.7rem">Highest Demand — 5 Modules</span><h3>SAP Full Stack Program</h3><p>SAP BTP, SAP CAPM, SAP UI5/Fiori and SAP CPI with complete SAP Cloud and Modern Dev Stack training.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ SAP Cloud</span><span>💻 Modern Dev Stack</span><span>🎯 Placement Support</span></div></div></div>
       </div>
     </div>    </div>
   </div>
@@ -1122,6 +1208,14 @@
     if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
   }), { threshold: .08 });
   els.forEach(el => io.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.f-btn');
+    btn.textContent = 'Received! We will contact you soon.';
+    btn.style.background = '#2c4265';
+    setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; e.target.reset(); }, 3500);
+  }
 </script>
 
 <script>
@@ -1131,8 +1225,8 @@
     applicationForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const submitButton = applicationForm.querySelector("button[type='submit']");
-      const originalText = submitButton ? submitButton.textContent : "Submit Application";
+      const submitButton = applicationForm.querySelector("button[type='submit'], input[type='submit']");
+      const originalText = submitButton ? submitButton.textContent : "";
 
       if (submitButton) {
         submitButton.disabled = true;
@@ -1166,6 +1260,79 @@
       }
     });
   }
+</script>
+
+
+<div class="course-modal" id="courseModal" aria-hidden="true">
+  <div class="course-modal-box">
+    <button class="course-modal-close" type="button" id="courseModalClose" aria-label="Close syllabus">×</button>
+    <h3 class="course-modal-title" id="courseModalTitle">Course Syllabus</h3>
+    <p class="course-modal-subtitle">Detailed module overview</p>
+    <ul class="syllabus-list" id="courseModalList"></ul>
+  </div>
+</div>
+
+
+<script>
+  const courseSyllabus = {
+    "SAP BTP": ["SAP BTP overview and cloud concepts", "Global account, subaccount and space setup", "SAP HANA Cloud basics", "Security, roles and authorizations", "Destination and connectivity services", "Deployment and monitoring basics", "Mini project using SAP BTP services"],
+    "SAP CPI": ["SAP Integration Suite overview", "Cloud Integration concepts", "IFlow design and configuration", "Adapters, mappings and transformations", "Exception handling and monitoring", "API integration scenarios", "Real-time enterprise integration project"],
+    "SAP CAPM": ["CAP model architecture", "CDS modeling and services", "Node.js based CAP development", "OData service creation", "Database integration", "Security and deployment", "End-to-end CAP application project"],
+    "SAP RAP": ["RAP architecture and concepts", "ABAP development tools setup", "CDS views and behavior definitions", "Managed and unmanaged scenarios", "OData V4 exposure", "Fiori elements integration", "Real-time RAP business app"],
+    "SAP UI5 / Fiori": ["SAP UI5 framework basics", "MVC architecture", "Views, controllers and models", "OData integration", "Fiori design guidelines", "Routing and navigation", "Fiori app development project"],
+    "SAP ABAP on S/4HANA": ["ABAP fundamentals", "Reports, tables and data dictionary", "RICEF concepts", "CDS view basics", "OData service basics", "Debugging and performance basics", "S/4HANA development practice"],
+    "SAP FICO": ["Financial accounting overview", "General ledger, AP and AR", "Asset accounting basics", "Cost center and profit center accounting", "Integration with MM and SD", "Configuration scenarios", "End-to-end business process practice"],
+    "SAP MM": ["Procurement cycle overview", "Material master and vendor master", "Purchase requisition and purchase order", "Goods receipt and invoice verification", "Inventory management", "Integration with FICO and SD", "Real-time procurement scenarios"],
+    "SAP SD": ["Sales cycle overview", "Customer master and material master", "Inquiry, quotation and sales order", "Delivery and billing process", "Pricing and taxation basics", "Integration with MM and FICO", "Sales process case studies"],
+    "SAP BASIS": ["SAP architecture overview", "System installation concepts", "User administration", "Transport management", "Background jobs and monitoring", "Performance and troubleshooting basics", "BASIS support scenarios"],
+    "Data Science & Analytics": ["Python for data analysis", "Numpy, Pandas and data cleaning", "Data visualization", "Statistics and analytics basics", "Machine learning introduction", "Power BI / dashboard basics", "Real-world data project"],
+    "DevOps & Cloud Engineering": ["Linux and networking basics", "Git and GitHub workflows", "Docker and containers", "CI/CD pipelines", "AWS / Azure cloud fundamentals", "Monitoring and deployment", "Cloud deployment project"],
+    "Full Stack Web Development": ["HTML, CSS and JavaScript", "Responsive UI development", "React fundamentals", "Node.js and Express", "Database integration", "REST API development", "Full stack live project"],
+    "Java Backend Development": ["Core Java fundamentals", "OOPs and collections", "SQL and database basics", "Spring Boot fundamentals", "REST API development", "Authentication basics", "Backend project development"],
+    "Cybersecurity Fundamentals": ["Cybersecurity basics", "Networking and Linux essentials", "Web security fundamentals", "OWASP Top 10 overview", "Kali Linux tools introduction", "Vulnerability testing basics", "Hands-on security labs"],
+    "UI/UX Design": ["Design thinking basics", "User research and personas", "Wireframing and user flows", "Figma fundamentals", "Prototyping and usability testing", "UI design systems", "Portfolio project"],
+    "SAP Integration Expert": ["SAP CPI fundamentals", "SAP BTP platform overview", "API and integration scenarios", "Security and connectivity", "Monitoring and troubleshooting", "Enterprise integration case studies", "Capstone integration project"],
+    "AI + Data Science": ["Python and data analytics", "Machine learning fundamentals", "Generative AI basics", "Prompt engineering concepts", "Model usage and evaluation", "Data visualization dashboards", "AI + analytics capstone project"],
+    "Cloud Dev Bundle": ["Full stack development fundamentals", "Node.js / React project workflow", "Cloud deployment basics", "Docker and CI/CD", "AWS / Azure fundamentals", "Monitoring and production basics", "Cloud-hosted full stack project"],
+    "SAP Functional Analyst": ["SAP FICO overview", "SAP MM overview", "SAP SD overview", "Business process mapping", "Cross-module integration", "Functional documentation", "End-to-end SAP functional case study"],
+    "SAP Full Stack Program": ["SAP BTP fundamentals", "SAP CAPM development", "SAP UI5 / Fiori app development", "SAP CPI integration", "HANA Cloud basics", "Deployment and security", "Complete SAP full stack capstone project"]
+  };
+
+  const courseModal = document.getElementById("courseModal");
+  const courseModalTitle = document.getElementById("courseModalTitle");
+  const courseModalList = document.getElementById("courseModalList");
+  const courseModalClose = document.getElementById("courseModalClose");
+
+  document.querySelectorAll(".prog-card[data-course]").forEach((card) => {
+    card.addEventListener("click", () => {
+      const courseName = card.getAttribute("data-course");
+      const syllabus = courseSyllabus[courseName] || [];
+
+      courseModalTitle.textContent = courseName + " Syllabus";
+      courseModalList.innerHTML = syllabus.map((item) => `<li>${item}</li>`).join("");
+      courseModal.classList.add("open");
+      courseModal.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  function closeCourseModal() {
+    courseModal.classList.remove("open");
+    courseModal.setAttribute("aria-hidden", "true");
+  }
+
+  courseModalClose.addEventListener("click", closeCourseModal);
+
+  courseModal.addEventListener("click", (event) => {
+    if (event.target === courseModal) {
+      closeCourseModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeCourseModal();
+    }
+  });
 </script>
 
 </body>
