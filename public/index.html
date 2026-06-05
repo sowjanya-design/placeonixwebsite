@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Placeonix — IT Training & Placement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --warm-white:  #faf9f7;
+      --warm-white2: #f4f2ef;
+      --warm-white3: #ede9e3;
+      --white:       #ffffff;
+      --ink:         #1a1a1a;
+      --ink2:        #2d2d2d;
+      --muted:       #7a7a7a;
+      --muted2:      #a0a0a0;
+      --line:        #e8e4de;
+      --slate:       #3d5a80;
+      --slate-dk:    #2c4265;
+      --slate-lt:    #edf1f7;
+      --slate-mid:   #98c1d9;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--warm-white);
+      color: var(--ink2);
+      font-family: 'Inter', sans-serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 6%;
+      background: rgba(250,249,247,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo { height: 54px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .84rem; font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--slate) !important; color: #fff !important;
+      padding: .55rem 1.4rem; border-radius: 6px;
+      font-weight: 600 !important; font-size: .82rem !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--slate-dk) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 4rem;
+      padding: 8rem 6% 5rem;
+      max-width: 1240px; margin: 0 auto;
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--slate);
+      margin-bottom: 1.4rem;
+      animation: up .5s ease both;
+    }
+    .hero-kicker span {
+      width: 24px; height: 1.5px; background: var(--slate); display: inline-block;
+    }
+    h1 {
+      font-family: 'Lora', serif; font-weight: 700;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      line-height: 1.1; color: var(--ink);
+      letter-spacing: -.5px; margin-bottom: 1.4rem;
+      animation: up .5s .07s ease both;
+    }
+    h1 em { font-style: italic; color: var(--slate); }
+    .hero-p {
+      color: var(--muted); font-size: .97rem; font-weight: 400;
+      max-width: 420px; line-height: 1.8; margin-bottom: 2.4rem;
+      animation: up .5s .14s ease both;
+    }
+    .hero-btns { display: flex; gap: .9rem; flex-wrap: wrap; animation: up .5s .21s ease both; }
+    .btn-primary {
+      background: var(--slate); color: #fff;
+      padding: .82rem 2rem; border-radius: 6px;
+      font-weight: 600; font-size: .88rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--slate-dk); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--ink2);
+      border: 1.5px solid var(--line);
+      padding: .82rem 2rem; border-radius: 6px;
+      font-weight: 500; font-size: .88rem; text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--slate); color: var(--slate); }
+
+    /* Hero right */
+    .hero-right { animation: up .6s .18s ease both; }
+    .stats-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .stats-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .stats-row:last-child { border-bottom: none; }
+    .stat-cell {
+      padding: 1.6rem 1.8rem;
+      border-right: 1px solid var(--line);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell:only-child { grid-column: 1 / -1; }
+    .stat-n {
+      font-family: 'Lora', serif; font-size: 2rem; font-weight: 700;
+      color: var(--slate); line-height: 1;
+    }
+    .stat-l { font-size: .78rem; color: var(--muted); margin-top: .3rem; font-weight: 500; }
+    .batch-cell {
+      padding: 1.4rem 1.8rem;
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--slate-lt);
+      grid-column: 1 / -1;
+    }
+    .batch-cell-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .batch-cell strong { display: block; color: var(--ink); font-size: .93rem; font-weight: 600; }
+    .batch-cell span { font-size: .78rem; color: var(--muted); }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--slate); overflow: hidden;
+      white-space: nowrap; padding: .75rem 0;
+    }
+    .ticker-track {
+      display: inline-flex; gap: 3rem;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-track s {
+      text-decoration: none; font-size: .7rem; font-weight: 600;
+      color: rgba(255,255,255,.65); letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .ticker-track .dot { color: var(--slate-mid); font-size: .4rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTIONS ── */
+    section { padding: 5.5rem 6%; }
+    .inner { max-width: 1180px; margin: 0 auto; }
+    .sec-eyebrow {
+      font-size: .7rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--slate);
+      display: flex; align-items: center; gap: .6rem;
+      margin-bottom: .7rem;
+    }
+    .sec-eyebrow::before { content: ''; width: 18px; height: 1.5px; background: var(--slate); }
+    h2 {
+      font-family: 'Lora', serif; font-weight: 700;
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+      color: var(--ink); letter-spacing: -.3px; line-height: 1.2;
+      margin-bottom: .8rem;
+    }
+    .sec-desc { color: var(--muted); font-size: .93rem; max-width: 460px; }
+    .sec-hdr { margin-bottom: 3rem; }
+
+    /* ── FEATURES ── */
+    .feat-bg { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .feat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    }
+    .feat-item {
+      padding: 2rem 1.6rem; border-right: 1px solid var(--line);
+      transition: background .2s;
+    }
+    .feat-item:last-child { border-right: none; }
+    .feat-item:hover { background: var(--slate-lt); }
+    .feat-ico {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.1rem;
+      background: var(--warm-white2);
+    }
+    .feat-item h3 { font-size: .93rem; font-weight: 600; color: var(--ink); margin-bottom: .45rem; }
+    .feat-item p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── VISUAL CARDS ── */
+    .vis-bg { background: var(--warm-white2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .vis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .vis-card {
+      border-radius: 12px; overflow: hidden; position: relative;
+      min-height: 240px; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 1.6rem;
+    }
+    .vis-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,.72) 0%, transparent 60%);
+      z-index: 1;
+    }
+    .vis-content { position: relative; z-index: 2; color: #fff; }
+    .vis-pill {
+      display: inline-block; background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.25);
+      font-size: .65rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; padding: .18rem .65rem;
+      border-radius: 4px; margin-bottom: .55rem; color: #fff;
+      backdrop-filter: blur(4px);
+    }
+    .vis-content h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .25rem; }
+    .vis-content p { font-size: .78rem; opacity: .8; }
+    .vc-1 { background: linear-gradient(135deg, #2c4265 0%, #3d5a80 100%); }
+    .vc-2 { background: linear-gradient(135deg, #1a3550 0%, #2d4f72 100%); }
+    .vc-3 { background: linear-gradient(135deg, #233a55 0%, #3a5878 100%); }
+    .vc-svg { position: absolute; inset: 0; z-index: 0; opacity: .15; }
+
+    /* ── PROGRAMS ── */
+    .prog-bg { background: var(--warm-white); }
+    .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .prog-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 12px; padding: 1.6rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .prog-card:hover {
+      box-shadow: 0 8px 28px rgba(61,90,128,.1);
+      transform: translateY(-3px);
+    }
+    .prog-tag {
+      font-size: .67rem; font-weight: 600; letter-spacing: .5px;
+      text-transform: uppercase; padding: .2rem .65rem;
+      border-radius: 4px; display: inline-block; margin-bottom: .85rem;
+    }
+    .pt-slate { color: var(--slate); background: var(--slate-lt); }
+    .pt-warm  { color: #7c5c30; background: #fdf4e7; }
+    .prog-card h3 { font-size: .95rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+    .prog-card p  { font-size: .82rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .prog-meta {
+      display: flex; gap: .85rem; font-size: .75rem; color: var(--muted2);
+      padding-top: .85rem; border-top: 1px solid var(--line);
+    }
+    .prog-meta { flex-wrap: wrap; }
+    .course-price {
+      display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;
+      padding-top: .9rem; margin-top: .9rem; border-top: 1px solid var(--line);
+    }
+    .course-price strong { color: var(--slate); font-size: 1.2rem; font-weight: 700; }
+    .course-price span { font-size: .7rem; font-weight: 600; color: var(--muted2); text-transform: uppercase; letter-spacing: .5px; }
+    .combo-card { background: linear-gradient(180deg, #fff 0%, #fbf9ff 100%); border-color: #e6dcff; }
+    .combo-card .prog-tag { background: #efe6ff; color: #5b21b6; }
+    /* SAP card */
+    .sap-highlight {
+      grid-column: 1 / -1;
+      background: var(--slate); border-color: var(--slate);
+      color: #fff;
+    }
+    .sap-highlight h3 { color: #fff; font-size: 1.1rem; }
+    .sap-highlight p  { color: rgba(255,255,255,.65); }
+    .sap-highlight .prog-meta { border-top-color: rgba(255,255,255,.15); color: rgba(255,255,255,.5); }
+    .sap-inner { display: grid; grid-template-columns: auto 1fr; gap: 1.8rem; align-items: center; }
+    .sap-icon { font-size: 3rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,.2)); }
+
+    /* ── PROCESS ── */
+    .proc-bg { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .proc-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--line);
+      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    }
+    .proc-step { background: var(--white); padding: 1.8rem 1.3rem; transition: background .2s; }
+    .proc-step:hover { background: var(--slate-lt); }
+    .proc-n {
+      font-family: 'Lora', serif; font-size: 2.4rem; font-weight: 700;
+      color: var(--line); line-height: 1; margin-bottom: .7rem;
+      transition: color .2s;
+    }
+    .proc-step:hover .proc-n { color: var(--slate); }
+    .proc-step h4 { font-size: .88rem; font-weight: 600; color: var(--ink); margin-bottom: .35rem; }
+    .proc-step p  { font-size: .78rem; color: var(--muted); }
+
+    /* ── INTERNSHIP ── */
+    .int-bg { background: var(--warm-white2); border-top: 1px solid var(--line); }
+    .int-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: .65rem; margin-top: 1.4rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .88rem; color: var(--ink2); }
+    .check-list li::before {
+      content: '';
+      width: 18px; height: 18px; border-radius: 5px;
+      background: var(--slate); flex-shrink: 0; margin-top: .12rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7l3.5 3.5 5.5-6' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center;
+    }
+    .int-table {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden;
+    }
+    .int-th {
+      padding: .9rem 1.4rem; border-bottom: 1px solid var(--line);
+      font-size: .67rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted2);
+      display: flex; justify-content: space-between;
+      background: var(--warm-white2);
+    }
+    .int-row {
+      display: flex; align-items: center; gap: .9rem;
+      padding: .95rem 1.4rem; border-bottom: 1px solid var(--line);
+      transition: background .2s;
+    }
+    .int-row:last-child { border-bottom: none; }
+    .int-row:hover { background: var(--slate-lt); }
+    .i-ico {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--warm-white2); display: flex;
+      align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .i-name { font-size: .85rem; font-weight: 600; color: var(--ink); }
+    .i-sub  { font-size: .72rem; color: var(--muted); }
+    .i-badge {
+      margin-left: auto; font-size: .67rem; font-weight: 600;
+      padding: .18rem .65rem; border-radius: 4px; flex-shrink: 0;
+    }
+    .ib-open { background: var(--slate-lt); color: var(--slate); }
+    .ib-ltd  { background: #fdf4e7; color: #92530a; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-bg { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .testi-card {
+      background: var(--warm-white); border: 1px solid var(--line);
+      border-radius: 12px; padding: 1.8rem;
+    }
+    .testi-stars { font-size: .7rem; color: #d97706; letter-spacing: 2px; margin-bottom: .85rem; }
+    .testi-card blockquote {
+      font-size: .87rem; color: var(--ink2); line-height: 1.75;
+      font-style: italic; font-weight: 300; margin-bottom: 1.3rem;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: .8rem;
+      padding-top: 1rem; border-top: 1px solid var(--line);
+    }
+    .t-av {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .84rem; color: #fff; flex-shrink: 0;
+      background: var(--slate);
+    }
+    .ta2 { background: #2c5f7a; }
+    .ta3 { background: #5a6e8a; }
+    .t-name { font-size: .86rem; font-weight: 600; color: var(--ink); }
+    .t-role { font-size: .72rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-wrap { padding: 5rem 6%; }
+    .cta-box {
+      background: var(--slate); border-radius: 16px;
+      padding: 4.5rem 4rem; text-align: center;
+      max-width: 1180px; margin: 0 auto;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: rgba(255,255,255,.05); pointer-events: none;
+    }
+    .cta-box h2 {
+      color: #fff; font-size: clamp(1.8rem, 3vw, 2.6rem);
+      position: relative; z-index: 1;
+    }
+    .cta-box p {
+      color: rgba(255,255,255,.6); margin: .9rem 0 2.2rem;
+      font-size: .93rem; position: relative; z-index: 1;
+    }
+    .btn-white {
+      background: #fff; color: var(--slate);
+      padding: .9rem 2.4rem; border-radius: 6px;
+      font-weight: 700; font-size: .9rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+      position: relative; z-index: 1; display: inline-block;
+    }
+    .btn-white:hover { background: var(--warm-white); transform: translateY(-1px); }
+
+    /* ── CONTACT ── */
+    .contact-bg { background: var(--warm-white2); border-top: 1px solid var(--line); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+    .c-items { display: flex; flex-direction: column; gap: .9rem; margin-top: 1.8rem; }
+    .c-item { display: flex; align-items: center; gap: .9rem; font-size: .88rem; color: var(--ink2); }
+    .c-ico {
+      width: 40px; height: 40px; background: var(--white);
+      border: 1px solid var(--line); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    form {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 14px; padding: 2.3rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .f-group { display: flex; flex-direction: column; gap: .3rem; }
+    label { font-size: .72rem; color: var(--muted); font-weight: 600; letter-spacing: .4px; text-transform: uppercase; }
+    input, select, textarea {
+      background: var(--warm-white); border: 1.5px solid var(--line);
+      border-radius: 7px; padding: .72rem .95rem;
+      color: var(--ink); font-family: 'Inter', sans-serif; font-size: .87rem;
+      outline: none; transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--slate); }
+    select option { background: #fff; }
+    textarea { resize: vertical; min-height: 90px; }
+    .f-btn {
+      background: var(--slate); color: #fff; padding: .85rem;
+      border: none; border-radius: 7px; font-weight: 600; font-size: .9rem;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background .2s, transform .15s;
+    }
+    .f-btn:hover { background: var(--slate-dk); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--white); border-top: 1px solid var(--line);
+      padding: 2.2rem 6%; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1.2rem;
+    }
+    .foot-logo { height: 46px; width: auto; }
+    .foot-nav { display: flex; gap: 2rem; list-style: none; }
+    .foot-nav a { color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500; transition: color .2s; }
+    .foot-nav a:hover { color: var(--slate); }
+    .foot-copy { color: var(--muted2); font-size: .78rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero, .int-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .feat-grid, .prog-grid, .testi-grid, .vis-grid { grid-template-columns: 1fr 1fr; }
+      .proc-grid { grid-template-columns: 1fr 1fr; }
+      .feat-item { border-right: none; border-bottom: 1px solid var(--line); }
+      .feat-item:last-child { border-bottom: none; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .feat-grid, .prog-grid, .testi-grid, .vis-grid { grid-template-columns: 1fr; }
+      .proc-grid { grid-template-columns: 1fr; }
+      .f-row { grid-template-columns: 1fr; }
+      .cta-box { padding: 3rem 1.8rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── COVER ── */
+    .cover {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #0b1322;
+    }
+
+    /* Subtle animated gradient blobs */
+    .cover-blob1 {
+      position: absolute; top: -120px; left: -80px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,90,128,.45) 0%, transparent 65%);
+      animation: blobFloat 9s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .cover-blob2 {
+      position: absolute; bottom: -100px; right: -60px;
+      width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(100,140,200,.25) 0%, transparent 65%);
+      animation: blobFloat 12s ease-in-out infinite alternate-reverse;
+      pointer-events: none;
+    }
+    .cover-blob3 {
+      position: absolute; top: 40%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,90,128,.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    @keyframes blobFloat {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(30px, 40px) scale(1.08); }
+    }
+
+    /* Dot-grid overlay */
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    /* Horizontal scan line shimmer */
+    .cover::after {
+      content: '';
+      position: absolute; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(152,193,217,.5) 50%, transparent 100%);
+      animation: scanLine 6s linear infinite;
+      pointer-events: none; z-index: 1;
+    }
+    @keyframes scanLine {
+      from { top: -2px; }
+      to   { top: 100%; }
+    }
+
+    /* Top bar */
+    .cover-topbar {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 6%;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .cover-logo { height: 52px; width: auto; }
+    .cover-tagline {
+      font-size: .72rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+    }
+    .cover-enroll-btn {
+      background: #3d5a80; color: #fff;
+      padding: .55rem 1.4rem; border-radius: 6px;
+      font-size: .82rem; font-weight: 600;
+      text-decoration: none; border: 1px solid rgba(152,193,217,.3);
+      transition: background .2s;
+    }
+    .cover-enroll-btn:hover { background: #2c4265; }
+
+    /* Centre content */
+    .cover-body {
+      position: relative; z-index: 5;
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 4rem 6% 3rem;
+    }
+
+    /* Logo spotlight */
+    .cover-logo-wrap {
+      position: relative; display: inline-block; margin-bottom: 2.5rem;
+    }
+    .cover-logo-glow {
+      position: absolute; inset: -40px;
+      background: radial-gradient(circle, rgba(152,193,217,.35) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+      animation: glowPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      from { opacity: .6; transform: scale(.92); }
+      to   { opacity: 1;  transform: scale(1.05); }
+    }
+    .cover-logo-ring {
+      position: absolute; inset: -16px; border-radius: 24px;
+      border: 1px solid rgba(152,193,217,.2);
+      animation: ringPulse 4s ease-in-out infinite;
+    }
+    .cover-logo-ring2 {
+      position: absolute; inset: -32px; border-radius: 32px;
+      border: 1px solid rgba(152,193,217,.08);
+      animation: ringPulse 4s 1s ease-in-out infinite;
+    }
+    @keyframes ringPulse {
+      0%,100% { opacity: .5; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.04); }
+    }
+    .cover-main-logo {
+      position: relative; z-index: 2;
+      height: 160px; width: auto;
+      filter: drop-shadow(0 8px 32px rgba(61,90,128,.6));
+    }
+
+    /* Headline */
+    .cover-headline {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: #fff; line-height: 1.1;
+      letter-spacing: -.5px; margin-bottom: 1rem;
+    }
+    .cover-headline em {
+      font-style: italic;
+      background: linear-gradient(135deg, #98c1d9, #3d5a80);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cover-sub {
+      color: rgba(255,255,255,.55); font-size: 1rem;
+      max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem;
+    }
+
+    /* CTA buttons */
+    .cover-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+    .cover-btn-primary {
+      background: #3d5a80; color: #fff;
+      padding: .9rem 2.4rem; border-radius: 8px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(61,90,128,.5);
+      transition: background .2s, transform .2s;
+      border: 1px solid rgba(152,193,217,.25);
+    }
+    .cover-btn-primary:hover { background: #2c4265; transform: translateY(-2px); }
+    .cover-btn-outline {
+      background: transparent; color: rgba(255,255,255,.8);
+      padding: .9rem 2.4rem; border-radius: 8px;
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,.18);
+      transition: border-color .2s, background .2s;
+    }
+    .cover-btn-outline:hover {
+      border-color: rgba(152,193,217,.5);
+      background: rgba(61,90,128,.15);
+    }
+
+    /* Stats strip */
+    .cover-stats {
+      display: flex; gap: 0;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; overflow: hidden;
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
+      width: 100%; max-width: 600px;
+    }
+    .cover-stat {
+      flex: 1; padding: 1.1rem 1rem; text-align: center;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .cover-stat:last-child { border-right: none; }
+    .cover-stat-n {
+      font-family: 'Lora', serif; font-size: 1.8rem;
+      font-weight: 700; color: #98c1d9; line-height: 1;
+    }
+    .cover-stat-l {
+      font-size: .68rem; color: rgba(255,255,255,.4);
+      text-transform: uppercase; letter-spacing: 1px; margin-top: .3rem;
+    }
+
+    /* Bottom bar */
+    .cover-bottom {
+      position: relative; z-index: 5;
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; padding: 1.2rem 6%;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .cover-pill {
+      font-size: .72rem; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,.45);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .cover-pill::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #98c1d9; display: inline-block;
+      animation: dotBlink 2s ease-in-out infinite;
+    }
+    @keyframes dotBlink {
+      0%,100% { opacity: 1; } 50% { opacity: .3; }
+    }
+
+    /* Scroll cue */
+    .cover-scroll {
+      position: absolute; bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: flex; flex-direction: column; align-items: center;
+      gap: .4rem; color: rgba(255,255,255,.25); font-size: .68rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .cover-scroll svg { opacity: .4; }
+    @keyframes scrollBounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    @media (max-width: 600px) {
+      .cover-main-logo { height: 110px; }
+      .cover-headline { font-size: 2rem; }
+      .cover-topbar .cover-tagline { display: none; }
+      .cover-stats { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="logo.jpeg" class="nav-logo" alt="Placeonix"/>
+  <ul class="nav-links">
+    <li><a href="#features">Why Us</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#testimonials">Alumni</a></li>
+    <li><a href="#contact" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-blob1"></div>
+  <div class="cover-blob2"></div>
+  <div class="cover-blob3"></div>
+
+  <!-- top bar -->
+  <div class="cover-topbar">
+    <img src="logo.jpeg" class="cover-logo" alt="Placeonix"/>
+    <span class="cover-tagline">Training &nbsp;|&nbsp; Placement &nbsp;|&nbsp; Future</span>
+    <a href="#contact" class="cover-enroll-btn">Enroll Now</a>
+  </div>
+
+  <!-- centre -->
+  <div class="cover-body">
+
+    <!-- logo spotlight -->
+    <div class="cover-logo-wrap">
+      <div class="cover-logo-glow"></div>
+      <div class="cover-logo-ring"></div>
+      <div class="cover-logo-ring2"></div>
+      <img src="logo.jpeg" class="cover-main-logo" alt="Placeonix"/>
+    </div>
+
+    <h1 class="cover-headline">Where Talent Meets<br/><em>Opportunity</em></h1>
+    <p class="cover-sub">Hyderabad&rsquo;s most focused IT training institute — batches capped at 30, real projects, internship access, and placement support until you sign your offer letter.</p>
+
+    <div class="cover-btns">
+      <a href="#contact" class="cover-btn-primary">Reserve Your Seat</a>
+      <a href="#programs" class="cover-btn-outline">Explore Programs</a>
+    </div>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-n">500+</div>
+        <div class="cover-stat-l">Placed</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">92%</div>
+        <div class="cover-stat-l">Placement Rate</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">30</div>
+        <div class="cover-stat-l">Max per Batch</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">50+</div>
+        <div class="cover-stat-l">Hiring Partners</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- scroll cue -->
+  <div class="cover-scroll">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+
+  <!-- bottom bar -->
+  <div class="cover-bottom">
+    <span class="cover-pill">B.Tech / B.E. / BCA / MCA Welcome</span>
+    <span class="cover-pill">Hyderabad, India</span>
+    <span class="cover-pill">Enrolling Now</span>
+  </div>
+</section>
+
+<!-- HERO -->
+<div style="max-width:100%;overflow:hidden">
+<div class="hero">
+  <div>
+    <div class="hero-kicker"><span></span>IT Training &amp; Placement — Hyderabad</div>
+    <h1>Build Your<br/><em>IT Career</em><br/>The Smart Way</h1>
+    <p class="hero-p">Placeonix offers focused, industry-aligned training in batches of max 30 — with real-time projects, internship access, and end-to-end placement support.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Apply for Next Batch</a>
+      <a href="#programs" class="btn-secondary">View Programs</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-panel">
+      <div class="stats-row">
+        <div class="stat-cell"><div class="stat-n">500+</div><div class="stat-l">Students Placed</div></div>
+        <div class="stat-cell"><div class="stat-n">92%</div><div class="stat-l">Placement Rate</div></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-cell"><div class="stat-n">50+</div><div class="stat-l">Hiring Partners</div></div>
+        <div class="stat-cell"><div class="stat-n">6+</div><div class="stat-l">Years of Excellence</div></div>
+      </div>
+      <div class="stats-row">
+        <div class="batch-cell">
+          <div class="batch-cell-icon">👥</div>
+          <div>
+            <strong>Max 30 Students Per Batch</strong>
+            <span>Personalised attention — not a crowded classroom</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <s>Full Stack Development</s><s class="dot">◆</s>
+    <s>Data Science</s><s class="dot">◆</s>
+    <s>SAP Modules</s><s class="dot">◆</s>
+    <s>Cloud &amp; DevOps</s><s class="dot">◆</s>
+    <s>Java Backend</s><s class="dot">◆</s>
+    <s>Cybersecurity</s><s class="dot">◆</s>
+    <s>UI/UX Design</s><s class="dot">◆</s>
+    <s>Real-Time Projects</s><s class="dot">◆</s>
+    <s>Internship Placement</s><s class="dot">◆</s>
+    <s>Mock Interviews</s><s class="dot">◆</s>
+    <s>Full Stack Development</s><s class="dot">◆</s>
+    <s>Data Science</s><s class="dot">◆</s>
+    <s>SAP Modules</s><s class="dot">◆</s>
+    <s>Cloud &amp; DevOps</s><s class="dot">◆</s>
+    <s>Java Backend</s><s class="dot">◆</s>
+    <s>Cybersecurity</s><s class="dot">◆</s>
+    <s>UI/UX Design</s><s class="dot">◆</s>
+    <s>Real-Time Projects</s><s class="dot">◆</s>
+    <s>Internship Placement</s><s class="dot">◆</s>
+    <s>Mock Interviews</s><s class="dot">◆</s>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="feat-bg" id="features">
+  <div class="inner">
+    <div class="sec-hdr reveal">
+      <div class="sec-eyebrow">Why Placeonix</div>
+      <h2>Everything You Need to Get Hired</h2>
+      <p class="sec-desc">Each element of our programme is designed around one goal — your placement.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-ico">👥</div>
+        <h3>Max 30 Per Batch</h3>
+        <p>Small cohorts ensure individual attention, direct trainer feedback, and no one falls behind.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-ico">💻</div>
+        <h3>Real-Time Projects</h3>
+        <p>Work on live industry projects and build a portfolio that genuinely impresses recruiters.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-ico">🚀</div>
+        <h3>Internship Access</h3>
+        <p>Top performers get direct placements with our partner companies — even mid-programme.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-ico">🎯</div>
+        <h3>Placement Support</h3>
+        <p>Resume, mock interviews, LinkedIn, recruiter connects — we stay until you land the role.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL — BTech freshers -->
+<section class="vis-bg">
+  <div class="inner">
+    <div class="sec-hdr reveal" style="text-align:center">
+      <div class="sec-eyebrow" style="justify-content:center">For Fresh Graduates</div>
+      <h2>Your Journey Starts Here</h2>
+      <p class="sec-desc" style="margin:0 auto">B.Tech / B.E. / BCA / MCA passout? We bridge the gap between your degree and your first IT job.</p>
+    </div>
+    <div class="vis-grid reveal">
+      <div class="vis-card vc-1">
+        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="300" cy="50" r="90" fill="white"/>
+          <rect x="50" y="60" width="180" height="130" rx="14" fill="white"/>
+          <rect x="68" y="80" width="144" height="10" rx="3" fill="white" opacity=".5"/>
+          <rect x="68" y="100" width="100" height="8" rx="3" fill="white" opacity=".3"/>
+          <rect x="68" y="118" width="120" height="8" rx="3" fill="white" opacity=".3"/>
+        </svg>
+        <div class="vis-content">
+          <div class="vis-pill">Expert Trainers</div>
+          <h3>Learn from Industry Professionals</h3>
+          <p>Trainers with 5–15 years of hands-on IT experience.</p>
+        </div>
+      </div>
+      <div class="vis-card vc-2">
+        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="140" height="95" rx="12" fill="white"/>
+          <rect x="210" y="30" width="140" height="95" rx="12" fill="white"/>
+          <rect x="115" y="145" width="140" height="70" rx="12" fill="white"/>
+        </svg>
+        <div class="vis-content">
+          <div class="vis-pill">Portfolio Ready</div>
+          <h3>Build Projects That Get You Hired</h3>
+          <p>Graduate with 3–5 real projects for any interview.</p>
+        </div>
+      </div>
+      <div class="vis-card vc-3">
+        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="190" cy="100" r="75" fill="white"/>
+          <circle cx="190" cy="100" r="44" fill="white" opacity=".4"/>
+          <circle cx="90" cy="190" r="28" fill="white" opacity=".3"/>
+          <circle cx="290" cy="190" r="28" fill="white" opacity=".3"/>
+        </svg>
+        <div class="vis-content">
+          <div class="vis-pill">50+ Companies</div>
+          <h3>Get Placed in Top IT Companies</h3>
+          <p>From startups to MNCs — our network has you covered.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="prog-bg" id="programs">
+  <div class="inner">
+    <div class="sec-hdr reveal">
+      <div class="sec-eyebrow">Training Programs</div>
+      <h2>Flagship Premium Programs</h2>
+      <p class="sec-desc">Updated with SAP, technology programs and combo packages from your brochure.</p>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP BTP</h3><p>Cloud platform training with BTP + HANA fundamentals for working professionals.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>☁️ BTP + HANA</span></div><div class="course-price"><span>Course Fee</span><strong>₹68,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CPI</h3><p>Integration Suite, flows, APIs and practical enterprise integration scenarios.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🔗 Flows + APIs</span></div><div class="course-price"><span>Course Fee</span><strong>₹58,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Very High Demand</span><h3>SAP CAPM</h3><p>Node.js, CDS and modern SAP cloud application programming model.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>💻 Node + CDS</span></div><div class="course-price"><span>Course Fee</span><strong>₹58,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">High Demand</span><h3>SAP RAP</h3><p>ABAP RESTful programming with OData v4 and clean enterprise development.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>⚙️ OData v4</span></div><div class="course-price"><span>Course Fee</span><strong>₹64,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Growing Demand</span><h3>SAP UI5 / Fiori</h3><p>Build Fiori apps with SAP UI5, modern UI patterns and real-time app practice.</p><div class="prog-meta"><span>⏱ 6–8 weeks</span><span>🖥️ Fiori Apps</span></div><div class="course-price"><span>Course Fee</span><strong>₹48,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Core Module</span><h3>SAP ABAP on S/4HANA</h3><p>ABAP, RICEF and CDS basics for enterprise SAP development roles.</p><div class="prog-meta"><span>⏱ 8–12 weeks</span><span>🏢 RICEF + CDS</span></div><div class="course-price"><span>Course Fee</span><strong>₹45,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP FICO</h3><p>Finance module training for SAP functional consultant career paths.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📊 Finance</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP MM</h3><p>Materials management, procurement and supply-chain business processes.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📦 Supply Chain</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP SD</h3><p>Sales and distribution module training with practical process scenarios.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>📈 Sales</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-warm">SAP Core</span><h3>SAP BASIS</h3><p>SAP system administration, landscape basics and support activities.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>🛠️ IT Admin</span></div><div class="course-price"><span>Course Fee</span><strong>₹42,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Data Science &amp; Analytics</h3><p>Python, ML guidance, analytics and real-world dataset projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>🐍 Python + ML</span></div><div class="course-price"><span>Course Fee</span><strong>₹80,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>DevOps &amp; Cloud Engineering</h3><p>AWS, Azure, Docker, CI/CD and modern cloud engineering practices.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ AWS + Azure</span></div><div class="course-price"><span>Course Fee</span><strong>₹75,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Full Stack Web Development</h3><p>MERN / Java basics for freshers and switchers with complete live projects.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💻 MERN / Java</span></div><div class="course-price"><span>Course Fee</span><strong>₹48,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Java Backend Development</h3><p>Java, Spring Boot, REST APIs and SQL for backend development roles.</p><div class="prog-meta"><span>⏱ 3–6 months</span><span>☕ Java + Spring</span></div><div class="course-price"><span>Course Fee</span><strong>₹38,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-slate">Technology</span><h3>Cybersecurity Fundamentals</h3><p>Kali, ethical AI, web security basics and hands-on security labs.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🔐 AI + Web</span></div><div class="course-price"><span>Course Fee</span><strong>₹38,000</strong></div></div>
+      <div class="prog-card reveal"><span class="prog-tag pt-warm">Design</span><h3>UI/UX Design</h3><p>Figma, research, wireframing, prototypes and portfolio-oriented design practice.</p><div class="prog-meta"><span>⏱ 2–4 months</span><span>🎨 All Levels</span></div><div class="course-price"><span>Course Fee</span><strong>₹30,000</strong></div></div>
+      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>SAP Integration Expert</h3><p>CPI + BTP combo for integration-focused SAP roles.</p><div class="prog-meta"><span>⏱ 2–3 months</span><span>💰 Save ₹21,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹99,000</strong></div></div>
+      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>AI + Data Science</h3><p>Gen AI + Data Science bundle for modern analytics and AI career paths.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹25,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹1,15,000</strong></div></div>
+      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>Cloud Dev Bundle</h3><p>DevOps + Full Stack training for cloud and application development roles.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹20,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹95,000</strong></div></div>
+      <div class="prog-card combo-card reveal"><span class="prog-tag">Combo Package</span><h3>SAP Functional Analyst</h3><p>FICO + MM + SD combined program for SAP functional careers.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>💰 Save ₹21,000</span></div><div class="course-price"><span>Package Fee</span><strong>₹90,000</strong></div></div>
+      <div class="prog-card sap-highlight reveal">
+        <div class="sap-inner"><div class="sap-icon">🏆</div><div><span class="prog-tag" style="background:rgba(255,255,255,.15);color:#fff;margin-bottom:.7rem">Highest Demand — 5 Modules</span><h3>SAP Full Stack Program</h3><p>SAP BTP, SAP CAPM, SAP UI5/Fiori and SAP CPI with complete SAP Cloud and Modern Dev Stack training.</p><div class="prog-meta"><span>⏱ 4–6 months</span><span>☁️ SAP Cloud</span><span>💻 Modern Dev Stack</span><span>🎯 Placement Support</span></div><div class="course-price" style="border-color:rgba(255,255,255,.15)"><span style="color:rgba(255,255,255,.6)">Program Fee</span><strong style="color:#fff">₹1,00,000</strong></div></div></div>
+      </div>
+    </div>    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc-bg">
+  <div class="inner">
+    <div class="sec-hdr reveal" style="text-align:center">
+      <div class="sec-eyebrow" style="justify-content:center">How It Works</div>
+      <h2>Enrollment to Employment</h2>
+      <p class="sec-desc" style="margin:0 auto">A clear, structured path from your first class to your offer letter.</p>
+    </div>
+    <div class="proc-grid reveal">
+      <div class="proc-step"><div class="proc-n">01</div><h4>Apply &amp; Enroll</h4><p>Tell us your goals. We match you to the right programme and batch.</p></div>
+      <div class="proc-step"><div class="proc-n">02</div><h4>Structured Training</h4><p>Instructor-led sessions, weekend workshops and recorded replays.</p></div>
+      <div class="proc-step"><div class="proc-n">03</div><h4>Live Project Work</h4><p>Real deliverables and deadlines — skills that show up in interviews.</p></div>
+      <div class="proc-step"><div class="proc-n">04</div><h4>Internship (Selected)</h4><p>Top students placed with partner companies during the programme.</p></div>
+      <div class="proc-step"><div class="proc-n">05</div><h4>Placement &amp; Beyond</h4><p>Interviews, referrals and follow-up until you receive your offer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIP -->
+<section class="int-bg" id="internship">
+  <div class="inner">
+    <div class="int-grid">
+      <div class="reveal">
+        <div class="sec-eyebrow">Internship Programme</div>
+        <h2>Experience Before You Graduate</h2>
+        <p class="sec-desc">Top performers are handpicked for direct placements — a genuine edge before others even start applying.</p>
+        <ul class="check-list">
+          <li>Official internship letters and experience certificates</li>
+          <li>Work on live products used by real customers</li>
+          <li>Mentored by senior developers and team leads</li>
+          <li>Internships that can convert to full-time offers</li>
+          <li>Stipend-based roles at select partner companies</li>
+          <li>Flexible schedule aligned with training hours</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="int-table">
+          <div class="int-th"><span>Internship Track</span><span>Status</span></div>
+          <div class="int-row"><div class="i-ico">🌐</div><div><div class="i-name">Frontend Developer Intern</div><div class="i-sub">React · TypeScript · Tailwind</div></div><span class="i-badge ib-open">Open</span></div>
+          <div class="int-row"><div class="i-ico">⚙️</div><div><div class="i-name">Backend Engineer Intern</div><div class="i-sub">Node.js · Express · PostgreSQL</div></div><span class="i-badge ib-open">Open</span></div>
+          <div class="int-row"><div class="i-ico">📊</div><div><div class="i-name">Data Analyst Intern</div><div class="i-sub">Python · Pandas · Power BI</div></div><span class="i-badge ib-open">Open</span></div>
+          <div class="int-row"><div class="i-ico">🏢</div><div><div class="i-name">SAP Functional Intern</div><div class="i-sub">SAP FICO · MM · SD</div></div><span class="i-badge ib-open">Open</span></div>
+          <div class="int-row"><div class="i-ico">☁️</div><div><div class="i-name">Cloud Ops Intern</div><div class="i-sub">AWS · Docker · Linux</div></div><span class="i-badge ib-ltd">Limited</span></div>
+          <div class="int-row"><div class="i-ico">🔐</div><div><div class="i-name">Security Testing Intern</div><div class="i-sub">OWASP · Burp Suite · Kali</div></div><span class="i-badge ib-ltd">Limited</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-bg" id="testimonials">
+  <div class="inner">
+    <div class="sec-hdr reveal" style="text-align:center">
+      <div class="sec-eyebrow" style="justify-content:center">Alumni Stories</div>
+      <h2>Heard From Our Graduates</h2>
+      <p class="sec-desc" style="margin:0 auto">Real results from real students.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"The small batch made all the difference. My trainer knew my weak areas personally and fixed them before interviews. Placed at an MNC within 2 weeks of finishing."</blockquote>
+        <div class="testi-author"><div class="t-av">RK</div><div><div class="t-name">Rahul K.</div><div class="t-role">Junior Dev @ TCS · Full Stack</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"Got an internship mid-programme that became a full-time role. The live project experience set my portfolio apart from every other fresher I competed against."</blockquote>
+        <div class="testi-author"><div class="t-av ta2">PS</div><div><div class="t-name">Priya S.</div><div class="t-role">Data Analyst @ Infosys · Data Science</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <blockquote>"The SAP FICO training was outstanding — real system access and live case studies. Cracked my first SAP consulting role within a month of completing the course."</blockquote>
+        <div class="testi-author"><div class="t-av ta3">VM</div><div><div class="t-name">Venkat M.</div><div class="t-role">SAP FICO Consultant @ Wipro · SAP</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="cta-box reveal">
+    <h2>Only 30 Seats Per Batch.<br/>Don't Miss Yours.</h2>
+    <p>Training · Placement · Future — the Placeonix promise.</p>
+    <a href="#contact" class="btn-white">Reserve My Seat →</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="inner contact-grid">
+    <div>
+      <div class="sec-eyebrow reveal">Admissions</div>
+      <h2 class="reveal">Let's Start Your Journey</h2>
+      <p class="sec-desc reveal">We'll get in touch within 24 hours to discuss the best programme for your goals.</p>
+      <div class="c-items reveal">
+        <div class="c-item"><div class="c-ico">📍</div><span>Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana-500032</span></div>
+        <div class="c-item"><div class="c-ico">📞</div><span>+91 9949494020, +91 9121759191</span></div>
+        <div class="c-item"><div class="c-ico">✉️</div><span>support@placeonix.com</span></div>
+        <div class="c-item"><div class="c-ico">🕐</div><span>Mon – Sat, 9 AM – 7 PM IST</span></div>
+      </div>
+    </div>
+    <form class="reveal" onsubmit="handleSubmit(event)" id="applicationForm">
+      <div class="f-row">
+        <div class="f-group"><label>First Name</label><input name="fullName" type="text" placeholder="Rahul" required/></div>
+        <div class="f-group"><label>Last Name</label><input name="lastName" type="text" placeholder="Kumar" required/></div>
+      </div>
+      <div class="f-group"><label>Email Address</label><input name="email" type="email" placeholder="you@example.com" required/></div>
+      <div class="f-group"><label>Phone Number</label><input name="phone" type="tel" placeholder="+91 9876543210" required/></div>
+      <div class="f-group">
+        <label>Program of Interest</label>
+        <select name="program">
+                    <option value="">Select a program…</option>
+          <option>SAP Full Stack Program</option>
+          <option>SAP BTP (Cloud Platform)</option>
+          <option>SAP CPI (Integration Suite)</option>
+          <option>SAP CAPM</option>
+          <option>SAP RAP</option>
+          <option>SAP UI5 / Fiori</option>
+          <option>SAP ABAP / S/4HANA</option>
+          <option>SAP FICO</option>
+          <option>SAP MM</option>
+          <option>SAP SD</option>
+          <option>SAP BASIS</option>
+          <option>Data Science &amp; Analytics</option>
+          <option>DevOps &amp; Cloud Engineering</option>
+          <option>Full Stack Web Development</option>
+          <option>Java &amp; Backend Development</option>
+          <option>Cybersecurity Fundamentals</option>
+          <option>UI/UX Design</option>
+          <option>SAP Integration Expert</option>
+          <option>AI + Data Science</option>
+          <option>Cloud Dev Bundle</option>
+          <option>SAP Functional Analyst</option>
+        </select>
+      </div>
+      <div class="f-group"><label>About You</label><textarea name="message" placeholder="Your degree, background, Experience or any questions…"></textarea></div>
+      <button type="submit" class="f-btn">Submit Application →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo.jpeg" class="foot-logo" alt="Placeonix"/>
+  <ul class="foot-nav">
+    <li><a href="#features">Why Us</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#testimonials">Alumni</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="foot-copy">© 2025 Placeonix — Training | Placement | Future</span>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io  = new IntersectionObserver(e => e.forEach(x => {
+    if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
+  }), { threshold: .08 });
+  els.forEach(el => io.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.f-btn');
+    btn.textContent = 'Received! We will contact you soon.';
+    btn.style.background = '#2c4265';
+    setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; e.target.reset(); }, 3500);
+  }
+</script>
+
+<script>
+  const applicationForm = document.getElementById("applicationForm");
+
+  if (applicationForm) {
+    applicationForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const submitButton = applicationForm.querySelector("button[type='submit'], input[type='submit']");
+      const originalText = submitButton ? submitButton.textContent : "";
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      const formData = Object.fromEntries(new FormData(applicationForm).entries());
+
+      try {
+        const response = await fetch("/api/applications", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "Submission failed");
+        }
+
+        alert("Application submitted successfully. Our team will contact you shortly.");
+        applicationForm.reset();
+      } catch (error) {
+        alert("Sorry, your application could not be submitted. Please call +91 9949494020 or +91 9121759191.");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
