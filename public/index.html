@@ -696,90 +696,355 @@
       .cover-topbar .cover-tagline { display: none; }
       .cover-stats { max-width: 100%; }
     }
+
   
-    /* ── COURSE SYLLABUS MODAL ── */
+    /* ── MOBILE NAV + PREMIUM SYLLABUS MODAL ── */
+    .mobile-menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 1.35rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
     .course-modal {
       position: fixed;
       inset: 0;
-      background: rgba(10, 18, 32, 0.72);
+      z-index: 99999;
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
       padding: 1.5rem;
+      background:
+        radial-gradient(circle at top left, rgba(152,193,217,.25), transparent 34%),
+        rgba(9, 17, 31, .80);
+      backdrop-filter: blur(12px);
     }
 
-    .course-modal.open {
-      display: flex;
-    }
+    .course-modal.open { display: flex; }
 
     .course-modal-box {
-      width: min(720px, 100%);
-      max-height: 86vh;
-      overflow-y: auto;
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
-      padding: 2rem;
+      width: min(980px, 100%);
+      max-height: 90vh;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 26px;
+      border: 1px solid rgba(232,228,222,.9);
+      box-shadow: 0 30px 90px rgba(0,0,0,.34);
       position: relative;
+      animation: modalUp .24s ease both;
     }
 
-    .course-modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: var(--warm-white);
-      cursor: pointer;
-      font-size: 1.25rem;
-      color: var(--ink);
+    @keyframes modalUp {
+      from { opacity: 0; transform: translateY(18px) scale(.98); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .course-modal-header {
+      padding: 1.75rem 2rem 1.35rem;
+      background:
+        linear-gradient(135deg, rgba(44,66,101,.98) 0%, rgba(61,90,128,.98) 100%),
+        radial-gradient(circle at top right, rgba(152,193,217,.55), transparent 35%);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .course-modal-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .22rem .72rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
     }
 
     .course-modal-title {
       font-family: 'Lora', serif;
-      font-size: 1.75rem;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
-      padding-right: 2.5rem;
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
+      line-height: 1.12;
+      margin: 0 3.2rem .45rem 0;
+      color: #fff;
     }
 
     .course-modal-subtitle {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .syllabus-list {
-      display: grid;
-      gap: 0.7rem;
+      color: rgba(255,255,255,.76);
+      font-size: .92rem;
+      max-width: 690px;
       margin: 0;
-      padding: 0;
-      list-style: none;
+      line-height: 1.65;
     }
 
-    .syllabus-list li {
-      background: var(--warm-white);
+    .course-modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-top: 1rem;
+    }
+
+    .course-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .38rem .75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.9);
+      font-size: .74rem;
+      font-weight: 700;
+    }
+
+    .course-modal-close {
+      position: absolute;
+      top: 1.15rem;
+      right: 1.15rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: background .2s, transform .2s;
+    }
+
+    .course-modal-close:hover {
+      background: rgba(255,255,255,.22);
+      transform: rotate(90deg);
+    }
+
+    .course-modal-body {
+      padding: 1.5rem 2rem 2rem;
+      overflow-y: auto;
+      max-height: calc(90vh - 190px);
+      background: linear-gradient(180deg, #fff 0%, #faf9f7 100%);
+    }
+
+    .syllabus-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .overview-card {
+      background: #fff;
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0.75rem 0.9rem;
+      border-radius: 16px;
+      padding: .95rem;
+      box-shadow: 0 8px 22px rgba(61,90,128,.05);
+    }
+
+    .overview-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .9px;
+      text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+
+    .overview-card strong {
+      display: block;
+      color: var(--ink);
+      font-size: .88rem;
+      line-height: 1.45;
+    }
+
+    .syllabus-timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .week-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(61,90,128,.06);
+    }
+
+    .week-badge {
+      min-height: 78px;
+      border-radius: 16px;
+      background: var(--slate-lt);
+      color: var(--slate);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(61,90,128,.12);
+      font-weight: 800;
+    }
+
+    .week-badge span {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .week-badge strong {
+      font-family: 'Lora', serif;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .week-content h4 {
+      color: var(--ink);
+      font-size: 1rem;
+      margin-bottom: .55rem;
+    }
+
+    .week-content ul {
+      margin: 0;
+      padding-left: 1.05rem;
+      color: var(--muted);
+      font-size: .87rem;
+      line-height: 1.7;
+    }
+
+    .week-content li { margin-bottom: .22rem; }
+
+    .course-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      padding: 1rem;
+      border-radius: 16px;
+      background: var(--slate-lt);
       color: var(--ink2);
-      font-size: 0.9rem;
+      font-size: .86rem;
+    }
+
+    .course-modal-footer a {
+      white-space: nowrap;
+      background: var(--slate);
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem 1rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: .82rem;
     }
 
     .prog-card {
       cursor: pointer;
+      position: relative;
     }
 
-    .view-syllabus {
+    .prog-card::after {
+      content: "View detailed syllabus →";
       display: inline-block;
-      margin-top: 0.9rem;
-      font-size: 0.78rem;
-      font-weight: 700;
+      margin-top: .9rem;
       color: var(--slate);
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .sap-highlight::after { color: #fff; opacity: .95; }
+
+    @media (max-width: 768px) {
+      nav { padding: .75rem 1rem; }
+      .nav-logo { height: 42px; }
+      .mobile-menu-btn { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 68px;
+        left: 1rem;
+        right: 1rem;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: 0 16px 40px rgba(0,0,0,.14);
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      .nav-links.open { display: flex !important; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: .95rem 1rem;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink2);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+
+      .course-modal {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .course-modal-box {
+        width: 100%;
+        max-height: 94vh;
+        border-radius: 24px 24px 0 0;
+      }
+
+      .course-modal-header {
+        padding: 1.35rem 1.2rem 1.1rem;
+      }
+
+      .course-modal-body {
+        padding: 1.1rem;
+        max-height: calc(94vh - 175px);
+      }
+
+      .syllabus-overview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .week-card {
+        grid-template-columns: 1fr;
+        gap: .75rem;
+        padding: .9rem;
+      }
+
+      .week-badge {
+        min-height: auto;
+        padding: .75rem;
+        flex-direction: row;
+        gap: .5rem;
+        justify-content: flex-start;
+      }
+
+      .week-badge strong { font-size: 1.25rem; }
+
+      .course-modal-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .course-modal-footer a { text-align: center; }
     }
 
   </style>
@@ -789,6 +1054,7 @@
 <!-- NAV -->
 <nav>
   <img src="logo.jpeg" class="nav-logo" alt="Placeonix"/>
+  <button class="mobile-menu-btn" id="mobileMenuButton" type="button" aria-label="Open menu">☰</button>
   <ul class="nav-links">
     <li><a href="#features">Why Us</a></li>
     <li><a href="#programs">Programs</a></li>
@@ -1263,76 +1529,116 @@
 </script>
 
 
+
 <div class="course-modal" id="courseModal" aria-hidden="true">
-  <div class="course-modal-box">
+  <div class="course-modal-box" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
     <button class="course-modal-close" type="button" id="courseModalClose" aria-label="Close syllabus">×</button>
-    <h3 class="course-modal-title" id="courseModalTitle">Course Syllabus</h3>
-    <p class="course-modal-subtitle">Detailed module overview</p>
-    <ul class="syllabus-list" id="courseModalList"></ul>
+    <div class="course-modal-header">
+      <div class="course-modal-kicker">Premium course roadmap</div>
+      <h3 class="course-modal-title" id="courseModalTitle">Course Syllabus</h3>
+      <p class="course-modal-subtitle" id="courseModalSubtitle">Detailed curriculum aligned with real-time projects and placement preparation.</p>
+      <div class="course-modal-meta">
+        <span class="course-chip" id="courseDuration">Duration</span>
+        <span class="course-chip" id="courseLevel">Level</span>
+        <span class="course-chip" id="courseCareer">Career Path</span>
+      </div>
+    </div>
+    <div class="course-modal-body">
+      <div class="syllabus-overview-grid">
+        <div class="overview-card"><span>Career Path</span><strong id="overviewCareer">-</strong></div>
+        <div class="overview-card"><span>Prerequisites</span><strong id="overviewPrerequisites">-</strong></div>
+        <div class="overview-card"><span>Includes</span><strong>Labs, assignments, capstone project & interview preparation</strong></div>
+      </div>
+      <div class="syllabus-timeline" id="courseModalList"></div>
+      <div class="course-modal-footer">
+        <span>Need help choosing the right course? Submit your details and our team will guide you.</span>
+        <a href="#contact" id="courseModalApply">Apply Now</a>
+      </div>
+    </div>
   </div>
 </div>
 
 
 <script>
-  const courseSyllabus = {
-    "SAP BTP": ["SAP BTP overview and cloud concepts", "Global account, subaccount and space setup", "SAP HANA Cloud basics", "Security, roles and authorizations", "Destination and connectivity services", "Deployment and monitoring basics", "Mini project using SAP BTP services"],
-    "SAP CPI": ["SAP Integration Suite overview", "Cloud Integration concepts", "IFlow design and configuration", "Adapters, mappings and transformations", "Exception handling and monitoring", "API integration scenarios", "Real-time enterprise integration project"],
-    "SAP CAPM": ["CAP model architecture", "CDS modeling and services", "Node.js based CAP development", "OData service creation", "Database integration", "Security and deployment", "End-to-end CAP application project"],
-    "SAP RAP": ["RAP architecture and concepts", "ABAP development tools setup", "CDS views and behavior definitions", "Managed and unmanaged scenarios", "OData V4 exposure", "Fiori elements integration", "Real-time RAP business app"],
-    "SAP UI5 / Fiori": ["SAP UI5 framework basics", "MVC architecture", "Views, controllers and models", "OData integration", "Fiori design guidelines", "Routing and navigation", "Fiori app development project"],
-    "SAP ABAP on S/4HANA": ["ABAP fundamentals", "Reports, tables and data dictionary", "RICEF concepts", "CDS view basics", "OData service basics", "Debugging and performance basics", "S/4HANA development practice"],
-    "SAP FICO": ["Financial accounting overview", "General ledger, AP and AR", "Asset accounting basics", "Cost center and profit center accounting", "Integration with MM and SD", "Configuration scenarios", "End-to-end business process practice"],
-    "SAP MM": ["Procurement cycle overview", "Material master and vendor master", "Purchase requisition and purchase order", "Goods receipt and invoice verification", "Inventory management", "Integration with FICO and SD", "Real-time procurement scenarios"],
-    "SAP SD": ["Sales cycle overview", "Customer master and material master", "Inquiry, quotation and sales order", "Delivery and billing process", "Pricing and taxation basics", "Integration with MM and FICO", "Sales process case studies"],
-    "SAP BASIS": ["SAP architecture overview", "System installation concepts", "User administration", "Transport management", "Background jobs and monitoring", "Performance and troubleshooting basics", "BASIS support scenarios"],
-    "Data Science & Analytics": ["Python for data analysis", "Numpy, Pandas and data cleaning", "Data visualization", "Statistics and analytics basics", "Machine learning introduction", "Power BI / dashboard basics", "Real-world data project"],
-    "DevOps & Cloud Engineering": ["Linux and networking basics", "Git and GitHub workflows", "Docker and containers", "CI/CD pipelines", "AWS / Azure cloud fundamentals", "Monitoring and deployment", "Cloud deployment project"],
-    "Full Stack Web Development": ["HTML, CSS and JavaScript", "Responsive UI development", "React fundamentals", "Node.js and Express", "Database integration", "REST API development", "Full stack live project"],
-    "Java Backend Development": ["Core Java fundamentals", "OOPs and collections", "SQL and database basics", "Spring Boot fundamentals", "REST API development", "Authentication basics", "Backend project development"],
-    "Cybersecurity Fundamentals": ["Cybersecurity basics", "Networking and Linux essentials", "Web security fundamentals", "OWASP Top 10 overview", "Kali Linux tools introduction", "Vulnerability testing basics", "Hands-on security labs"],
-    "UI/UX Design": ["Design thinking basics", "User research and personas", "Wireframing and user flows", "Figma fundamentals", "Prototyping and usability testing", "UI design systems", "Portfolio project"],
-    "SAP Integration Expert": ["SAP CPI fundamentals", "SAP BTP platform overview", "API and integration scenarios", "Security and connectivity", "Monitoring and troubleshooting", "Enterprise integration case studies", "Capstone integration project"],
-    "AI + Data Science": ["Python and data analytics", "Machine learning fundamentals", "Generative AI basics", "Prompt engineering concepts", "Model usage and evaluation", "Data visualization dashboards", "AI + analytics capstone project"],
-    "Cloud Dev Bundle": ["Full stack development fundamentals", "Node.js / React project workflow", "Cloud deployment basics", "Docker and CI/CD", "AWS / Azure fundamentals", "Monitoring and production basics", "Cloud-hosted full stack project"],
-    "SAP Functional Analyst": ["SAP FICO overview", "SAP MM overview", "SAP SD overview", "Business process mapping", "Cross-module integration", "Functional documentation", "End-to-end SAP functional case study"],
-    "SAP Full Stack Program": ["SAP BTP fundamentals", "SAP CAPM development", "SAP UI5 / Fiori app development", "SAP CPI integration", "HANA Cloud basics", "Deployment and security", "Complete SAP full stack capstone project"]
-  };
+  const courseSyllabus = {"SAP BTP": {"duration": "6–8 weeks", "level": "Intermediate", "career": "SAP BTP Developer / Cloud Consultant", "prerequisites": "Basic SAP or web development knowledge helpful", "weeks": [{"week": 1, "title": "SAP BTP Foundation & Cloud Landscape", "topics": ["SAP cloud strategy and BTP architecture", "Global accounts, subaccounts, regions and entitlements", "Cloud Foundry overview and service marketplace", "Hands-on: create BTP trial landscape and assign roles"]}, {"week": 2, "title": "Business Application Studio & Development Setup", "topics": ["SAP Business Application Studio workspace setup", "Dev spaces, Git integration and project structure", "Destination service and environment variables", "Hands-on: create first cloud application workspace"]}, {"week": 3, "title": "SAP HANA Cloud & Database Connectivity", "topics": ["HANA Cloud concepts and HDI containers", "Database explorer and schema concepts", "Connecting applications with HANA Cloud", "Hands-on: create tables and connect sample app"]}, {"week": 4, "title": "Security, XSUAA & Authorization", "topics": ["Authentication and authorization concepts", "XSUAA service, scopes and role collections", "Application security patterns", "Hands-on: secure an app with role-based access"]}, {"week": 5, "title": "Connectivity & Integration Services", "topics": ["Destination service with external APIs", "Cloud connector overview", "Consuming backend/OData APIs", "Hands-on: connect BTP app to external service"]}, {"week": 6, "title": "Deployment, Monitoring & Troubleshooting", "topics": ["MTA deployment basics", "Application logs and monitoring", "Common deployment errors and fixes", "Hands-on: deploy app to Cloud Foundry"]}, {"week": 7, "title": "Real-Time Mini Project", "topics": ["Build BTP business application", "Use HANA Cloud, destination and security", "Testing, debugging and documentation", "Mentor review and improvements"]}, {"week": 8, "title": "Interview + Placement Preparation", "topics": ["BTP interview questions", "Project explanation for resume", "Mock interview and technical discussion", "LinkedIn/resume project points"]}]}, "SAP CPI": {"duration": "6–8 weeks", "level": "Intermediate", "career": "SAP CPI Consultant / Integration Developer", "prerequisites": "Basic SAP or API understanding helpful", "weeks": [{"week": 1, "title": "Integration Suite Foundation", "topics": ["SAP Integration Suite overview", "CPI tenant navigation and packages", "Sender and receiver communication patterns", "Hands-on: create first IFlow"]}, {"week": 2, "title": "Adapters & Message Flow Design", "topics": ["HTTP, SOAP, SFTP, IDoc and OData adapter basics", "Content modifier, router, splitter and multicast", "Message headers/properties", "Hands-on: adapter-based integration"]}, {"week": 3, "title": "Message Mapping & Transformation", "topics": ["Graphical mapping concepts", "Value mapping and content enrichment", "XML/JSON payload handling", "Hands-on: transform source to target payload"]}, {"week": 4, "title": "Groovy Scripting & Custom Logic", "topics": ["Groovy scripting basics for CPI", "String, date and payload manipulation", "Reusable scripts and error-safe coding", "Hands-on: script-based transformation"]}, {"week": 5, "title": "Exception Handling & Monitoring", "topics": ["Exception subprocess", "Retry and alerting patterns", "Message monitoring and trace debugging", "Hands-on: fix failed integration flow"]}, {"week": 6, "title": "API & Security Scenarios", "topics": ["OAuth/client credentials overview", "Certificates and security material", "API consumption and authentication", "Hands-on: secure integration scenario"]}, {"week": 7, "title": "Enterprise Integration Project", "topics": ["Real-time business integration scenario", "End-to-end testing and documentation", "Deployment best practices", "Mentor review"]}, {"week": 8, "title": "Interview + Placement Preparation", "topics": ["CPI real-time scenario questions", "Project explanation", "Mock interview", "Common production issue discussion"]}]}, "SAP CAPM": {"duration": "6–8 weeks", "level": "Intermediate", "career": "SAP CAPM Developer", "prerequisites": "JavaScript/Node.js basics helpful", "weeks": [{"week": 1, "title": "CAP Architecture & Environment Setup", "topics": ["CAP architecture and project flow", "Node.js CAP setup", "CDS file structure and service layers", "Hands-on: create first CAP project"]}, {"week": 2, "title": "CDS Modeling & Database Layer", "topics": ["Entities, associations and compositions", "Data types, annotations and projections", "SQLite and HANA deployment concepts", "Hands-on: create complete data model"]}, {"week": 3, "title": "OData Services & CRUD Operations", "topics": ["Service definitions", "OData exposure and testing", "CRUD operations and validations", "Hands-on: build service APIs"]}, {"week": 4, "title": "Business Logic with Node.js", "topics": ["Event handlers and service implementations", "Custom actions and validations", "Error handling and response patterns", "Hands-on: add custom logic"]}, {"week": 5, "title": "Security & Authorization", "topics": ["Authentication concepts", "Role-based authorization", "XSUAA integration overview", "Hands-on: secure CAP endpoints"]}, {"week": 6, "title": "External Services & Integration", "topics": ["Consuming external OData/REST services", "Destination usage", "Service mocking and testing", "Hands-on: integrate external API"]}, {"week": 7, "title": "CAPM Project Development", "topics": ["Build business-ready CAP application", "Connect database and services", "Test and debug project", "Mentor code review"]}, {"week": 8, "title": "Deployment + Interview Prep", "topics": ["Deploy CAP app to SAP BTP", "Project walkthrough", "CAPM interview questions", "Resume and GitHub project preparation"]}]}, "SAP RAP": {"duration": "6–8 weeks", "level": "Intermediate", "career": "SAP ABAP RAP Developer", "prerequisites": "ABAP basics recommended", "weeks": [{"week": 1, "title": "RAP Foundation & ABAP Cloud", "topics": ["RAP architecture and use cases", "ADT setup and package structure", "CDS views foundation", "Hands-on: create base CDS view"]}, {"week": 2, "title": "Data Modeling for RAP", "topics": ["Interface views and projection views", "Associations and annotations", "Metadata extension basics", "Hands-on: create data model"]}, {"week": 3, "title": "Behavior Definitions", "topics": ["Managed RAP scenario", "Behavior definitions and implementations", "Actions, validations and determinations", "Hands-on: build behavior layer"]}, {"week": 4, "title": "Business Object Development", "topics": ["Transactional processing", "Draft concepts overview", "Locking and authorization basics", "Hands-on: RAP business object"]}, {"week": 5, "title": "Service Exposure", "topics": ["Service definition and service binding", "OData V4 service exposure", "Testing services", "Hands-on: expose RAP service"]}, {"week": 6, "title": "Fiori Elements Integration", "topics": ["Fiori Elements preview", "UI annotations", "List report and object page", "Hands-on: generate Fiori UI"]}, {"week": 7, "title": "Real-Time RAP Project", "topics": ["Build end-to-end RAP application", "Debug and fix issues", "Functional testing", "Mentor review"]}, {"week": 8, "title": "Interview + Placement Preparation", "topics": ["RAP interview scenarios", "Project explanation", "Mock technical discussion", "Resume points"]}]}, "SAP UI5 / Fiori": {"duration": "6–8 weeks", "level": "Intermediate", "career": "SAP UI5 / Fiori Developer", "prerequisites": "HTML, CSS and JavaScript basics helpful", "weeks": [{"week": 1, "title": "UI5 Foundation", "topics": ["SAP UI5 overview", "MVC architecture", "XML views and controllers", "Hands-on: create first UI5 app"]}, {"week": 2, "title": "Controls, Layouts & Models", "topics": ["Common UI5 controls", "JSON model and resource model", "Layouts, tables and forms", "Hands-on: build data entry screen"]}, {"week": 3, "title": "OData Integration", "topics": ["OData model basics", "Binding data to views", "Filters and sorting", "Hands-on: consume OData service"]}, {"week": 4, "title": "Routing & Navigation", "topics": ["Routing concepts", "Master-detail navigation", "Fragments and dialogs", "Hands-on: multi-page application"]}, {"week": 5, "title": "Fiori Design Guidelines", "topics": ["Fiori UX principles", "Launchpad overview", "Responsive behavior", "Hands-on: Fiori-style screen design"]}, {"week": 6, "title": "Validation & Error Handling", "topics": ["Form validations", "Message manager basics", "Busy indicators and UX polish", "Hands-on: production-ready screen"]}, {"week": 7, "title": "Fiori Project", "topics": ["Build Fiori application", "Connect to service", "Testing and debugging", "Mentor review"]}, {"week": 8, "title": "Deployment + Interview Prep", "topics": ["Deployment overview", "Project explanation", "UI5/Fiori interview questions", "Portfolio preparation"]}]}, "SAP ABAP on S/4HANA": {"duration": "8–12 weeks", "level": "Beginner to Intermediate", "career": "SAP ABAP Developer", "prerequisites": "Programming basics helpful", "weeks": [{"week": 1, "title": "ABAP Foundation", "topics": ["ABAP syntax and data types", "Operators, control statements and loops", "Internal tables and work areas", "Hands-on: basic ABAP programs"]}, {"week": 2, "title": "Reports & Debugging", "topics": ["Selection screens", "Classical and interactive reports", "Debugger usage", "Hands-on: report with validations"]}, {"week": 3, "title": "Data Dictionary", "topics": ["Tables, views, domains and data elements", "Search helps and lock objects", "Table maintenance concepts", "Hands-on: custom table creation"]}, {"week": 4, "title": "Modularization", "topics": ["Subroutines and function modules", "Includes and global data", "Code reuse practices", "Hands-on: modular report"]}, {"week": 5, "title": "ALV Reporting", "topics": ["Classical ALV", "Interactive ALV", "Field catalog and layout", "Hands-on: ALV report project"]}, {"week": 6, "title": "RICEF Concepts", "topics": ["Reports, interfaces, conversions, enhancements and forms", "Real-time development flow", "Functional spec understanding", "Hands-on: RICEF mini scenario"]}, {"week": 7, "title": "Enhancements & BADI Overview", "topics": ["User exits and BADIs", "Enhancement framework basics", "Debugging enhancement points", "Hands-on: enhancement scenario"]}, {"week": 8, "title": "CDS Basics", "topics": ["CDS view concepts", "Annotations", "Associations basics", "Hands-on: create CDS view"]}, {"week": 9, "title": "OData Basics", "topics": ["Gateway overview", "OData service concepts", "Expose data basics", "Hands-on: simple OData service"]}, {"week": 10, "title": "S/4HANA Modern ABAP", "topics": ["Modern syntax", "Performance considerations", "Clean ABAP basics", "Hands-on: refactor old code"]}, {"week": 11, "title": "Mini Project", "topics": ["End-to-end ABAP development task", "Testing and debugging", "Documentation", "Mentor review"]}, {"week": 12, "title": "Interview + Placement Preparation", "topics": ["ABAP interview questions", "Project explanation", "Resume points", "Mock interview"]}]}, "SAP FICO": {"duration": "2–3 months", "level": "Beginner to Intermediate", "career": "SAP FICO Consultant", "prerequisites": "Finance/accounting basics helpful", "weeks": [{"week": 1, "title": "SAP FI Foundation", "topics": ["SAP overview and navigation", "Enterprise structure", "Company code and chart of accounts", "Hands-on: FI basic setup"]}, {"week": 2, "title": "General Ledger Accounting", "topics": ["GL master data", "Document posting", "Posting keys and document types", "Hands-on: GL postings"]}, {"week": 3, "title": "Accounts Payable", "topics": ["Vendor master", "Invoice posting", "Payment process overview", "Hands-on: AP cycle"]}, {"week": 4, "title": "Accounts Receivable", "topics": ["Customer master", "Customer invoice and receipt", "Dunning overview", "Hands-on: AR cycle"]}, {"week": 5, "title": "Asset Accounting", "topics": ["Asset master", "Asset acquisition and retirement", "Depreciation overview", "Hands-on: asset scenario"]}, {"week": 6, "title": "Bank Accounting", "topics": ["House bank concept", "Manual bank statement overview", "Payment methods", "Hands-on: bank-related posting"]}, {"week": 7, "title": "Controlling Foundation", "topics": ["Cost center accounting", "Profit center accounting", "Internal orders overview", "Hands-on: CO master data"]}, {"week": 8, "title": "FI-MM Integration", "topics": ["Procure-to-pay flow", "GR/IR concept", "Invoice verification impact", "Hands-on: P2P accounting entries"]}, {"week": 9, "title": "FI-SD Integration", "topics": ["Order-to-cash flow", "Billing to accounting", "Revenue posting", "Hands-on: O2C flow"]}, {"week": 10, "title": "Reports & Reconciliation", "topics": ["Trial balance", "Vendor/customer reports", "Reconciliation basics", "Hands-on: report analysis"]}, {"week": 11, "title": "Real-Time Case Study", "topics": ["End-to-end business scenario", "Configuration documentation", "Issue analysis", "Mentor review"]}, {"week": 12, "title": "Interview + Placement Prep", "topics": ["FICO interview questions", "Scenario-based questions", "Resume project explanation", "Mock interview"]}]}, "SAP MM": {"duration": "2–3 months", "level": "Beginner to Intermediate", "career": "SAP MM Consultant", "prerequisites": "Business process understanding helpful", "weeks": [{"week": 1, "title": "MM Foundation", "topics": ["SAP MM overview", "Enterprise structure", "Material master and vendor master", "Hands-on: master data creation"]}, {"week": 2, "title": "Procurement Cycle", "topics": ["Purchase requisition", "Purchase order", "Goods receipt", "Hands-on: basic procurement"]}, {"week": 3, "title": "RFQ & Source Determination", "topics": ["RFQ process", "Quotation comparison", "Source list and info record", "Hands-on: vendor selection flow"]}, {"week": 4, "title": "Release Strategy", "topics": ["Approval process overview", "Release groups and codes", "Workflow concepts", "Hands-on: approval scenario"]}, {"week": 5, "title": "Inventory Management", "topics": ["Goods movements", "Stock types", "Transfer posting", "Hands-on: inventory operations"]}, {"week": 6, "title": "Invoice Verification", "topics": ["Logistics invoice verification", "Three-way match", "Common invoice issues", "Hands-on: invoice posting"]}, {"week": 7, "title": "Pricing & Conditions", "topics": ["Condition technique basics", "Pricing procedure overview", "Tax concepts", "Hands-on: pricing condition"]}, {"week": 8, "title": "MM-FI Integration", "topics": ["Account determination", "Movement type impact", "GR/IR clearing", "Hands-on: integration entries"]}, {"week": 9, "title": "MM-SD Touchpoints", "topics": ["Stock availability", "Delivery impact", "Cross-module process", "Hands-on: scenario walkthrough"]}, {"week": 10, "title": "Reports & Troubleshooting", "topics": ["Standard MM reports", "Common errors and fixes", "Support process", "Hands-on: issue resolution"]}, {"week": 11, "title": "Procurement Case Study", "topics": ["End-to-end procurement project", "Documentation", "Mentor review", "Process explanation"]}, {"week": 12, "title": "Interview + Placement Prep", "topics": ["MM interview questions", "Scenario discussions", "Resume points", "Mock interview"]}]}, "SAP SD": {"duration": "2–3 months", "level": "Beginner to Intermediate", "career": "SAP SD Consultant", "prerequisites": "Sales/business process understanding helpful", "weeks": [{"week": 1, "title": "SD Foundation", "topics": ["SAP SD overview", "Enterprise structure", "Sales org, distribution channel and division", "Hands-on: SD setup overview"]}, {"week": 2, "title": "Master Data", "topics": ["Customer master", "Material master", "Customer-material info record", "Hands-on: master data flow"]}, {"week": 3, "title": "Pre-Sales Process", "topics": ["Inquiry and quotation", "Document flow", "Copy controls overview", "Hands-on: pre-sales scenario"]}, {"week": 4, "title": "Sales Order Processing", "topics": ["Order types", "Item categories", "Schedule lines", "Hands-on: sales order cycle"]}, {"week": 5, "title": "Delivery Process", "topics": ["Outbound delivery", "Picking, packing and goods issue", "Shipping point basics", "Hands-on: delivery flow"]}, {"week": 6, "title": "Billing Process", "topics": ["Billing types", "Invoice creation", "Accounting impact", "Hands-on: billing scenario"]}, {"week": 7, "title": "Pricing", "topics": ["Condition technique", "Pricing procedure", "Discounts and taxes", "Hands-on: pricing setup"]}, {"week": 8, "title": "Credit Management Overview", "topics": ["Credit check concepts", "Customer credit basics", "Blocking/release process", "Scenario discussion"]}, {"week": 9, "title": "SD-MM-FI Integration", "topics": ["Availability check", "Stock impact", "Revenue posting", "Hands-on: integrated O2C cycle"]}, {"week": 10, "title": "Reports & Support Issues", "topics": ["Standard SD reports", "Common order/delivery/billing errors", "Troubleshooting approach", "Hands-on: issue analysis"]}, {"week": 11, "title": "Order-to-Cash Case Study", "topics": ["Complete O2C project", "Documentation", "Mentor review", "Process explanation"]}, {"week": 12, "title": "Interview + Placement Prep", "topics": ["SD interview questions", "Scenario-based preparation", "Resume project points", "Mock interview"]}]}, "SAP BASIS": {"duration": "2–3 months", "level": "Beginner to Intermediate", "career": "SAP BASIS Administrator", "prerequisites": "Basic IT/system knowledge helpful", "weeks": [{"week": 1, "title": "SAP BASIS Foundation", "topics": ["SAP architecture", "System landscape", "Instances and work processes", "Hands-on: SAP system navigation"]}, {"week": 2, "title": "Client Administration", "topics": ["Client concept", "Client copy overview", "Client settings", "Scenario discussion"]}, {"week": 3, "title": "User Administration", "topics": ["User creation", "Roles and authorization basics", "Password policies", "Hands-on: user management"]}, {"week": 4, "title": "Transport Management", "topics": ["TMS overview", "Transport routes", "Import/export concepts", "Hands-on: transport flow"]}, {"week": 5, "title": "Background Jobs", "topics": ["Job scheduling", "Job monitoring", "Common job failures", "Hands-on: job setup"]}, {"week": 6, "title": "Monitoring & Logs", "topics": ["System logs", "Dumps and traces", "Work process monitoring", "Hands-on: log analysis"]}, {"week": 7, "title": "Spool & Printer Basics", "topics": ["Spool administration", "Output requests", "Printer troubleshooting", "Hands-on: spool check"]}, {"week": 8, "title": "Performance Basics", "topics": ["Memory and CPU basics", "ST22, SM21, SM50 overview", "Performance checklist", "Hands-on: issue identification"]}, {"week": 9, "title": "Patch & Maintenance Overview", "topics": ["Support packages overview", "Kernel concept", "Maintenance planning basics", "Scenario discussion"]}, {"week": 10, "title": "Backup & Recovery Overview", "topics": ["Backup concepts", "Recovery basics", "Daily admin checklist", "Scenario discussion"]}, {"week": 11, "title": "Real-Time Support Scenarios", "topics": ["Common tickets", "Troubleshooting flow", "Documentation", "Mentor review"]}, {"week": 12, "title": "Interview + Placement Prep", "topics": ["BASIS interview questions", "Support scenario questions", "Resume points", "Mock interview"]}]}, "Data Science & Analytics": {"duration": "4–6 months", "level": "Beginner to Advanced", "career": "Data Analyst / Data Scientist", "prerequisites": "Basic maths and computer knowledge", "weeks": [{"week": 1, "title": "Python Basics", "topics": ["Python syntax", "Variables, loops and functions", "File handling", "Practice assignments"]}, {"week": 2, "title": "Data Handling with Pandas", "topics": ["Series and DataFrames", "Data cleaning", "Missing values and duplicates", "Hands-on: clean dataset"]}, {"week": 3, "title": "Numpy & Data Processing", "topics": ["Numpy arrays", "Vectorized operations", "Data transformation", "Practice tasks"]}, {"week": 4, "title": "Statistics Foundation", "topics": ["Mean, median, variance", "Probability basics", "Correlation and distributions", "Business examples"]}, {"week": 5, "title": "Data Visualization", "topics": ["Matplotlib charts", "Seaborn concepts", "Dashboard storytelling", "Visualization assignment"]}, {"week": 6, "title": "SQL for Analytics", "topics": ["Select, joins and aggregations", "Subqueries", "Analytics queries", "Hands-on: SQL case study"]}, {"week": 7, "title": "Excel/Power BI Basics", "topics": ["Data import and transformation", "Charts and dashboards", "DAX basics overview", "Dashboard task"]}, {"week": 8, "title": "Exploratory Data Analysis", "topics": ["EDA workflow", "Outlier detection", "Feature understanding", "EDA project"]}, {"week": 9, "title": "Machine Learning Intro", "topics": ["ML concepts", "Train/test split", "Model evaluation", "First ML model"]}, {"week": 10, "title": "Regression Models", "topics": ["Linear regression", "Metrics", "Business forecasting scenario", "Hands-on model"]}, {"week": 11, "title": "Classification Models", "topics": ["Logistic regression", "Decision trees overview", "Confusion matrix", "Hands-on classification"]}, {"week": 12, "title": "Clustering Basics", "topics": ["Unsupervised learning", "K-means overview", "Customer segmentation use case", "Practice task"]}, {"week": 13, "title": "Feature Engineering", "topics": ["Encoding", "Scaling", "Feature selection basics", "Project improvement"]}, {"week": 14, "title": "Model Evaluation", "topics": ["Accuracy, precision, recall", "Overfitting/underfitting", "Cross-validation overview", "Hands-on comparison"]}, {"week": 15, "title": "Business Analytics Case Study", "topics": ["Sales/customer dataset", "KPI building", "Insights presentation", "Mentor review"]}, {"week": 16, "title": "Mini Project 1", "topics": ["EDA + dashboard project", "Documentation", "Presentation", "Feedback"]}, {"week": 17, "title": "Mini Project 2", "topics": ["ML model project", "Evaluation", "Deployment overview", "Feedback"]}, {"week": 18, "title": "Gen AI Overview", "topics": ["Prompting basics", "AI for analytics", "Responsible AI", "Use-case demo"]}, {"week": 19, "title": "Resume Project Building", "topics": ["Project selection", "GitHub/portfolio preparation", "Storytelling format", "Resume points"]}, {"week": 20, "title": "Interview Preparation", "topics": ["Python questions", "SQL questions", "ML basics", "Mock interview"]}, {"week": 21, "title": "Capstone Planning", "topics": ["Problem statement", "Dataset selection", "Project milestones", "Mentor approval"]}, {"week": 22, "title": "Capstone Development", "topics": ["Data cleaning", "EDA", "Model/dashboard build", "Weekly review"]}, {"week": 23, "title": "Capstone Finalization", "topics": ["Presentation deck", "Insights and recommendations", "Code cleanup", "Final review"]}, {"week": 24, "title": "Placement Readiness", "topics": ["Resume finalization", "LinkedIn profile", "Mock HR + technical interview", "Job application strategy"]}]}, "DevOps & Cloud Engineering": {"duration": "4–6 months", "level": "Beginner to Advanced", "career": "DevOps Engineer / Cloud Engineer", "prerequisites": "Basic computer and networking knowledge", "weeks": [{"week": 1, "title": "Linux Foundation", "topics": ["Linux commands", "Files and permissions", "Shell basics", "Hands-on: Linux tasks"]}, {"week": 2, "title": "Networking Basics", "topics": ["IP, DNS and ports", "HTTP/HTTPS", "Firewalls overview", "Troubleshooting commands"]}, {"week": 3, "title": "Git & GitHub", "topics": ["Version control", "Branches and pull requests", "Git workflow", "Hands-on: repo workflow"]}, {"week": 4, "title": "Scripting Basics", "topics": ["Shell scripting", "Environment variables", "Automation basics", "Practice scripts"]}, {"week": 5, "title": "Docker Foundation", "topics": ["Images and containers", "Dockerfile", "Volumes and networks", "Hands-on: containerize app"]}, {"week": 6, "title": "Docker Compose", "topics": ["Multi-container apps", "Compose files", "Environment configuration", "Hands-on: run app stack"]}, {"week": 7, "title": "CI/CD Foundation", "topics": ["Pipeline concepts", "Build-test-deploy flow", "GitHub Actions/Jenkins overview", "Hands-on: basic pipeline"]}, {"week": 8, "title": "CI/CD Advanced", "topics": ["Secrets", "Artifacts", "Deployment stages", "Hands-on: deploy pipeline"]}, {"week": 9, "title": "AWS Basics", "topics": ["EC2, S3 and IAM overview", "Security groups", "Key pairs", "Hands-on: launch EC2"]}, {"week": 10, "title": "Azure Basics", "topics": ["VMs, storage and resource groups", "Identity overview", "Portal navigation", "Deployment overview"]}, {"week": 11, "title": "Cloud Networking", "topics": ["VPC/VNet basics", "Subnets and routing", "Load balancer overview", "Hands-on: network setup"]}, {"week": 12, "title": "Infrastructure as Code Intro", "topics": ["Terraform concepts", "Providers and resources", "State overview", "Hands-on: simple infra"]}, {"week": 13, "title": "Kubernetes Basics", "topics": ["Pods, deployments and services", "kubectl commands", "Cluster concepts", "Hands-on: deploy container"]}, {"week": 14, "title": "Kubernetes Config", "topics": ["ConfigMaps and secrets", "Ingress overview", "Scaling and rollout", "Hands-on: update app"]}, {"week": 15, "title": "Monitoring & Logging", "topics": ["Metrics and logs", "Prometheus/Grafana overview", "Cloud monitoring", "Hands-on: basic monitoring"]}, {"week": 16, "title": "Security Basics", "topics": ["IAM best practices", "Secrets management", "Container security overview", "Checklist"]}, {"week": 17, "title": "Mini Project 1", "topics": ["Containerize full app", "Create CI pipeline", "Deploy to cloud VM", "Review"]}, {"week": 18, "title": "Mini Project 2", "topics": ["Kubernetes deployment", "Configure service/ingress", "Monitoring setup", "Review"]}, {"week": 19, "title": "Production Practices", "topics": ["Zero downtime concepts", "Rollback strategies", "Incident response basics", "Scenario discussion"]}, {"week": 20, "title": "Cost & Reliability", "topics": ["Cloud cost basics", "Backup strategies", "Availability concepts", "Best practices"]}, {"week": 21, "title": "Capstone Planning", "topics": ["Architecture design", "Tool selection", "Milestones", "Mentor approval"]}, {"week": 22, "title": "Capstone Build", "topics": ["CI/CD + Docker + cloud", "Infrastructure setup", "Monitoring", "Review"]}, {"week": 23, "title": "Interview Preparation", "topics": ["Linux, Docker, cloud questions", "Scenario-based troubleshooting", "Project explanation", "Mock interview"]}, {"week": 24, "title": "Placement Readiness", "topics": ["Resume and LinkedIn", "GitHub project cleanup", "HR interview prep", "Application strategy"]}]}, "Full Stack Web Development": {"duration": "4–6 months", "level": "Beginner to Advanced", "career": "Full Stack Developer", "prerequisites": "Basic computer knowledge", "weeks": [{"week": 1, "title": "HTML & CSS", "topics": ["HTML structure", "CSS styling", "Responsive layouts", "Landing page task"]}, {"week": 2, "title": "Advanced CSS", "topics": ["Flexbox and Grid", "Animations", "Mobile-first design", "Portfolio section task"]}, {"week": 3, "title": "JavaScript Basics", "topics": ["Variables and functions", "DOM manipulation", "Events", "Practice tasks"]}, {"week": 4, "title": "JavaScript Advanced", "topics": ["Arrays and objects", "Async JS", "Fetch API", "Mini app task"]}, {"week": 5, "title": "Git & Web Workflow", "topics": ["Git basics", "GitHub repo setup", "Branching", "Project workflow"]}, {"week": 6, "title": "React Foundation", "topics": ["Components and props", "State and events", "JSX", "React task"]}, {"week": 7, "title": "React Hooks", "topics": ["useState and useEffect", "Forms", "Conditional rendering", "Hands-on: form app"]}, {"week": 8, "title": "React Routing", "topics": ["React Router", "Layouts", "Navigation", "Multi-page app"]}, {"week": 9, "title": "API Integration", "topics": ["Fetch/axios", "Loading and errors", "Reusable API services", "Hands-on: API project"]}, {"week": 10, "title": "Backend Basics", "topics": ["Node.js basics", "NPM and modules", "Express setup", "First API"]}, {"week": 11, "title": "REST API Development", "topics": ["Routes and controllers", "Request validation", "Error handling", "CRUD APIs"]}, {"week": 12, "title": "Database Basics", "topics": ["MongoDB/SQL overview", "Schema design", "Queries", "Hands-on: database app"]}, {"week": 13, "title": "Authentication", "topics": ["JWT basics", "Login/register flow", "Password hashing", "Protected routes"]}, {"week": 14, "title": "Frontend-Backend Integration", "topics": ["Connect React with APIs", "Auth state", "Form submission", "Full flow testing"]}, {"week": 15, "title": "Deployment Basics", "topics": ["Vercel/Render overview", "Environment variables", "Build issues", "Deploy app"]}, {"week": 16, "title": "Mini Project 1", "topics": ["Frontend project", "Responsive UI", "API integration", "Review"]}, {"week": 17, "title": "Mini Project 2", "topics": ["Backend project", "CRUD APIs", "Database integration", "Review"]}, {"week": 18, "title": "Mini Project 3", "topics": ["Full stack application", "Authentication", "Deployment", "Review"]}, {"week": 19, "title": "TypeScript Intro", "topics": ["Types and interfaces", "React with TypeScript basics", "Practical refactoring", "Task"]}, {"week": 20, "title": "Testing & Debugging", "topics": ["Browser dev tools", "API testing", "Common bugs", "Debug practice"]}, {"week": 21, "title": "Capstone Planning", "topics": ["Project idea selection", "Database design", "UI planning", "Mentor approval"]}, {"week": 22, "title": "Capstone Development", "topics": ["Frontend build", "Backend APIs", "Database and auth", "Weekly review"]}, {"week": 23, "title": "Capstone Finalization", "topics": ["Deployment", "Bug fixing", "Documentation", "Portfolio preparation"]}, {"week": 24, "title": "Placement Readiness", "topics": ["Resume and GitHub", "Frontend/backend interview questions", "Mock interviews", "Job application plan"]}]}, "Java Backend Development": {"duration": "3–6 months", "level": "Beginner to Advanced", "career": "Java Backend Developer", "prerequisites": "Programming basics helpful", "weeks": [{"week": 1, "title": "Core Java Basics", "topics": ["Syntax and data types", "Control statements", "Methods", "Practice programs"]}, {"week": 2, "title": "OOP Concepts", "topics": ["Classes and objects", "Inheritance and polymorphism", "Abstraction and encapsulation", "Assignments"]}, {"week": 3, "title": "Collections & Exceptions", "topics": ["Lists, sets and maps", "Generics", "Exception handling", "Practice tasks"]}, {"week": 4, "title": "Java 8 Features", "topics": ["Lambdas", "Streams", "Optional", "Hands-on exercises"]}, {"week": 5, "title": "SQL & Database", "topics": ["SQL basics", "Joins and aggregations", "Database design basics", "Practice queries"]}, {"week": 6, "title": "JDBC & Web Basics", "topics": ["JDBC overview", "REST concepts", "HTTP methods", "Mini task"]}, {"week": 7, "title": "Spring Boot Foundation", "topics": ["Project setup", "Controllers", "Services and repositories", "First API"]}, {"week": 8, "title": "Spring Data JPA", "topics": ["Entities and repositories", "Relationships", "CRUD operations", "Hands-on API"]}, {"week": 9, "title": "Validation & Error Handling", "topics": ["Request validation", "Exception handlers", "Response format", "API best practices"]}, {"week": 10, "title": "Security Basics", "topics": ["Authentication concepts", "JWT overview", "Password hashing", "Protected APIs"]}, {"week": 11, "title": "Testing APIs", "topics": ["Postman testing", "Unit testing basics", "Debugging", "Testing assignment"]}, {"week": 12, "title": "Mini Project", "topics": ["Build backend API", "Database integration", "Authentication flow", "Review"]}, {"week": 13, "title": "Microservices Overview", "topics": ["Microservices concepts", "Service communication basics", "API gateway overview", "Scenario discussion"]}, {"week": 14, "title": "Deployment", "topics": ["Build JAR", "Environment variables", "Cloud deployment overview", "Hands-on deploy"]}, {"week": 15, "title": "Interview Preparation", "topics": ["Core Java questions", "Spring Boot questions", "SQL questions", "Mock interview"]}, {"week": 16, "title": "Placement Readiness", "topics": ["Resume project points", "GitHub cleanup", "LinkedIn profile", "Application strategy"]}]}, "Cybersecurity Fundamentals": {"duration": "2–4 months", "level": "Beginner", "career": "Security Analyst / Junior Cybersecurity Role", "prerequisites": "Basic networking knowledge helpful", "weeks": [{"week": 1, "title": "Cybersecurity Foundation", "topics": ["Security concepts", "CIA triad", "Threats and vulnerabilities", "Security terminology"]}, {"week": 2, "title": "Networking Essentials", "topics": ["IP, ports and protocols", "DNS and HTTP", "Firewalls and VPN basics", "Hands-on: network commands"]}, {"week": 3, "title": "Linux for Security", "topics": ["Linux commands", "Permissions", "Shell basics", "Hands-on: Linux practice"]}, {"week": 4, "title": "Web Security Basics", "topics": ["Web app architecture", "Authentication and sessions", "Common web risks", "Lab demo"]}, {"week": 5, "title": "OWASP Top 10", "topics": ["SQL injection overview", "XSS overview", "Broken access control", "Safe lab practice"]}, {"week": 6, "title": "Security Tools", "topics": ["Kali Linux overview", "Nmap basics", "Burp Suite basics", "Hands-on tool practice"]}, {"week": 7, "title": "Vulnerability Assessment", "topics": ["Scanning workflow", "Risk rating", "False positives", "Basic report writing"]}, {"week": 8, "title": "Ethical Hacking Methodology", "topics": ["Reconnaissance", "Scanning", "Enumeration", "Legal and ethical boundaries"]}, {"week": 9, "title": "Cloud & Endpoint Security", "topics": ["Cloud security basics", "Endpoint protection", "Identity security", "Best practices"]}, {"week": 10, "title": "Security Monitoring", "topics": ["Logs and alerts", "SIEM overview", "Incident basics", "Scenario discussion"]}, {"week": 11, "title": "Mini Lab Project", "topics": ["Perform basic assessment", "Document findings", "Suggest fixes", "Mentor review"]}, {"week": 12, "title": "Secure Coding Awareness", "topics": ["Input validation", "Authentication best practices", "Secrets management", "Checklist"]}, {"week": 13, "title": "Interview Preparation", "topics": ["Cybersecurity basics questions", "Tool-based questions", "Scenario questions", "Mock interview"]}, {"week": 14, "title": "Career Guidance", "topics": ["Security roles roadmap", "Certifications overview", "Resume points", "LinkedIn profile"]}, {"week": 15, "title": "Final Lab", "topics": ["End-to-end lab challenge", "Report submission", "Presentation", "Feedback"]}, {"week": 16, "title": "Placement Readiness", "topics": ["Mock interviews", "HR preparation", "Application strategy", "Final review"]}]}, "UI/UX Design": {"duration": "2–4 months", "level": "Beginner to Intermediate", "career": "UI/UX Designer", "prerequisites": "Creative interest and basic computer knowledge", "weeks": [{"week": 1, "title": "Design Thinking", "topics": ["Design process", "Problem discovery", "User-centered design", "Case study examples"]}, {"week": 2, "title": "User Research", "topics": ["User interviews", "Personas", "Empathy maps", "Research documentation"]}, {"week": 3, "title": "Information Architecture", "topics": ["User flows", "Site maps", "Task flows", "Hands-on: flow design"]}, {"week": 4, "title": "Wireframing", "topics": ["Low-fidelity wireframes", "Layout principles", "Mobile-first thinking", "Wireframe assignment"]}, {"week": 5, "title": "Figma Basics", "topics": ["Frames and tools", "Components", "Auto layout basics", "Figma practice"]}, {"week": 6, "title": "Visual Design", "topics": ["Typography", "Color theory", "Spacing and hierarchy", "UI screen task"]}, {"week": 7, "title": "Design Systems", "topics": ["Components and variants", "Style guides", "Reusable patterns", "Design system mini task"]}, {"week": 8, "title": "Prototyping", "topics": ["Interactive prototypes", "Micro-interactions", "User testing flow", "Prototype assignment"]}, {"week": 9, "title": "Usability Testing", "topics": ["Testing methods", "Feedback analysis", "Iteration process", "Improve design"]}, {"week": 10, "title": "Mobile App Project", "topics": ["App concept", "Wireframes", "UI screens", "Prototype"]}, {"week": 11, "title": "Website Project", "topics": ["Landing page design", "Responsive web design", "Desktop and mobile screens", "Review"]}, {"week": 12, "title": "Portfolio Case Study", "topics": ["Case study structure", "Problem-solution storytelling", "Process documentation", "Portfolio draft"]}, {"week": 13, "title": "Interview Preparation", "topics": ["UX questions", "Portfolio presentation", "Design task approach", "Mock interview"]}, {"week": 14, "title": "Client/Real Project Simulation", "topics": ["Requirement gathering", "Design delivery", "Feedback handling", "Review"]}, {"week": 15, "title": "Portfolio Finalization", "topics": ["Behance/portfolio setup", "Resume points", "Project polishing", "Mentor feedback"]}, {"week": 16, "title": "Placement Readiness", "topics": ["LinkedIn profile", "Job application strategy", "HR preparation", "Final review"]}]}, "SAP Integration Expert": {"duration": "2–3 months", "level": "Intermediate", "career": "SAP Integration Consultant", "prerequisites": "Basic SAP/API knowledge helpful", "weeks": [{"week": 1, "title": "SAP Integration Overview", "topics": ["Enterprise integration concepts", "CPI + BTP role in SAP landscape", "API and event-driven basics", "Scenario discussion"]}, {"week": 2, "title": "CPI IFlow Development", "topics": ["IFlow creation", "Adapters", "Routing and transformation", "Hands-on: basic integration"]}, {"week": 3, "title": "Message Mapping & Groovy", "topics": ["Graphical mapping", "Groovy scripting", "Payload manipulation", "Hands-on: mapping scenario"]}, {"week": 4, "title": "BTP Foundation", "topics": ["Subaccounts and services", "Destinations and connectivity", "Security basics", "Hands-on: BTP setup"]}, {"week": 5, "title": "API Integration", "topics": ["REST/SOAP/OData integration", "Authentication handling", "API testing", "Hands-on: API scenario"]}, {"week": 6, "title": "Monitoring & Error Handling", "topics": ["Trace and monitoring", "Exception subprocess", "Retry strategy", "Hands-on: troubleshoot failures"]}, {"week": 7, "title": "Security & Certificates", "topics": ["OAuth basics", "Client credentials", "Certificate concepts", "Scenario discussion"]}, {"week": 8, "title": "Enterprise Project 1", "topics": ["CPI business flow", "Testing and documentation", "Mentor review", "Improvements"]}, {"week": 9, "title": "Enterprise Project 2", "topics": ["BTP + CPI integration", "Destination service usage", "End-to-end testing", "Review"]}, {"week": 10, "title": "Production Support Scenarios", "topics": ["Common production issues", "Root cause analysis", "Incident documentation", "Support checklist"]}, {"week": 11, "title": "Interview Preparation", "topics": ["CPI/BTP interview questions", "Scenario-based discussions", "Project walkthrough", "Mock interview"]}, {"week": 12, "title": "Placement Readiness", "topics": ["Resume points", "LinkedIn and project portfolio", "HR preparation", "Final review"]}]}, "AI + Data Science": {"duration": "4–6 months", "level": "Intermediate", "career": "AI/Data Science Associate", "prerequisites": "Python basics helpful", "weeks": [{"week": 1, "title": "Python for Data Science", "topics": ["Python recap", "Pandas and Numpy", "Data cleaning", "Practice dataset"]}, {"week": 2, "title": "Statistics & EDA", "topics": ["Statistics basics", "Exploratory data analysis", "Visualization", "EDA assignment"]}, {"week": 3, "title": "SQL & Dashboards", "topics": ["SQL analytics queries", "Dashboard basics", "Power BI overview", "Dashboard task"]}, {"week": 4, "title": "Machine Learning Foundation", "topics": ["ML workflow", "Regression/classification overview", "Evaluation metrics", "First model"]}, {"week": 5, "title": "Advanced ML Basics", "topics": ["Feature engineering", "Model comparison", "Cross-validation", "Hands-on model tuning"]}, {"week": 6, "title": "Generative AI Foundation", "topics": ["LLM concepts", "Prompt engineering", "Gen AI tools", "Responsible AI"]}, {"week": 7, "title": "AI Use Cases", "topics": ["Chatbots", "Document analysis", "AI for business workflows", "Use-case ideation"]}, {"week": 8, "title": "Python AI Libraries", "topics": ["Working with APIs", "Embeddings overview", "Vector search concept", "Hands-on demo"]}, {"week": 9, "title": "Mini Project 1", "topics": ["Analytics dashboard", "Insights presentation", "Documentation", "Review"]}, {"week": 10, "title": "Mini Project 2", "topics": ["ML model project", "Evaluation and reporting", "Mentor review", "Improvement"]}, {"week": 11, "title": "Mini Project 3", "topics": ["Gen AI mini application", "Prompt workflow", "Testing", "Review"]}, {"week": 12, "title": "Business Case Study", "topics": ["Problem definition", "Data selection", "Model/AI approach", "Presentation"]}, {"week": 13, "title": "Deployment Overview", "topics": ["Model/API deployment basics", "Environment variables", "Cloud hosting overview", "Demo"]}, {"week": 14, "title": "Capstone Planning", "topics": ["Choose AI + data problem", "Project architecture", "Milestones", "Mentor approval"]}, {"week": 15, "title": "Capstone Build 1", "topics": ["Data pipeline", "Model/prototype", "Review"]}, {"week": 16, "title": "Capstone Build 2", "topics": ["AI integration", "Dashboard/report", "Review"]}, {"week": 17, "title": "Capstone Finalization", "topics": ["Testing", "Documentation", "Presentation", "Final review"]}, {"week": 18, "title": "Interview Preparation 1", "topics": ["Python and SQL questions", "EDA questions", "Mock practice"]}, {"week": 19, "title": "Interview Preparation 2", "topics": ["ML questions", "AI use-case questions", "Scenario discussion"]}, {"week": 20, "title": "Portfolio Preparation", "topics": ["GitHub cleanup", "Case study writing", "Resume points"]}, {"week": 21, "title": "Placement Readiness", "topics": ["LinkedIn profile", "HR interview preparation", "Application strategy"]}, {"week": 22, "title": "Final Mock Interviews", "topics": ["Technical mock", "Project explanation", "Feedback"]}, {"week": 23, "title": "Resume + Project Review", "topics": ["Resume finalization", "Project improvement", "Mentor review"]}, {"week": 24, "title": "Final Placement Sprint", "topics": ["Job search plan", "Follow-up strategy", "Final guidance"]}]}, "Cloud Dev Bundle": {"duration": "4–6 months", "level": "Intermediate", "career": "Full Stack Cloud Developer", "prerequisites": "Basic coding knowledge helpful", "weeks": [{"week": 1, "title": "Frontend Basics", "topics": ["HTML/CSS/JS", "Responsive design", "Git workflow", "Landing page task"]}, {"week": 2, "title": "React Foundation", "topics": ["Components", "State and hooks", "Routing", "React task"]}, {"week": 3, "title": "Backend Basics", "topics": ["Node.js/Express", "REST APIs", "Database basics", "API task"]}, {"week": 4, "title": "Full Stack Integration", "topics": ["Connect UI to backend", "CRUD operations", "Validation", "Mini app"]}, {"week": 5, "title": "Docker Basics", "topics": ["Containers", "Dockerfile", "Compose", "Containerize app"]}, {"week": 6, "title": "CI/CD Basics", "topics": ["Pipeline concepts", "GitHub Actions/Jenkins overview", "Build and deploy flow", "Hands-on pipeline"]}, {"week": 7, "title": "Cloud Fundamentals", "topics": ["AWS/Azure compute", "Storage", "Networking basics", "Cloud deployment overview"]}, {"week": 8, "title": "Cloud Deployment", "topics": ["Deploy frontend/backend", "Environment variables", "Logs", "Troubleshooting"]}, {"week": 9, "title": "Database in Cloud", "topics": ["Managed DB overview", "Connection strings", "Backup basics", "Hands-on setup"]}, {"week": 10, "title": "Authentication", "topics": ["JWT basics", "Protected APIs", "Session flow", "Security checks"]}, {"week": 11, "title": "Monitoring", "topics": ["App logs", "Performance basics", "Error tracking", "Monitoring task"]}, {"week": 12, "title": "Mini Project 1", "topics": ["Full stack app", "Local testing", "Review", "Improvements"]}, {"week": 13, "title": "Mini Project 2", "topics": ["Dockerized deployment", "CI/CD pipeline", "Review", "Improvements"]}, {"week": 14, "title": "Production Practices", "topics": ["Rollback", "Release checklist", "Security checklist", "Scenario discussion"]}, {"week": 15, "title": "Capstone Planning", "topics": ["Architecture", "Tech stack", "Milestones", "Mentor approval"]}, {"week": 16, "title": "Capstone Build 1", "topics": ["Frontend and backend build", "Database integration", "Review"]}, {"week": 17, "title": "Capstone Build 2", "topics": ["Docker and deployment", "CI/CD setup", "Review"]}, {"week": 18, "title": "Capstone Final", "topics": ["Testing and bug fixing", "Documentation", "Final presentation"]}, {"week": 19, "title": "Interview Prep 1", "topics": ["Frontend questions", "Backend questions", "Mock practice"]}, {"week": 20, "title": "Interview Prep 2", "topics": ["Cloud/DevOps questions", "Scenario-based questions", "Project walkthrough"]}, {"week": 21, "title": "Portfolio Prep", "topics": ["GitHub cleanup", "Live demo links", "Resume points"]}, {"week": 22, "title": "Placement Readiness", "topics": ["LinkedIn profile", "HR prep", "Application strategy"]}, {"week": 23, "title": "Final Mock Interview", "topics": ["Technical mock", "Feedback", "Improvement plan"]}, {"week": 24, "title": "Final Review", "topics": ["Project polish", "Resume finalization", "Placement guidance"]}]}, "SAP Functional Analyst": {"duration": "4–6 months", "level": "Intermediate", "career": "SAP Functional Analyst", "prerequisites": "Business process understanding helpful", "weeks": [{"week": 1, "title": "SAP Foundation", "topics": ["SAP overview", "ERP business processes", "Navigation", "Consultant role overview"]}, {"week": 2, "title": "FICO Foundation", "topics": ["FI process", "GL/AP/AR overview", "Accounting documents", "Hands-on process flow"]}, {"week": 3, "title": "FICO Configuration Overview", "topics": ["Company code", "Chart of accounts", "Posting period", "Scenario discussion"]}, {"week": 4, "title": "MM Foundation", "topics": ["Procurement cycle", "Material/vendor master", "Purchase order process", "Hands-on flow"]}, {"week": 5, "title": "MM Integration", "topics": ["Goods receipt", "Invoice verification", "MM-FI integration", "Case study"]}, {"week": 6, "title": "SD Foundation", "topics": ["Sales process", "Customer master", "Sales order", "Hands-on flow"]}, {"week": 7, "title": "SD Integration", "topics": ["Delivery and billing", "SD-FI integration", "Order-to-cash case study"]}, {"week": 8, "title": "Cross-Module Integration", "topics": ["P2P and O2C", "Business document flow", "Integration points", "Scenario mapping"]}, {"week": 9, "title": "Requirement Gathering", "topics": ["Business requirement collection", "Stakeholder questions", "Gap analysis basics", "Practice task"]}, {"week": 10, "title": "Functional Specification", "topics": ["FS document structure", "Process flow diagrams", "Acceptance criteria", "Write sample FS"]}, {"week": 11, "title": "Testing & UAT", "topics": ["Test scenarios", "Test cases", "Defect logging", "UAT support basics"]}, {"week": 12, "title": "Support Process", "topics": ["Ticket types", "Priority and severity", "Root cause analysis", "Support documentation"]}, {"week": 13, "title": "Mini Case Study 1", "topics": ["P2P business process", "Configuration touchpoints", "Documentation", "Review"]}, {"week": 14, "title": "Mini Case Study 2", "topics": ["O2C business process", "Integration touchpoints", "Documentation", "Review"]}, {"week": 15, "title": "Reporting Overview", "topics": ["Standard reports", "Business KPIs", "Report requirement writing", "Practice task"]}, {"week": 16, "title": "Client Communication", "topics": ["Email communication", "Meeting notes", "Status updates", "Role-play session"]}, {"week": 17, "title": "Project Methodology", "topics": ["Agile/waterfall overview", "Implementation lifecycle", "Cutover basics", "Scenario discussion"]}, {"week": 18, "title": "Capstone Planning", "topics": ["Choose business scenario", "Process mapping", "Deliverables planning"]}, {"week": 19, "title": "Capstone Build 1", "topics": ["Business requirement document", "Functional spec", "Test scenarios"]}, {"week": 20, "title": "Capstone Build 2", "topics": ["Integration flow", "Issue handling", "Documentation review"]}, {"week": 21, "title": "Interview Prep 1", "topics": ["FICO/MM/SD scenario questions", "Functional analyst questions", "Mock discussion"]}, {"week": 22, "title": "Interview Prep 2", "topics": ["Project explanation", "Client scenario questions", "Mock interview"]}, {"week": 23, "title": "Resume Preparation", "topics": ["Functional resume points", "Project summary", "LinkedIn profile"]}, {"week": 24, "title": "Placement Readiness", "topics": ["HR preparation", "Application strategy", "Final guidance"]}]}, "SAP Full Stack Program": {"duration": "4–6 months", "level": "Intermediate to Advanced", "career": "SAP Full Stack Developer", "prerequisites": "Basic programming or SAP knowledge helpful", "weeks": [{"week": 1, "title": "SAP Cloud Foundation", "topics": ["SAP ecosystem overview", "BTP architecture", "Accounts and subaccounts", "Hands-on: BTP setup"]}, {"week": 2, "title": "HANA Cloud", "topics": ["HANA Cloud concepts", "HDI containers", "Database explorer", "Hands-on: database setup"]}, {"week": 3, "title": "CAPM Foundation", "topics": ["CAP architecture", "Node.js CAP project", "CDS modeling", "Hands-on: CAP service"]}, {"week": 4, "title": "CAPM Business Logic", "topics": ["Service handlers", "Validations", "OData exposure", "Hands-on: backend APIs"]}, {"week": 5, "title": "UI5 Foundation", "topics": ["UI5 MVC", "Views and controllers", "Models", "Hands-on: UI page"]}, {"week": 6, "title": "Fiori Development", "topics": ["Routing", "Fragments", "Fiori UX", "Hands-on: Fiori app"]}, {"week": 7, "title": "CPI Foundation", "topics": ["Integration Suite", "IFlow basics", "Adapters", "Hands-on: integration flow"]}, {"week": 8, "title": "CPI Advanced", "topics": ["Mapping", "Groovy basics", "Monitoring", "Hands-on: debug scenario"]}, {"week": 9, "title": "BTP Security", "topics": ["XSUAA", "Role collections", "Authentication flow", "Hands-on: secure app"]}, {"week": 10, "title": "Frontend-Backend Integration", "topics": ["UI5 consuming CAP services", "OData integration", "Error handling", "Hands-on: integrated app"]}, {"week": 11, "title": "External API Integration", "topics": ["Destinations", "REST/OData APIs", "Connectivity patterns", "Hands-on: external service"]}, {"week": 12, "title": "Deployment", "topics": ["MTA deployment", "Service binding", "Logs and troubleshooting", "Hands-on: deploy app"]}, {"week": 13, "title": "Mini Project 1", "topics": ["CAP backend project", "Database + services", "Review"]}, {"week": 14, "title": "Mini Project 2", "topics": ["UI5/Fiori frontend", "Routing + OData", "Review"]}, {"week": 15, "title": "Mini Project 3", "topics": ["CPI integration scenario", "Monitoring + error handling", "Review"]}, {"week": 16, "title": "End-to-End Architecture", "topics": ["Design SAP full stack solution", "Module integration", "Documentation", "Mentor review"]}, {"week": 17, "title": "Capstone Planning", "topics": ["Business use case selection", "Architecture", "Milestones", "Approval"]}, {"week": 18, "title": "Capstone Build 1", "topics": ["CAP backend", "HANA model", "Security setup"]}, {"week": 19, "title": "Capstone Build 2", "topics": ["UI5/Fiori frontend", "API integration", "Testing"]}, {"week": 20, "title": "Capstone Build 3", "topics": ["CPI integration", "Deployment", "Monitoring"]}, {"week": 21, "title": "Capstone Finalization", "topics": ["Bug fixing", "Documentation", "Demo preparation"]}, {"week": 22, "title": "Interview Prep 1", "topics": ["BTP/CAPM questions", "Project walkthrough", "Mock"]}, {"week": 23, "title": "Interview Prep 2", "topics": ["UI5/CPI questions", "Scenario-based questions", "Mock"]}, {"week": 24, "title": "Placement Readiness", "topics": ["Resume and LinkedIn", "GitHub/project notes", "HR prep", "Final review"]}]}};
 
   const courseModal = document.getElementById("courseModal");
   const courseModalTitle = document.getElementById("courseModalTitle");
+  const courseModalSubtitle = document.getElementById("courseModalSubtitle");
   const courseModalList = document.getElementById("courseModalList");
   const courseModalClose = document.getElementById("courseModalClose");
+  const courseModalApply = document.getElementById("courseModalApply");
+  const courseDuration = document.getElementById("courseDuration");
+  const courseLevel = document.getElementById("courseLevel");
+  const courseCareer = document.getElementById("courseCareer");
+  const overviewCareer = document.getElementById("overviewCareer");
+  const overviewPrerequisites = document.getElementById("overviewPrerequisites");
 
   document.querySelectorAll(".prog-card[data-course]").forEach((card) => {
     card.addEventListener("click", () => {
       const courseName = card.getAttribute("data-course");
-      const syllabus = courseSyllabus[courseName] || [];
+      const course = courseSyllabus[courseName];
 
-      courseModalTitle.textContent = courseName + " Syllabus";
-      courseModalList.innerHTML = syllabus.map((item) => `<li>${item}</li>`).join("");
+      if (!course) return;
+
+      courseModalTitle.textContent = courseName;
+      courseModalSubtitle.textContent = `${course.duration} curriculum with weekly learning goals, hands-on practice, real-time tasks and placement preparation.`;
+      courseDuration.textContent = `⏱ ${course.duration}`;
+      courseLevel.textContent = `📘 ${course.level}`;
+      courseCareer.textContent = `🎯 ${course.career}`;
+      overviewCareer.textContent = course.career;
+      overviewPrerequisites.textContent = course.prerequisites;
+
+      courseModalList.innerHTML = course.weeks.map((week) => `
+        <div class="week-card">
+          <div class="week-badge"><span>Week</span><strong>${week.week}</strong></div>
+          <div class="week-content">
+            <h4>${week.title}</h4>
+            <ul>${week.topics.map((topic) => `<li>${topic}</li>`).join("")}</ul>
+          </div>
+        </div>
+      `).join("");
+
       courseModal.classList.add("open");
       courseModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
     });
   });
 
   function closeCourseModal() {
     courseModal.classList.remove("open");
     courseModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
   }
 
-  courseModalClose.addEventListener("click", closeCourseModal);
-
-  courseModal.addEventListener("click", (event) => {
-    if (event.target === courseModal) {
-      closeCourseModal();
-    }
-  });
+  if (courseModalClose) courseModalClose.addEventListener("click", closeCourseModal);
+  if (courseModalApply) courseModalApply.addEventListener("click", closeCourseModal);
+  if (courseModal) {
+    courseModal.addEventListener("click", (event) => {
+      if (event.target === courseModal) closeCourseModal();
+    });
+  }
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeCourseModal();
-    }
+    if (event.key === "Escape") closeCourseModal();
   });
+
+  const mobileMenuButton = document.getElementById("mobileMenuButton");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (mobileMenuButton && navLinks) {
+    mobileMenuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      mobileMenuButton.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        mobileMenuButton.textContent = "☰";
+      });
+    });
+  }
 </script>
 
 </body>
