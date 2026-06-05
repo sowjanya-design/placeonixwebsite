@@ -1063,7 +1063,7 @@
         <div class="c-item"><div class="c-ico">🕐</div><span>Mon – Sat, 9 AM – 7 PM IST</span></div>
       </div>
     </div>
-    <form class="reveal" id="applicationForm"></form>
+    <form class="reveal" id="applicationForm">
       <div class="f-row">
         <div class="f-group"><label>First Name</label><input name="fullName" type="text" placeholder="Rahul" required/></div>
         <div class="f-group"><label>Last Name</label><input name="lastName" type="text" placeholder="Kumar" required/></div>
@@ -1122,14 +1122,6 @@
     if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
   }), { threshold: .08 });
   els.forEach(el => io.observe(el));
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.f-btn');
-    btn.textContent = 'Received! We will contact you soon.';
-    btn.style.background = '#2c4265';
-    setTimeout(() => { btn.textContent = 'Submit Application'; btn.style.background = ''; e.target.reset(); }, 3500);
-  }
 </script>
 
 <script>
@@ -1139,8 +1131,8 @@
     applicationForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const submitButton = applicationForm.querySelector("button[type='submit'], input[type='submit']");
-      const originalText = submitButton ? submitButton.textContent : "";
+      const submitButton = applicationForm.querySelector("button[type='submit']");
+      const originalText = submitButton ? submitButton.textContent : "Submit Application";
 
       if (submitButton) {
         submitButton.disabled = true;
