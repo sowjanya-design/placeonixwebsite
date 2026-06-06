@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Placeonix — IT Training & Placement</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1094,6 +1094,505 @@
       }
     }
 
+  
+    /* ── PLACEONIX REFERENCE FONT + COLORS ── */
+    :root {
+      --warm-white:#ffffff; --warm-white2:#fbfbff; --warm-white3:#f1f2ff;
+      --white:#ffffff; --ink:#070b24; --ink2:#111827;
+      --muted:#334155; --muted2:#64748b; --line:#e6e9f5;
+      --slate:#4f46e5; --slate-dk:#3730a3; --slate-lt:#f1f2ff; --slate-mid:#7c73ff;
+    }
+
+    html, body { font-family:'Inter', sans-serif !important; background:#fff !important; color:var(--ink2) !important; }
+    h1,h2,h3,h4,.cover-headline,.stat-n,.cover-stat-n,.proc-n,.course-modal-title,.week-badge strong {
+      font-family:'Inter', sans-serif !important; font-style:normal !important; letter-spacing:-.04em;
+    }
+
+    nav {
+      background:rgba(255,255,255,.96) !important;
+      border-bottom:1px solid #eef0f7 !important;
+      box-shadow:0 8px 28px rgba(15,23,42,.04);
+      padding:1rem 6% !important;
+    }
+    .nav-logo { height:46px !important; object-fit:contain; background:transparent !important; }
+    .nav-links a { color:#111827 !important; font-size:.95rem !important; font-weight:500 !important; }
+    .nav-links a:hover { color:#4f46e5 !important; }
+
+    .nav-cta,.btn-primary,.cover-btn-primary,.clean-btn-primary,.f-btn,.course-modal-footer a,.syllabus-close-sticky button {
+      background:linear-gradient(135deg,#4f46e5,#4238d6) !important;
+      color:#fff !important; border-radius:8px !important; box-shadow:0 12px 24px rgba(79,70,229,.22);
+    }
+    .btn-secondary,.cover-btn-outline,.clean-btn-secondary {
+      color:#111827 !important; border:1.5px solid #4f46e5 !important; background:#fff !important; border-radius:8px !important;
+    }
+
+    .sec-eyebrow,.hero-kicker,.clean-eyebrow {
+      color:#3730a3 !important; font-weight:800 !important; letter-spacing:2px !important;
+    }
+    .sec-eyebrow::before,.hero-kicker span,.clean-eyebrow span { background:#4f46e5 !important; }
+    h1,h2 { color:#070b24 !important; font-weight:800 !important; }
+    h1 em,.cover-headline em,.clean-hero h1 strong {
+      background:linear-gradient(135deg,#4f46e5,#6d5dfc) !important;
+      -webkit-background-clip:text !important; -webkit-text-fill-color:transparent !important; font-style:normal !important;
+    }
+
+    .feat-bg,.testi-bg,.proc-bg { background:#fff !important; border-color:#eef0f7 !important; }
+    .vis-bg,.contact-bg,.int-bg,.prog-bg { background:#fbfbff !important; }
+    .feat-grid,.prog-card,.testi-card,.int-table,.stats-panel,form,.overview-card,.week-card {
+      border-color:#e6e9f5 !important; box-shadow:0 12px 30px rgba(15,23,42,.04);
+    }
+    .feat-ico,.i-ico,.c-ico,.week-badge,.clean-stat-icon { background:#f1f2ff !important; color:#4f46e5 !important; }
+    .prog-tag,.pt-slate,.pt-warm,.combo-card .prog-tag {
+      background:#f1f2ff !important; color:#4f46e5 !important; border:1px solid #e1e4ff;
+    }
+    .sap-highlight { background:linear-gradient(135deg,#4f46e5,#3730a3) !important; border-color:#4f46e5 !important; }
+    .ticker,.clean-ticker { background:linear-gradient(90deg,#4f46e5,#4238d6) !important; }
+    .course-modal-header { background:linear-gradient(135deg,#4f46e5,#3730a3) !important; }
+
+    /* Reference-style launch page */
+    .clean-launch {
+      min-height:100vh; padding:8.5rem 6% 0; position:relative; overflow:hidden;
+      background:
+        radial-gradient(circle at 7% 18%,rgba(79,70,229,.08),transparent 26%),
+        radial-gradient(circle at 94% 25%,rgba(79,70,229,.08),transparent 30%),
+        linear-gradient(180deg,#fff 0%,#fbfbff 64%,#fff 100%);
+    }
+    .clean-launch::before,.clean-launch::after {
+      content:""; position:absolute; width:300px; height:300px; border:1px solid rgba(79,70,229,.10); border-radius:50%; pointer-events:none;
+    }
+    .clean-launch::before { left:-150px; top:100px; }
+    .clean-launch::after { right:-145px; top:250px; }
+    .clean-hero {
+      max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr;
+      gap:4.2rem; align-items:center; padding-bottom:4.2rem; position:relative; z-index:2;
+    }
+    .clean-eyebrow { display:inline-flex; align-items:center; gap:.75rem; margin-bottom:1.25rem; font-size:.78rem; text-transform:uppercase; }
+    .clean-eyebrow span { width:22px; height:2px; display:inline-block; }
+    .clean-hero h1 { font-size:clamp(2.7rem,5vw,4.65rem); line-height:1.12; font-weight:900; letter-spacing:-.055em; margin-bottom:1.35rem; }
+    .clean-hero p { color:#334155; font-size:1.05rem; max-width:560px; line-height:1.85; margin-bottom:2rem; }
+    .clean-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+    .clean-btn-primary,.clean-btn-secondary {
+      min-width:190px; padding:.95rem 1.35rem; border-radius:8px; text-decoration:none; font-size:.95rem; font-weight:800;
+      display:inline-flex; align-items:center; justify-content:center; transition:transform .2s;
+    }
+    .clean-btn-primary:hover,.clean-btn-secondary:hover { transform:translateY(-2px); }
+    .clean-stats-card {
+      background:rgba(255,255,255,.92); border:1px solid #e6e9f5; border-radius:18px;
+      box-shadow:0 24px 70px rgba(15,23,42,.08); overflow:hidden; backdrop-filter:blur(12px);
+    }
+    .clean-stat-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .clean-stat {
+      padding:1.55rem; min-height:125px; border-right:1px solid #e6e9f5; border-bottom:1px solid #e6e9f5;
+      display:flex; align-items:center; gap:1rem;
+    }
+    .clean-stat:nth-child(2),.clean-stat:nth-child(4){ border-right:none; }
+    .clean-stat:nth-child(5){ grid-column:1/-1; border-right:none; }
+    .clean-stat-icon {
+      width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.45rem; flex-shrink:0;
+    }
+    .clean-stat strong { display:block; font-size:2rem; color:#070b24; line-height:1; margin-bottom:.35rem; font-weight:900; letter-spacing:-.04em; }
+    .clean-stat span { color:#111827; font-size:.86rem; font-weight:500; }
+    .clean-assist { margin:1.1rem; padding:1rem; background:#f1f2ff; border-radius:12px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .clean-assist strong { display:block; color:#3730a3; font-size:.95rem; font-weight:900; }
+    .clean-assist span { color:#334155; font-size:.82rem; }
+    .clean-assist a { background:linear-gradient(135deg,#4f46e5,#4238d6); color:#fff; text-decoration:none; padding:.72rem 1.05rem; border-radius:8px; font-weight:800; white-space:nowrap; font-size:.86rem; }
+    .clean-ticker { margin-left:-6%; margin-right:-6%; overflow:hidden; white-space:nowrap; padding:.9rem 0; }
+    .clean-ticker-track { display:inline-flex; gap:2rem; animation:ticker 28s linear infinite; color:#fff; font-size:.78rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase; }
+    @media (max-width:900px){
+      .clean-launch{padding:6.8rem 1.2rem 0}.clean-hero{grid-template-columns:1fr;gap:2rem}.clean-actions a{width:100%}
+      .clean-stat-grid{grid-template-columns:1fr}.clean-stat{border-right:none!important}.clean-assist{flex-direction:column;align-items:stretch}.clean-assist a{text-align:center}
+    }
+
+  
+    /* ── CLEAN JOURNEY INFO SECTION ── */
+    .vis-bg {
+      background:
+        radial-gradient(circle at top center, rgba(79,70,229,.07), transparent 34%),
+        #fbfbff !important;
+      border-top: 1px solid #eef0f7 !important;
+      border-bottom: 1px solid #eef0f7 !important;
+      padding: 5.8rem 6% !important;
+    }
+
+    .journey-header {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto 4.5rem;
+    }
+
+    .journey-tag {
+      display: inline-block;
+      color: #4f46e5;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .journey-header h2 {
+      font-family: 'Inter', sans-serif !important;
+      color: #070b24 !important;
+      font-size: clamp(2.3rem, 4vw, 4.1rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.08 !important;
+      letter-spacing: -.055em !important;
+      margin-bottom: 1.2rem !important;
+    }
+
+    .journey-header p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #64748b;
+      font-size: clamp(1rem, 2vw, 1.45rem);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .vis-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1.6rem !important;
+    }
+
+    .vis-card {
+      min-height: 360px !important;
+      justify-content: flex-start !important;
+      padding: 2.2rem !important;
+      border-radius: 24px !important;
+      background: rgba(255,255,255,.92) !important;
+      border: 1px solid #e6e9f5 !important;
+      box-shadow: 0 18px 50px rgba(15,23,42,.055) !important;
+      color: #070b24 !important;
+      cursor: default !important;
+      transition: none !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .vis-card:hover {
+      transform: none !important;
+      box-shadow: 0 18px 50px rgba(15,23,42,.055) !important;
+    }
+
+    .vis-card::before {
+      content: "" !important;
+      position: absolute !important;
+      width: 185px !important;
+      height: 185px !important;
+      border-radius: 50% !important;
+      top: 36px !important;
+      right: -48px !important;
+      background: rgba(79,70,229,.055) !important;
+      z-index: 0 !important;
+    }
+
+    .vis-card::after {
+      content: "" !important;
+      position: absolute !important;
+      width: 84px !important;
+      height: 84px !important;
+      border-radius: 50% !important;
+      bottom: 44px !important;
+      right: 44px !important;
+      background: rgba(79,70,229,.035) !important;
+      z-index: 0 !important;
+    }
+
+    .vis-content {
+      position: relative !important;
+      z-index: 2 !important;
+      color: #070b24 !important;
+      margin-top: auto;
+    }
+
+    .journey-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #f1f2ff;
+      color: #4f46e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3.6rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .journey-icon svg {
+      width: 46px;
+      height: 46px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .vis-pill {
+      display: inline-block !important;
+      background: transparent !important;
+      border: none !important;
+      color: #4f46e5 !important;
+      backdrop-filter: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      font-size: .78rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 1.8px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .vis-content h3 {
+      font-family: 'Inter', sans-serif !important;
+      color: #070b24 !important;
+      font-size: clamp(1.35rem, 2vw, 1.85rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.38 !important;
+      letter-spacing: -.04em !important;
+      margin-bottom: 1.1rem !important;
+      max-width: 340px;
+    }
+
+    .vis-content p {
+      color: #64748b !important;
+      font-size: 1rem !important;
+      line-height: 1.75 !important;
+      opacity: 1 !important;
+      max-width: 330px;
+    }
+
+    .vc-svg {
+      display: none !important;
+    }
+
+    @media (max-width: 960px) {
+      .vis-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .vis-card {
+        min-height: auto !important;
+      }
+
+      .journey-icon {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+  
+    /* ── FINAL CLEAN HERO + WHY CHOOSE CARDS ── */
+    .clean-launch {
+      min-height: auto !important;
+      padding: 8rem 6% 3.2rem !important;
+      background:
+        radial-gradient(circle at -2% 22%, rgba(79,70,229,.08), transparent 22%),
+        radial-gradient(circle at 103% 45%, rgba(79,70,229,.08), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbff 100%) !important;
+    }
+
+    .clean-hero {
+      max-width: 1120px !important;
+      grid-template-columns: 1.05fr .95fr !important;
+      gap: 4.8rem !important;
+      padding: 1.5rem 0 0 !important;
+      align-items: center !important;
+    }
+
+    .clean-ticker {
+      display: none !important;
+    }
+
+    .vis-bg {
+      padding: 5.2rem 6% 6rem !important;
+      background:
+        radial-gradient(circle at top center, rgba(79,70,229,.06), transparent 32%),
+        #fbfbff !important;
+      border-top: 1px solid #eef0f7 !important;
+      border-bottom: 1px solid #eef0f7 !important;
+    }
+
+    .journey-header {
+      text-align: center !important;
+      max-width: 900px !important;
+      margin: 0 auto 3.8rem !important;
+    }
+
+    .journey-tag {
+      display: inline-block !important;
+      color: #4f46e5 !important;
+      font-size: .72rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 2.8px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .journey-header h2 {
+      font-family: 'Inter', sans-serif !important;
+      color: #070b24 !important;
+      font-size: clamp(2.35rem, 4.3vw, 4.25rem) !important;
+      font-weight: 900 !important;
+      letter-spacing: -.07em !important;
+      line-height: 1.02 !important;
+      margin-bottom: 1.25rem !important;
+    }
+
+    .journey-header p {
+      max-width: 760px !important;
+      margin: 0 auto !important;
+      color: #64748b !important;
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem) !important;
+      line-height: 1.75 !important;
+      font-weight: 400 !important;
+    }
+
+    .vis-grid {
+      max-width: 1120px !important;
+      margin: 0 auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1.6rem !important;
+    }
+
+    .vis-card {
+      min-height: 325px !important;
+      padding: 2rem !important;
+      border-radius: 20px !important;
+      background: #ffffff !important;
+      border: 1px solid #e1e6f3 !important;
+      box-shadow: 0 20px 55px rgba(15,23,42,.055) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      overflow: hidden !important;
+      position: relative !important;
+      cursor: default !important;
+      transition: none !important;
+      pointer-events: auto !important;
+    }
+
+    .vis-card:hover {
+      transform: none !important;
+      box-shadow: 0 20px 55px rgba(15,23,42,.055) !important;
+      background: #ffffff !important;
+    }
+
+    .vis-card::before {
+      content: "" !important;
+      position: absolute !important;
+      inset: auto !important;
+      width: 150px !important;
+      height: 150px !important;
+      top: 28px !important;
+      left: -18px !important;
+      border-radius: 50% !important;
+      background: rgba(79,70,229,.055) !important;
+      z-index: 0 !important;
+    }
+
+    .vis-card::after {
+      content: "" !important;
+      position: absolute !important;
+      width: 66px !important;
+      height: 66px !important;
+      right: 34px !important;
+      bottom: 34px !important;
+      border-radius: 50% !important;
+      background: rgba(79,70,229,.035) !important;
+      z-index: 0 !important;
+    }
+
+    .journey-icon {
+      position: relative !important;
+      z-index: 2 !important;
+      width: 68px !important;
+      height: 68px !important;
+      border-radius: 50% !important;
+      background: #f0edff !important;
+      color: #4f46e5 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: .7rem 0 3.4rem !important;
+    }
+
+    .journey-icon svg {
+      width: 34px !important;
+      height: 34px !important;
+      stroke: currentColor !important;
+      stroke-width: 1.9 !important;
+      fill: none !important;
+      stroke-linecap: round !important;
+      stroke-linejoin: round !important;
+    }
+
+    .vis-content {
+      position: relative !important;
+      z-index: 2 !important;
+      color: #070b24 !important;
+      margin-top: auto !important;
+    }
+
+    .vis-pill {
+      display: block !important;
+      width: fit-content !important;
+      background: transparent !important;
+      border: none !important;
+      color: #4f46e5 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      font-size: .7rem !important;
+      font-weight: 900 !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase !important;
+      margin-bottom: .85rem !important;
+      backdrop-filter: none !important;
+    }
+
+    .vis-content h3 {
+      color: #070b24 !important;
+      font-size: clamp(1.35rem, 1.85vw, 1.7rem) !important;
+      font-weight: 900 !important;
+      letter-spacing: -.055em !important;
+      line-height: 1.35 !important;
+      margin-bottom: .8rem !important;
+      max-width: 315px !important;
+    }
+
+    .vis-content p {
+      color: #64748b !important;
+      font-size: .95rem !important;
+      line-height: 1.75 !important;
+      opacity: 1 !important;
+      max-width: 320px !important;
+    }
+
+    .vc-svg {
+      display: none !important;
+    }
+
+    @media (max-width: 960px) {
+      .clean-hero {
+        grid-template-columns: 1fr !important;
+        gap: 2.2rem !important;
+      }
+
+      .vis-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .vis-card {
+        min-height: auto !important;
+      }
+
+      .journey-icon {
+        margin-bottom: 2.5rem !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1111,133 +1610,45 @@
   </ul>
 </nav>
 
-<!-- COVER -->
-<section class="cover">
-  <div class="cover-blob1"></div>
-  <div class="cover-blob2"></div>
-  <div class="cover-blob3"></div>
 
-  <!-- top bar -->
-  <div class="cover-topbar">
-    <img src="logo.jpeg" class="cover-logo" alt="Placeonix"/>
-    <span class="cover-tagline">Training &nbsp;|&nbsp; Placement &nbsp;|&nbsp; Future</span>
-    <a href="#contact" class="cover-enroll-btn">Enroll Now</a>
-  </div>
-
-  <!-- centre -->
-  <div class="cover-body">
-
-    <!-- logo spotlight -->
-    <div class="cover-logo-wrap">
-      <div class="cover-logo-glow"></div>
-      <div class="cover-logo-ring"></div>
-      <div class="cover-logo-ring2"></div>
-      <img src="logo.jpeg" class="cover-main-logo" alt="Placeonix"/>
-    </div>
-
-    <h1 class="cover-headline">Where Talent Meets<br/><em>Opportunity</em></h1>
-    <p class="cover-sub">Hyderabad&rsquo;s most focused IT training institute — batches capped at 30, real projects, internship access, and placement support until you sign your offer letter.</p>
-
-    <div class="cover-btns">
-      <a href="#contact" class="cover-btn-primary">Reserve Your Seat</a>
-      <a href="#programs" class="cover-btn-outline">Explore Programs</a>
-    </div>
-
-    <div class="cover-stats">
-      <div class="cover-stat">
-        <div class="cover-stat-n">500+</div>
-        <div class="cover-stat-l">Placed</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-n">92%</div>
-        <div class="cover-stat-l">Placement Rate</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-n">30</div>
-        <div class="cover-stat-l">Max per Batch</div>
-      </div>
-      <div class="cover-stat">
-        <div class="cover-stat-n">50+</div>
-        <div class="cover-stat-l">Hiring Partners</div>
+<!-- CLEAN LAUNCH PAGE -->
+<section class="clean-launch">
+  <div class="clean-hero">
+    <div class="clean-left">
+      <div class="clean-eyebrow"><span></span> Training | Placement | Future</div>
+      <h1>Where Talent Meets <strong>Opportunity</strong></h1>
+      <p>Industry-focused training programs designed to build in-demand skills and launch your successful IT career.</p>
+      <div class="clean-actions">
+        <a href="#contact" class="clean-btn-primary">Enroll Now →</a>
+        <a href="#programs" class="clean-btn-secondary">Explore Programs</a>
       </div>
     </div>
-
+    <div class="clean-stats-card">
+      <div class="clean-stat-grid">
+        <div class="clean-stat"><div class="clean-stat-icon">👥</div><div><strong>30+</strong><span>Max Per Batch</span></div></div>
+        <div class="clean-stat"><div class="clean-stat-icon">🎓</div><div><strong>17+</strong><span>Career-Focused Courses</span></div></div>
+        <div class="clean-stat"><div class="clean-stat-icon">💼</div><div><strong>3</strong><span>Batches Per Day</span></div></div>
+        <div class="clean-stat"><div class="clean-stat-icon">👥</div><div><strong>6</strong><span>Days Per Week</span></div></div>
+        <div class="clean-stat"><div class="clean-stat-icon">📈</div><div><strong>98%</strong><span>Placement Assistance</span></div></div>
+      </div>
+      <div class="clean-assist">
+        <div><strong>100% Placement Assistance</strong><span>Resume, mock interviews, job referrals and career guidance.</span></div>
+        <a href="#contact">Apply Now</a>
+      </div>
+    </div>
   </div>
-
-  <!-- scroll cue -->
-  <div class="cover-scroll">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    Scroll
-  </div>
-
-  <!-- bottom bar -->
-  <div class="cover-bottom">
-    <span class="cover-pill">B.Tech / B.E. / BCA / MCA Welcome</span>
-    <span class="cover-pill">Hyderabad, India</span>
-    <span class="cover-pill">Enrolling Now</span>
+  <div class="clean-ticker">
+    <div class="clean-ticker-track">
+      <span>Practical Training</span><span>•</span><span>Certified Courses</span><span>•</span><span>Real World Projects</span><span>•</span><span>Placement Support</span><span>•</span>
+      <span>SAP Modules</span><span>•</span><span>Cloud & DevOps</span><span>•</span><span>Full Stack Development</span><span>•</span><span>Data Science</span><span>•</span>
+      <span>Practical Training</span><span>•</span><span>Certified Courses</span><span>•</span><span>Real World Projects</span>
+    </div>
   </div>
 </section>
 
-<!-- HERO -->
-<div style="max-width:100%;overflow:hidden">
-<div class="hero">
-  <div>
-    <div class="hero-kicker"><span></span>IT Training &amp; Placement — Hyderabad</div>
-    <h1>Build Your<br/><em>IT Career</em><br/>The Smart Way</h1>
-    <p class="hero-p">Placeonix offers focused, industry-aligned training in batches of max 30 — with real-time projects, internship access, and end-to-end placement support.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Apply for Next Batch</a>
-      <a href="#programs" class="btn-secondary">View Programs</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="stats-panel">
-      <div class="stats-row">
-        <div class="stat-cell"><div class="stat-n">500+</div><div class="stat-l">Students Placed</div></div>
-        <div class="stat-cell"><div class="stat-n">92%</div><div class="stat-l">Placement Rate</div></div>
-      </div>
-      <div class="stats-row">
-        <div class="stat-cell"><div class="stat-n">50+</div><div class="stat-l">Hiring Partners</div></div>
-        <div class="stat-cell"><div class="stat-n">6+</div><div class="stat-l">Years of Excellence</div></div>
-      </div>
-      <div class="stats-row">
-        <div class="batch-cell">
-          <div class="batch-cell-icon">👥</div>
-          <div>
-            <strong>Max 30 Students Per Batch</strong>
-            <span>Personalised attention — not a crowded classroom</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <s>Full Stack Development</s><s class="dot">◆</s>
-    <s>Data Science</s><s class="dot">◆</s>
-    <s>SAP Modules</s><s class="dot">◆</s>
-    <s>Cloud &amp; DevOps</s><s class="dot">◆</s>
-    <s>Java Backend</s><s class="dot">◆</s>
-    <s>Cybersecurity</s><s class="dot">◆</s>
-    <s>UI/UX Design</s><s class="dot">◆</s>
-    <s>Real-Time Projects</s><s class="dot">◆</s>
-    <s>Internship Placement</s><s class="dot">◆</s>
-    <s>Mock Interviews</s><s class="dot">◆</s>
-    <s>Full Stack Development</s><s class="dot">◆</s>
-    <s>Data Science</s><s class="dot">◆</s>
-    <s>SAP Modules</s><s class="dot">◆</s>
-    <s>Cloud &amp; DevOps</s><s class="dot">◆</s>
-    <s>Java Backend</s><s class="dot">◆</s>
-    <s>Cybersecurity</s><s class="dot">◆</s>
-    <s>UI/UX Design</s><s class="dot">◆</s>
-    <s>Real-Time Projects</s><s class="dot">◆</s>
-    <s>Internship Placement</s><s class="dot">◆</s>
-    <s>Mock Interviews</s><s class="dot">◆</s>
-  </div>
+</div>
+</div>
 </div>
 
 <!-- FEATURES -->
@@ -1273,57 +1684,69 @@
   </div>
 </section>
 
+
+
 <!-- VISUAL — BTech freshers -->
 <section class="vis-bg">
   <div class="inner">
-    <div class="sec-hdr reveal" style="text-align:center">
-      <div class="sec-eyebrow" style="justify-content:center">For Fresh Graduates</div>
+    <div class="journey-header reveal">
+      <span class="journey-tag">Why Choose Placeonix</span>
       <h2>Your Journey Starts Here</h2>
-      <p class="sec-desc" style="margin:0 auto">B.Tech / B.E. / BCA / MCA passout? We bridge the gap between your degree and your first IT job.</p>
+      <p>B.Tech / B.E. / BCA / MCA passout? We bridge the gap between your degree and your first IT job.</p>
     </div>
+
     <div class="vis-grid reveal">
-      <div class="vis-card vc-1">
-        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="300" cy="50" r="90" fill="white"/>
-          <rect x="50" y="60" width="180" height="130" rx="14" fill="white"/>
-          <rect x="68" y="80" width="144" height="10" rx="3" fill="white" opacity=".5"/>
-          <rect x="68" y="100" width="100" height="8" rx="3" fill="white" opacity=".3"/>
-          <rect x="68" y="118" width="120" height="8" rx="3" fill="white" opacity=".3"/>
-        </svg>
+      <div class="vis-card">
+        <div class="journey-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M17 20a7 7 0 1 0-7-7 7 7 0 0 0 7 7Z"/>
+            <path d="M4 38c1.5-7 6-11 13-11s11.5 4 13 11"/>
+            <path d="M29 10h13v18H29z"/>
+            <path d="M35 28v8"/>
+          </svg>
+        </div>
         <div class="vis-content">
           <div class="vis-pill">Expert Trainers</div>
           <h3>Learn from Industry Professionals</h3>
-          <p>Trainers with 5–15 years of hands-on IT experience.</p>
+          <p>Trainers with 5–15 years of hands-on IT experience guide every student with practical learning.</p>
         </div>
       </div>
-      <div class="vis-card vc-2">
-        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
-          <rect x="20" y="30" width="140" height="95" rx="12" fill="white"/>
-          <rect x="210" y="30" width="140" height="95" rx="12" fill="white"/>
-          <rect x="115" y="145" width="140" height="70" rx="12" fill="white"/>
-        </svg>
+
+      <div class="vis-card">
+        <div class="journey-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M8 10h32v26H8z"/>
+            <path d="M14 18h20"/>
+            <path d="M19 25l-5 4 5 4"/>
+            <path d="M29 25l5 4-5 4"/>
+          </svg>
+        </div>
         <div class="vis-content">
           <div class="vis-pill">Portfolio Ready</div>
           <h3>Build Projects That Get You Hired</h3>
-          <p>Graduate with 3–5 real projects for any interview.</p>
+          <p>Graduate with 3–5 real projects that help you explain your skills clearly in interviews.</p>
         </div>
       </div>
-      <div class="vis-card vc-3">
-        <svg class="vc-svg" viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="190" cy="100" r="75" fill="white"/>
-          <circle cx="190" cy="100" r="44" fill="white" opacity=".4"/>
-          <circle cx="90" cy="190" r="28" fill="white" opacity=".3"/>
-          <circle cx="290" cy="190" r="28" fill="white" opacity=".3"/>
-        </svg>
+
+      <div class="vis-card">
+        <div class="journey-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M16 25l6 6 14-14"/>
+            <path d="M14 20l-8 8a5 5 0 0 0 7 7l6-6"/>
+            <path d="M34 20l8 8a5 5 0 0 1-7 7l-6-6"/>
+          </svg>
+        </div>
         <div class="vis-content">
           <div class="vis-pill">50+ Companies</div>
           <h3>Get Placed in Top IT Companies</h3>
-          <p>From startups to MNCs — our network has you covered.</p>
+          <p>From startups to MNCs, our placement support helps you connect with the right opportunities.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 <!-- PROGRAMS -->
 <section class="prog-bg" id="programs">
