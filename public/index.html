@@ -17,9 +17,10 @@
   <meta name="ICBM" content="17.4149, 78.3417"/>
   <link rel="canonical" href="https://www.placeonix.com/"/>
 
-  <!-- Favicon -->
+  <!-- Favicon & PWA -->
   <link rel="icon" type="image/jpeg" href="/logo.jpeg"/>
   <link rel="apple-touch-icon" href="/logo.jpeg"/>
+  <link rel="manifest" href="/site.webmanifest"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
@@ -28,6 +29,9 @@
   <meta property="og:description" content="Leading SAP & IT training institute in Hyderabad. SAP, Cloud, DevOps, Data Science, Full Stack & Cybersecurity training with live projects, internships and 98% placement assistance. Small batches of max 30."/>
   <meta property="og:url" content="https://www.placeonix.com/"/>
   <meta property="og:image" content="https://www.placeonix.com/logo.jpeg"/>
+  <meta property="og:image:type" content="image/jpeg"/>
+  <meta property="og:image:width" content="512"/>
+  <meta property="og:image:height" content="512"/>
   <meta property="og:image:alt" content="Placeonix — Training, Placement, Future"/>
   <meta property="og:locale" content="en_IN"/>
 
@@ -522,6 +526,8 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
     .c-items { display: flex; flex-direction: column; gap: .9rem; margin-top: 1.8rem; }
     .c-item { display: flex; align-items: center; gap: .9rem; font-size: .88rem; color: var(--ink2); }
+    .c-item a { color: inherit; text-decoration: none; transition: color .2s; }
+    .c-item a:hover { color: var(--slate); }
     .c-ico {
       width: 40px; height: 40px; background: var(--white);
       border: 1px solid var(--line); border-radius: 9px;
@@ -2159,9 +2165,9 @@
       <h2 class="reveal">Let's Start Your Journey</h2>
       <p class="sec-desc reveal">We'll get in touch within 24 hours to discuss the best programme for your goals.</p>
       <div class="c-items reveal">
-        <div class="c-item"><div class="c-ico">📍</div><span>Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana-500032</span></div>
-        <div class="c-item"><div class="c-ico">📞</div><span>+91 9949494020, +91 9121759191</span></div>
-        <div class="c-item"><div class="c-ico">✉️</div><span>support@placeonix.com</span></div>
+        <div class="c-item"><div class="c-ico">📍</div><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapil+Kavuri+Hub+Financial+District+Hyderabad" target="_blank" rel="noopener">Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana-500032</a></div>
+        <div class="c-item"><div class="c-ico">📞</div><span><a href="tel:+919949494020">+91 99494 94020</a>, <a href="tel:+919121759191">+91 91217 59191</a></span></div>
+        <div class="c-item"><div class="c-ico">✉️</div><a href="mailto:support@placeonix.com">support@placeonix.com</a></div>
         <div class="c-item"><div class="c-ico">🕐</div><span>Mon – Sat, 9 AM – 7 PM IST</span></div>
       </div>
     </div>
@@ -2253,7 +2259,7 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <span class="foot-copy">© 2025 Placeonix — Training | Placement | Future</span>
+  <span class="foot-copy">© 2026 Placeonix — Training | Placement | Future</span>
 </footer>
 
 <script>
