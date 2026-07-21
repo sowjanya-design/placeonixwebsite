@@ -1,0 +1,12 @@
+{
+  "name": "Placeonix — IT Training & Placement Institute",
+  "short_name": "Placeonix",
+  "description": "SAP & IT training and placement institute in Hyderabad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#3d5a80",
+  "icons": [
+    { "src": "/logo.jpeg", "sizes": "512x512", "type": "image/jpeg" }
+  ]
+}

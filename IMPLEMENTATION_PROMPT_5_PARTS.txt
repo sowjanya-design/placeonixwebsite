@@ -1,0 +1,327 @@
+=====================================================================
+PLACEONIX.COM — FULL SITE REBUILD, 5-PART IMPLEMENTATION PROMPT
+Repo: this project (static site: public/index.html, public/courses/*.html,
+public/assets/css/site.css, server.js + api/applications.js for the form).
+Run ONE PART per session with your IDE agent (Cursor / Claude Code / etc).
+Do NOT start Part 2 until Part 1's check-gate passes. Same for every part.
+=====================================================================
+
+SHARED CONTEXT — READ THIS BEFORE EVERY PART
+---------------------------------------------------------------------
+- This is a plain static site (HTML/CSS/JS), NOT a React/Next.js app. Keep it
+  that way — do not introduce a framework or build step. "New pages" means new
+  .html files under public/, in the same style as the ones that already exist.
+- public/courses/ ALREADY has 15 real, SEO-optimized course pages (sap-btp-
+  training.html, sap-cpi-training.html, sap-capm-training.html, sap-rap-
+  training.html, sap-ui5-fiori-training.html, sap-abap-training.html, sap-fico-
+  training.html, sap-mm-training.html, sap-sd-training.html, sap-basis-
+  training.html, data-science-training.html, cloud-computing-training.html,
+  full-stack-training.html, cyber-security-training.html, generative-ai-
+  training.html). Each has: title/meta/canonical/OG/Twitter tags, geo tags,
+  Course + FAQPage JSON-LD, a hero, industry-demand cards, a salary table, and
+  a full curriculum accordion (#curriculum). USE THESE AS THE TEMPLATE for
+  every new page — same structure, same CSS classes, same section order.
+- public/index.html lists 21 programs as cards that open a POPUP MODAL with
+  syllabus details, instead of linking to the real course pages above. This is
+  the main structural bug to fix.
+- Reference files in the project root: Placeonix_Website_Audit.docx (the full
+  audit — read it for the complete list of content/UX bugs) and, if present,
+  the SEO keyword PDF. If the SEO PDF isn't in this repo, use the keyword list
+  embedded in Part 4 below — it's the same data.
+- Design tokens already exist in public/assets/css/site.css (:root variables:
+  --indigo #4f46e5, --ink, --slate, --muted, --grad, --radius, --shadow-*, max
+  width 1180px). Reuse them. Do not invent new colors/spacing.
+- Never fabricate data: no fake alumni, testimonials, company logos, or
+  placement numbers. Where real content is missing, insert
+  <!-- TODO: real data needed --> and log it — do not invent it.
+- Check -> fix -> re-check for every item. Never mark something done without
+  re-verifying it. Keep the site's actual visual language; improve, don't
+  redesign.
+- At the end of EVERY part: run through that part's CHECK GATE below in full
+  and paste me the results before starting the next part.
+
+=====================================================================
+PART 1 — INVENTORY, WIRING, AND CONTENT-BUG FIXES
+=====================================================================
+Goal: connect what already exists and kill the credibility bugs from the audit,
+before building anything new.
+
+1. Inventory (do first, report before editing):
+   - List all 21 program cards on public/index.html and match each to its real
+     page in public/courses/ if one exists. Confirm or correct this mapping
+     (verify in code, don't trust my guess): SAP BTP, SAP CPI, SAP CAPM, SAP
+     RAP, SAP UI5/Fiori, SAP ABAP/S4HANA, SAP FICO, SAP MM, SAP SD, SAP BASIS,
+     Data Science & Analytics, DevOps & Cloud Engineering (likely maps to
+     cloud-computing-training.html — verify content matches), Full Stack Web
+     Development, Cybersecurity Fundamentals, and Generative AI all likely
+     already have pages. Java Backend Development and UI/UX Design likely do
+     NOT have pages yet. The 5 combo packages (SAP Integration Expert, AI +
+     Data Science, Cloud Dev Bundle, SAP Functional Analyst, SAP Full Stack
+     Program) likely do NOT have pages yet.
+   - Save this mapping as docs/audit/course-page-mapping.md with a clear
+     "Existing / Missing" column. This list drives Part 2.
+
+2. Wire the homepage to the real pages:
+   - Change every program card's primary action from "open syllabus modal" to
+     a real link (<a href="/courses/xxx-training.html">) to its course page,
+     for every course that already has one.
+   - You may keep the modal as a quick-preview ("Quick view") secondary action
+     if you want, but the card title / "View detailed syllabus" must link to
+     the real page. Do not remove the modal's underlying data if course pages
+     for a program don't exist yet — leave those on the modal until Part 2
+     builds their pages.
+
+3. Fix the content bugs found in the audit (read Placeonix_Website_Audit.docx
+   for full detail; apply at minimum):
+   - Reconcile "98% Placement Assistance" vs "100% Placement Assistance" to
+     ONE number, used everywhere. Ask me which is correct if unclear — do not
+     guess.
+   - Reconcile "30+ Max Per Batch" vs "Max 30 Per Batch" — should read "Max 30
+     Per Batch" consistently (it appears elsewhere on the same site already
+     correct).
+   - Reconcile "17+ Career-Focused Courses" against the actual number of
+     programs listed (21, or fewer if you consolidate combos) — use the real
+     count.
+   - Remove the phrase "from your brochure" from the Programs section subtitle
+     ("Updated with SAP, technology programs and combo packages from your
+     brochure.") — it's a leaked internal note.
+   - Update the footer copyright year to the current year, and make it compute
+     automatically (e.g. new Date().getFullYear()) so it never goes stale again.
+   - Put the reconciled numbers (placement %, batch size, course count) in one
+     place (a small JS constants object or shared partial) so they can't drift
+     apart again.
+
+CHECK GATE — PART 1 (must all pass before Part 2):
+  [ ] Every program card with an existing course page now links to it (click
+      each one, confirm it navigates, not just opens a modal).
+  [ ] No stat contradicts itself anywhere on the homepage (search the whole
+      file for "98%", "100%", "30+", "Max 30", "17+" and confirm one consistent
+      value each).
+  [ ] "from your brochure" no longer appears anywhere.
+  [ ] Footer year is correct and auto-computed.
+  [ ] Site still builds/serves with no console errors (open in browser, check
+      DevTools console on homepage and two course pages).
+  [ ] docs/audit/course-page-mapping.md exists and is accurate.
+Report each checkbox result to me before starting Part 2.
+
+=====================================================================
+PART 2 — BUILD THE MISSING COURSE & COMBO PAGES
+=====================================================================
+Goal: every program card on the homepage has a real page, built to the exact
+same standard as the 15 that already exist.
+
+1. Using docs/audit/course-page-mapping.md from Part 1, build a new page under
+   public/courses/ for every program that doesn't have one yet (expected: Java
+   Backend Development, UI/UX Design, and the 5 combo packages — confirm the
+   real list from Part 1's output).
+2. Each new page MUST match the existing template exactly in structure:
+   - Full <head>: title (<=60 chars, includes "Hyderabad"), meta description
+     (<=155 chars), canonical, geo tags, Open Graph + Twitter tags, favicon.
+   - Course + FAQPage JSON-LD (5-6 real FAQs per page, written honestly).
+   - Hero with H1 containing the course name + "Hyderabad", badges (duration,
+     mode, batch size, placement assistance), two CTAs (Book Free Counselling,
+     View Curriculum).
+   - Industry-demand section (3 cards).
+   - Careers & Salary table with an honest disclaimer line (copy the pattern
+     used in sap-btp-training.html — do not invent specific salary numbers you
+     can't support; keep to general/indicative ranges as the existing pages do).
+   - Curriculum section (#curriculum) with real modules/topics for that course.
+     Research actual, accurate curriculum content for each course/tool
+     (real topics, tools and languages taught) rather than inventing generic
+     filler - this matters for the combo/bundle pages especially, which should
+     clearly show which sub-courses/modules they bundle together.
+   - Same nav/footer as the rest of the site.
+3. For combo pages specifically: clearly state which individual courses/
+   modules are bundled, the combined duration, and the actual rupee saving
+   ONLY if you have a real base price to compare against — otherwise mark
+   <!-- TODO: confirm combo pricing --> instead of inventing numbers (the audit
+   flagged this exact issue: "Save ₹21,000" with no visible base price).
+4. Add every new page's URL to public/sitemap.xml (it currently only has 2
+   URLs — add ALL course pages, existing and new).
+5. Update the homepage cards for these programs to link to their new pages,
+   same as Part 1.
+
+CHECK GATE — PART 2:
+  [ ] Every one of the 21 homepage programs now has a real page (list them and
+      confirm each URL loads with a 200, not a 404).
+  [ ] Every new page has unique title/meta/H1 (no duplicates - check for
+      copy-paste leftovers from the template).
+  [ ] Every new page has valid Course + FAQPage JSON-LD (validate with
+      Google's Rich Results Test or a JSON-LD linter).
+  [ ] sitemap.xml lists every page on the site.
+  [ ] No combo page states a rupee saving without a real base price to compare
+      it to (either both numbers are real, or it's marked TODO).
+  [ ] All new pages visually match the existing course pages (same fonts,
+      spacing, colors - spot check 3 new pages side by side with an existing
+      one).
+Report results before starting Part 3.
+
+=====================================================================
+PART 3 — CURRICULUM VISUALS ("AT A GLANCE" GRAPHIC PER COURSE)
+=====================================================================
+Goal: a compact, attractive visual on every course page showing topics/tools/
+languages and the weekly breakdown at a glance — so a visitor gets it in one
+look instead of reading a long accordion.
+
+1. Design one reusable "Curriculum at a Glance" component that sits above or
+   beside the existing detailed #curriculum accordion (keep the accordion for
+   detail; the new graphic is the fast, attractive summary). It should show,
+   compactly: the tools/languages used (as a small icon+label chip row), the
+   number of weeks/modules with short module titles, and 3-4 headline skills
+   the student walks away with. It must fit within roughly one viewport height
+   on desktop and stack cleanly on mobile.
+2. Generate this as an actual image asset per course (an AI-generated
+   infographic), not as live HTML/CSS - use whatever image-generation tool is
+   available to you. Style direction: match the site's brand (indigo #4f46e5
+   gradient, clean modern SaaS/ed-tech style, readable sans-serif labels,
+   plenty of white space, no clutter) - not a generic stock-photo look. Save
+   images under public/assets/img/curriculum/<course-slug>.png (or .webp),
+   optimized/compressed for web.
+   IMPORTANT FALLBACK: if you have no image-generation capability available in
+   this environment, stop and tell me explicitly rather than faking it with a
+   placeholder box or a low-effort substitute - I will generate the images
+   separately and hand them to you to place. Do not silently skip this step or
+   ship broken image tags.
+3. Embed the generated image on each of the 21 course/combo pages, with
+   descriptive, keyword-relevant alt text (e.g. "SAP BTP training curriculum
+   overview — HANA Cloud, CAP, Integration Suite, Fiori, 6-8 week roadmap").
+   Lazy-load every image below the fold (loading="lazy").
+4. Make sure the image content is factually consistent with the real
+   curriculum text elsewhere on the same page (don't let the graphic say
+   something the accordion doesn't).
+
+CHECK GATE — PART 3:
+  [ ] Every one of the 21 course/combo pages has its own curriculum graphic
+      (not a shared generic image).
+  [ ] Each image is compressed/optimized (report file sizes - flag anything
+      over ~200KB).
+  [ ] Each image has real, descriptive alt text.
+  [ ] Graphic content matches the page's actual curriculum text (spot check 5
+      pages).
+  [ ] Page still loads fast with the image added (note any Lighthouse
+      Performance score change if you can run it).
+  [ ] If image generation wasn't available, you told me clearly instead of
+      faking it.
+Report results before starting Part 4.
+
+=====================================================================
+PART 4 — SEO KEYWORD INHERITANCE + ENGAGEMENT / "MAKE THEM PAUSE" POLISH
+=====================================================================
+Goal: apply the researched Hyderabad keyword strategy site-wide, and add the
+specific polish that makes a visitor stop scrolling and actually read.
+
+PRIMARY KEYWORDS (ranked - map each to the right page; if a fuller SEO keyword
+document exists in this repo or is provided to you, prefer its detail over this
+list, but this is the minimum to apply):
+1. SAP training in Hyderabad with placement          -> Homepage + SAP pages
+2. data science course in Hyderabad with placement   -> data-science-training.html
+3. generative AI course in Hyderabad                 -> generative-ai-training.html
+4. best software training institute in Hyderabad with placement -> Homepage
+5. gen AI course for freshers Hyderabad              -> generative-ai-training.html
+6. SAP BTP course in Hyderabad                        -> sap-btp-training.html
+7. SAP ABAP training in Hyderabad                     -> sap-abap-training.html
+8. AI course with placement Hyderabad                 -> AI/GenAI page
+9. SAP BTP vs SAP ABAP                                -> new /compare page (build it)
+10. software course in Ameerpet                       -> Homepage / Contact
+
+1. Homepage: rewrite <title> and meta description with the primary keyword +
+   "Hyderabad" (check current values first - some course pages already do this
+   well; the homepage may not). Confirm/fix the H1 - "Where Talent Meets
+   Opportunity" has no keyword; either change it or add a keyword-rich line
+   immediately below it that a search engine and an AI answer engine can read
+   clearly (e.g. as a visible sub-headline, not hidden text).
+   Add Organization JSON-LD to the homepage if missing (real address: Kapil
+   Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad,
+   Telangana-500032; phones +91 9949494020, +91 9121759191; email
+   support@placeonix.com).
+2. Build the comparison page (keyword #9): /courses/sap-btp-vs-sap-abap.html
+   (or similar clean slug) - a real comparison table plus a "which should you
+   choose" section, same template/design as course pages, linking to both the
+   BTP and ABAP course pages.
+3. Internal linking: on every course page, add a small "Related Programs"
+   block linking to 2-3 relevant other courses (e.g. SAP BTP page links to SAP
+   CPI, SAP CAPM, and the SAP Integration Expert combo). Add this pattern
+   across all pages, not just a few.
+4. FAQ audit: confirm every course/combo page (old and new) has a real 5-6
+   question FAQPage block - not just the original 15.
+5. ENGAGEMENT / "make them pause" changes - implement these on the homepage
+   and course pages, using the existing design system only:
+   - A short, specific "why this course, why now" line under each course card
+     tied to real market demand (you already have "Very High Demand" /"High
+     Demand" tags - make sure every card uses one, and that the industry-
+     demand section on each course page backs it up with a real reason, not
+     generic text).
+   - Add a subtle "batches filling fast" or next-batch-start-date signal near
+     primary CTAs, ONLY if this is real/confirmable data - otherwise mark
+     <!-- TODO: real batch date --> rather than inventing urgency.
+   - Make sure the hero's first 2 lines answer "what do I get, by when" in
+     plain language (a visitor should not have to scroll to understand the
+     offer).
+   - Tighten the scroll-triggered fade-in animations flagged in the audit
+     (currently can flash blank content while scrolling quickly) - shorten
+     duration/distance and respect prefers-reduced-motion.
+   - Add the curriculum graphic from Part 3 near the top of each course page
+     (not buried at the bottom) so it's one of the first things a visitor sees
+     - this is your primary "make them pause and look" element.
+6. Update robots.txt if needed and confirm it isn't blocking anything it
+   shouldn't.
+
+CHECK GATE — PART 4:
+  [ ] Homepage title/meta/H1 contain a primary keyword + "Hyderabad".
+  [ ] Organization JSON-LD present and valid on homepage.
+  [ ] SAP BTP vs SAP ABAP comparison page exists, is linked from both course
+      pages, and is in the sitemap.
+  [ ] Every course/combo page has a "Related Programs" internal-linking block.
+  [ ] Every course/combo page has a valid FAQPage block (spot check 6 pages
+      including 3 new ones from Part 2).
+  [ ] No invented urgency/dates - anything not confirmed is marked TODO.
+  [ ] Animations no longer cause blank/flash content when scrolling fast.
+  [ ] Curriculum graphic appears near the top of each course page.
+Report results before starting Part 5.
+
+=====================================================================
+PART 5 — FULL REGRESSION: CHECK, FIX, CHECK UNTIL IT'S CLEAN
+=====================================================================
+Goal: verify the whole site end-to-end and loop on anything broken until it
+converges. This is the final pass - be thorough and honest.
+
+1. Functionality sweep: click every nav link, every program card, every CTA,
+   the WhatsApp/brochure links if added, and submit the contact form (valid
+   and invalid data) on the homepage and confirm it still hits
+   /api/applications correctly (server.js locally, api/applications.js on
+   Vercel) and returns success/error states properly - nothing in Parts 1-4
+   should have touched the form logic, but prove it still works.
+2. Open every single page on the site (homepage + all course/combo pages + the
+   new comparison page) and confirm: no console errors, no 404s (images,
+   fonts, CSS), correct title in the browser tab, mobile layout (375px) has no
+   overflow or broken elements.
+3. Re-run the content-consistency check from Part 1 across the WHOLE site now
+   that new pages exist (placement %, batch size, course count must still
+   agree everywhere, including on the new pages).
+4. Validate sitemap.xml covers every real page and robots.txt isn't blocking
+   any of them.
+5. If you can run Lighthouse: run it on the homepage and 2 course pages,
+   report Performance/Accessibility/Best Practices/SEO scores.
+6. For any issue found in this pass: fix it, re-run the specific check that
+   found it, then re-run the full sweep above once more. Repeat until a full
+   pass finds nothing new. Cap at 3 attempts per individual issue - if still
+   unresolved, mark it Blocked with a clear reason instead of looping forever.
+
+FINAL DELIVERABLE: docs/audit/FINAL-REPORT.md containing:
+  - Every page on the site with its final title/meta/H1.
+  - Confirmation of the last clean regression pass (date/time, what was
+    checked).
+  - Every TODO placeholder left in the codebase, listed with its file and what
+    real data/asset is needed from the team (pricing, batch dates, images not
+    generated, etc).
+  - Any Blocked items with the reason.
+  - Before/after summary: how many pages existed vs exist now, stat
+    contradictions fixed, Lighthouse scores if captured.
+
+HONESTY CLAUSE: do not report "100% done" if TODOs or Blocked items remain.
+State the true completion status plainly - a correct "96% complete, 4 items
+need real data from you" is the right outcome.
+
+=====================================================================
+END OF PROMPT. Start with Part 1, Phase "Inventory", now.
+=====================================================================

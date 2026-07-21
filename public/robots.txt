@@ -1,0 +1,40 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI / LLM crawlers — explicitly allowed so Placeonix content can be cited
+# in AI answer engines (ChatGPT, Google AI Overviews/Gemini, Perplexity,
+# Claude). Same Allow/Disallow rules as the default group above.
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.placeonix.com/sitemap.xml

@@ -1,0 +1,130 @@
+=====================================================================
+PLACEONIX — MOBILE RESPONSIVENESS PASS
+Paste into your IDE agent (Cursor / Claude Code / etc.)
+=====================================================================
+
+CONTEXT (verify in code, don't assume):
+- This is a static HTML/CSS/JS site with TWO separate style systems:
+  1. public/index.html has its own inline <style> block (~1,760 lines) that
+     styles ONLY the homepage. It already has classes like .reveal (scroll
+     fade-in animations), .combo-card, .contact-grid, .sap-highlight.
+  2. public/assets/css/site.css is a SEPARATE shared stylesheet used by all
+     15+ pages under public/courses/. It already has real responsive
+     breakpoints at 900px, 768px and 560px (grid collapses, hamburger nav,
+     sticky mobile CTA) and a recently-added .glance "Curriculum at a Glance"
+     component (also needs a mobile check - it uses CSS Grid auto-fit so it
+     should reflow, but verify).
+- Because these are two different stylesheets, a fix in one does NOT apply to
+  the other. Check and fix both explicitly - do not assume homepage fixes
+  cover the course pages or vice versa.
+- Do not introduce a CSS framework or rebuild the design. Fix responsiveness
+  within the existing system, matching its existing patterns (it already uses
+  CSS Grid + media queries, not Bootstrap-style classes).
+- Preserve all functionality (forms, nav, modals, course links). This is a
+  visual/layout pass, not a logic change.
+
+GOAL: the site must look and work correctly at every common device width, with
+no overflow, no overlapping elements, no unreadable text, and no broken
+touch targets, on the homepage AND on every course/combo page.
+
+TEST WIDTHS (check every one of these, not just "mobile" generically):
+  320px  - smallest common phone (iPhone SE / older Android)
+  375px  - standard phone (iPhone 12/13/14)
+  390px  - iPhone 14/15 standard
+  414px  - larger phones (iPhone Plus/Max)
+  768px  - tablet portrait / the site's existing nav breakpoint
+  1024px - tablet landscape / small laptop
+
+=====================================================================
+PART 1 — AUDIT (find every issue first, fix nothing yet)
+=====================================================================
+For EACH width above, on EACH of these pages: homepage (public/index.html),
+at least 3 course pages (e.g. sap-btp-training.html, data-science-training.html,
+full-stack-training.html - pick ones with different content shapes), check:
+
+1. HORIZONTAL OVERFLOW - does anything cause the page to scroll sideways? Check
+   especially: the stat-band / hero stat cards, program/course card grids, the
+   salary table (.tbl-wrap already has overflow-x:auto - confirm it actually
+   scrolls cleanly and doesn't break the layout around it), the footer grid,
+   the .glance curriculum component (tool chips row, the 4-step roadmap - does
+   it wrap or overflow?), and any combo-card / contact-grid elements on the
+   homepage's own stylesheet.
+2. TEXT READABILITY - is any text too small (<14px effective) or does any
+   heading overlap/clip at narrow widths? Check the hero H1 (uses clamp() -
+   confirm it doesn't get too small or too large), the .glance-title, and long
+   course titles wrapping awkwardly.
+3. TOUCH TARGETS - are all buttons/links at least 44x44px tappable area on
+   mobile? Check nav links inside the hamburger menu, the "View detailed
+   syllabus" links, FAQ accordion summaries, and footer links.
+4. NAVIGATION - does the hamburger menu (.nav-toggle / .nav-menu.open) open
+   and close cleanly with no layout shift? Does the dropdown "SAP Courses"
+   submenu work by touch (not just hover) inside the mobile menu?
+5. FORMS - does the contact form's multi-column layout (first/last name side
+   by side, etc.) correctly stack to single-column on mobile? Are input fields
+   full-width and easy to tap? Does the "Program of Interest" dropdown render
+   usably on mobile browsers?
+6. IMAGES & MEDIA - does the logo scale correctly? Do any course hero images
+   or the new curriculum-glance visuals overflow or distort?
+7. STICKY ELEMENTS - the site has a .sticky-cta (mobile-only bottom bar) and a
+   .wa-float WhatsApp button (if added) - do they overlap each other or cover
+   important content (like a "Submit" button) on short mobile screens?
+8. SPACING - is padding/margin so large on mobile that content feels sparse,
+   or so tight that sections run together? Compare against the existing 900px/
+   768px/560px breakpoint values already in site.css as the baseline "feel".
+
+Log every finding in docs/audit/mobile-findings.md as a table: ID | Page |
+Width | Element | Issue | Fix needed. Then PAUSE and show me the list before
+making changes if it's large - otherwise proceed directly to Part 2 for small,
+obvious fixes.
+
+=====================================================================
+PART 2 — FIX (check -> fix -> re-check per issue)
+=====================================================================
+- Fix issues in public/assets/css/site.css for anything affecting course pages,
+  and in index.html's inline <style> block for anything homepage-only. If the
+  SAME issue appears in both places (e.g. a stat-band-style grid), fix both
+  consistently.
+- Prefer adjusting existing media query breakpoints (@media max-width: 900px /
+  768px / 560px in site.css) over adding new ad-hoc ones, to keep the system
+  consistent. Add a new breakpoint only if a specific narrow-width issue (e.g.
+  320px) isn't covered by the existing three.
+- For any grid using a fixed column count (grid-template-columns: repeat(3,1fr)
+  etc.), confirm it collapses appropriately at each breakpoint - to 2 columns
+  around tablet width and 1 column on phones, per the pattern already used for
+  .grid-3/.grid-4/.stat-band/.footer-grid.
+- For the .glance component specifically: confirm .glance-path (currently
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr))) doesn't produce
+  awkward single-column-with-huge-gaps behavior on medium widths - adjust the
+  minmax value if needed. Confirm the arrow connector between phases (currently
+  hidden below 769px via the existing media query) still reads clearly without
+  it on mobile.
+- Respect prefers-reduced-motion for the .reveal scroll animations on the
+  homepage (the audit flagged blank/flash content on fast scroll - if not
+  already fixed, fix it here too since it's most noticeable on mobile
+  scrolling).
+- After each fix: reload at the affected width(s) and confirm the specific
+  issue is gone AND nothing else regressed at the other test widths (a fix for
+  320px must not break 768px).
+
+=====================================================================
+PART 3 — VERIFY (full regression across every width and page)
+=====================================================================
+- Re-check ALL 6 test widths across: homepage, every course page (all 15+ that
+  exist), and any new pages if they've been built by then.
+- Confirm zero horizontal overflow anywhere (a quick way: temporarily set
+  `* { outline: 1px solid red }` while testing, or check that document.body's
+  scrollWidth never exceeds window.innerWidth at any test width, then remove
+  the debug outline).
+- Confirm the hamburger nav, dropdown, contact form, FAQ accordions, curriculum
+  accordion, and curriculum-glance component all work correctly by touch
+  interaction (not just visually) at 375px and 390px.
+- If Lighthouse is available, run a mobile Lighthouse pass on the homepage and
+  one course page; report the scores.
+
+DELIVERABLE: docs/audit/mobile-report.md summarizing what was found, what was
+fixed, before/after notes for anything visually significant, and confirmation
+of the final clean pass across all widths and pages. If anything couldn't be
+fully resolved (e.g. a third-party embed that doesn't reflow), say so plainly
+rather than claiming it's perfect.
+
+Start with Part 1 now.
