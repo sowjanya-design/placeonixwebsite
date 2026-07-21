@@ -20,7 +20,7 @@ honestly into three buckets:
 
 | Item | Status |
 |---|---|
-| Technical SEO audit | ✅ Done — see `SEO-PERFORMANCE-CHECKLIST.md` |
+| Technical SEO audit | ✅ Done — see 
 | Fix crawl and indexing issues | ✅ Done |
 | Internal linking optimization | ✅ Done |
 | Broken link fixes | ✅ Done |
