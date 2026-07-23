@@ -1,0 +1,109 @@
+=====================================================================
+PLACEONIX — LIVE VERIFICATION RESULTS + UPDATED FIX LIST
+(checked against localhost:3000 directly on 2026-07-21)
+Paste into your IDE agent.
+=====================================================================
+
+I checked the live local site against the prior prompts. Good news first: a
+lot has landed correctly. Then one real regression to fix, and one existing
+issue to reinforce.
+
+=====================================================================
+CONFIRMED WORKING — do not redo these, verify they stay this way
+=====================================================================
+- Stat contradictions are fixed: "Max 30" and "100% Placement Assistance"
+  are now consistent everywhere I checked on the homepage.
+- Homepage <title> is SEO-optimized ("SAP Training in Hyderabad with
+  Placement | Placeonix") and body copy naturally includes "Hyderabad."
+- URL restructure worked: /courses/sap-btp-training.html correctly redirects
+  to /courses/sap/sap-btp.html, and the new nested page loads with no 404.
+- "in Hyderabad" was correctly removed from the course page's visible H1
+  ("SAP BTP Training") while being preserved in the eyebrow line
+  ("SAP CLOUD · VERY HIGH DEMAND · HYDERABAD") — exactly the compromise
+  requested to keep the SEO signal without cluttering the headline.
+- Breadcrumb updated to match the new structure: Home > SAP Courses > SAP
+  BTP Training.
+- The nav mega-menu restructure (SAP Courses / Technology Courses / Combo
+  Programs, each with a working dropdown) is implemented and functions
+  correctly ON COURSE PAGES (verified /courses/sap/sap-btp.html: hover/click
+  opens each dropdown, all 10 SAP course links present).
+- The in-page "Jump to: Curriculum / Careers & Salary / FAQ" mini-nav is
+  present and sticky below the main nav on course pages, as requested.
+- The Course Snapshot card and sticky nav header both work correctly on
+  course pages.
+- A bonus "Tools Covered" section with tool/tech chips exists on the course
+  page that wasn't explicitly requested — good addition, keep it, and make
+  sure it gets added consistently to every course page, not just this one.
+
+=====================================================================
+REAL BUG FOUND — nav is broken specifically on the HOMEPAGE
+=====================================================================
+On the homepage (index.html) at full desktop width (1568px tested), the nav
+does NOT show the horizontal menu bar with dropdowns — it shows ONLY the
+hamburger icon, and clicking it opens the mobile slide-out drawer (correctly
+containing the new SAP Courses / Technology Courses / Combo Programs
+accordion groups) even though the viewport is far wider than the site's own
+~768px mobile breakpoint.
+
+ROOT CAUSE (confirmed structurally, verify in code): public/index.html has
+its OWN separate inline <style> block, independent from
+public/assets/css/site.css. The nav-restructure and nav-responsive fixes were
+applied correctly to site.css (proven by course pages rendering correctly),
+but index.html's inline stylesheet still has the OLD nav CSS — most likely
+missing the `@media (max-width: 768px)` scoping on the rule that shows
+`.nav-toggle` / hides `.nav-menu`, so that rule is applying unconditionally
+at all widths on the homepage only.
+
+FIX:
+1. Open index.html's inline <style> block and find its nav-toggle/nav-menu
+   rules. Compare them directly against the corrected version in
+   public/assets/css/site.css (the .nav-toggle { display: none } default,
+   with the mobile override scoped inside @media (max-width: 768px)).
+2. Bring index.html's inline nav CSS in line with site.css's — either by
+   fixing the media-query scoping directly in index.html's <style> block, or
+   (better, if feasible without a big refactor) having index.html simply link
+   to the shared site.css for nav-related rules instead of maintaining a
+   duplicate copy, to prevent this exact class of drift happening again.
+3. Verify: at 1440px+ width, the homepage must show the full horizontal nav
+   bar with all three category dropdowns working on hover — same as the
+   course pages already do. At <768px, it should still collapse to the
+   hamburger drawer as intended.
+4. While in there: grep both stylesheets for any OTHER rule that exists in
+   one but not the other (nav, buttons, badges, footer) and flag anything
+   else that's drifted, since this is exactly how homepage/course-page visual
+   inconsistencies happen — the two-stylesheet setup is fragile.
+
+=====================================================================
+EXISTING ISSUE, REINFORCED — scroll-reveal blank/flash on fast scroll
+=====================================================================
+This was already flagged in the original site audit and the mobile
+responsiveness prompt, and it's still present: content sections wrapped in
+the scroll-triggered ".reveal" fade-in animation can appear completely blank
+for a moment when the page is scrolled quickly (verified reproducibly on the
+SAP BTP course page, in the "Industry Demand" / "Careers & Salary" area —
+scroll fast and the cards are briefly invisible before fading in).
+
+FIX (if not already done): shorten the reveal animation's trigger distance/
+duration so content is visible well before it would normally be scrolled into
+view, or switch the default state from `opacity:0` to a very brief, cheap
+transition that can't outrun a fast scroll, and make sure
+`prefers-reduced-motion` disables the animation entirely (show content
+immediately) for users who have that OS setting on.
+
+=====================================================================
+STILL NEEDS VERIFICATION (I couldn't confirm these live this pass)
+=====================================================================
+- Confirm the footer logo fix (logo-white.png / logo-white-full.png, no white
+  sticker card) is actually applied on both the homepage and course-page
+  footers — re-check visually on both since they use separate stylesheets
+  (see the bug above; the footer CSS could have the same kind of drift).
+- Confirm the "Tools Covered" section and the curriculum-at-a-glance visual
+  exist on ALL course/combo pages, not just SAP BTP.
+- Re-run a quick 375px mobile check on the homepage specifically, since its
+  nav CSS is being touched again in this fix — confirm the mobile drawer
+  still works correctly after the desktop fix is applied (don't let a fix for
+  desktop break the mobile case that already worked).
+
+Report back with a screenshot or confirmation of the homepage nav fix at
+1440px width before moving on to anything else — this is the highest-priority
+item since it affects every visitor's first impression of the site.

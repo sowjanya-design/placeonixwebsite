@@ -1,0 +1,55 @@
+# Placeonix
+
+> SAP & IT training and placement institute in Hyderabad, India (Financial
+> District). Offers instructor-led classroom and live online courses across
+> SAP modules, Data Science, Generative AI, Cloud/DevOps, Full Stack
+> development, Cybersecurity and UI/UX Design, with placement assistance
+> (resume building, mock interviews, LinkedIn optimisation, hiring-partner
+> referrals) included in every program. Batches are capped at 30 learners.
+
+## Key facts
+
+- Location: Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana 500032, India
+- Phone: +91 99494 94020, +91 91217 59191
+- Email: support@placeonix.com
+- Hours: Monday–Saturday, 9 AM–7 PM IST
+- Batch size: maximum 30 learners per batch
+- Mode: classroom (Hyderabad) and live online
+
+## SAP courses
+
+- [SAP BTP Training](https://www.placeonix.com/courses/sap/sap-btp.html): SAP Business Technology Platform — HANA Cloud, CAP, Integration Suite, Fiori/UI5. 6–8 weeks.
+- [SAP CPI Training](https://www.placeonix.com/courses/sap/sap-cpi.html): Cloud Platform Integration — iFlows, adapters, API Management. 6–8 weeks.
+- [SAP CAPM Training](https://www.placeonix.com/courses/sap/sap-capm.html): Cloud Application Programming Model — CDS, Node.js/Java services. 6–8 weeks.
+- [SAP RAP Training](https://www.placeonix.com/courses/sap/sap-rap.html): ABAP RESTful Application Programming Model — OData v4, Fiori Elements. 6–8 weeks.
+- [SAP UI5/Fiori Training](https://www.placeonix.com/courses/sap/sap-ui5-fiori.html): SAPUI5, Fiori Elements, Fiori Launchpad. 6–8 weeks.
+- [SAP ABAP on S/4HANA Training](https://www.placeonix.com/courses/sap/sap-abap.html): ABAP fundamentals, OOP ABAP, CDS, AMDP, intro to RAP. 8–12 weeks.
+- [SAP FICO Training](https://www.placeonix.com/courses/sap/sap-fico.html): Finance and Controlling — GL, AP/AR, Asset Accounting, cost/profit centers. 6–8 weeks.
+- [SAP MM Training](https://www.placeonix.com/courses/sap/sap-mm.html): Materials Management — procurement, inventory, MRP. 6–8 weeks.
+- [SAP SD Training](https://www.placeonix.com/courses/sap/sap-sd.html): Sales and Distribution — sales orders, pricing, billing. 6–8 weeks.
+- [SAP BASIS Training](https://www.placeonix.com/courses/sap/sap-basis.html): System administration — installation, transport management, monitoring. 6–8 weeks.
+- [SAP BTP vs SAP ABAP](https://www.placeonix.com/courses/sap-btp-vs-sap-abap.html): Comparison guide to help choose between the two SAP career paths.
+
+## Other technology courses
+
+- [Data Science Training](https://www.placeonix.com/courses/technology/data-science.html): Python, statistics, ML, real datasets. 8–10 weeks.
+- [Generative AI Training](https://www.placeonix.com/courses/technology/generative-ai.html): LLMs, prompt engineering, RAG, AI agents. 6–8 weeks.
+- [Cloud Computing & DevOps Training](https://www.placeonix.com/courses/technology/cloud-computing.html): AWS, Azure, Docker, Kubernetes, CI/CD. 7–9 weeks.
+- [Full Stack Web Development Training](https://www.placeonix.com/courses/technology/full-stack.html): HTML/CSS/JS, React, Node.js/Express, databases. 9–12 weeks.
+- [Cyber Security Training](https://www.placeonix.com/courses/technology/cyber-security.html): Networking security, ethical hacking, web app security. 7–9 weeks.
+- [Java Backend Development Training](https://www.placeonix.com/courses/technology/java-backend.html): Core Java, Spring Boot, REST APIs. 3–6 months.
+- [UI/UX Design Training](https://www.placeonix.com/courses/technology/ui-ux-design.html): Design thinking, Figma, prototyping, portfolio building. 2–4 months.
+
+## Combo programs
+
+- [SAP Full Stack Program](https://www.placeonix.com/courses/combo/sap-full-stack-program.html): SAP BTP + CAPM + UI5/Fiori + CPI, flagship program.
+- [SAP Integration Expert](https://www.placeonix.com/courses/combo/sap-integration-expert.html): SAP CPI + SAP BTP.
+- [SAP Functional Analyst](https://www.placeonix.com/courses/combo/sap-functional-analyst.html): SAP FICO + MM + SD.
+- [AI + Data Science](https://www.placeonix.com/courses/combo/ai-data-science.html): Generative AI + Data Science.
+- [Cloud Dev Bundle](https://www.placeonix.com/courses/combo/cloud-dev-bundle.html): DevOps/Cloud + Full Stack Web Development.
+
+## Other pages
+
+- [Homepage](https://www.placeonix.com/): overview of all programs, placement assistance and admissions contact.
+- [Blog](https://www.placeonix.com/blog/): SAP and IT career articles (new posts in progress).
+- [Sitemap](https://www.placeonix.com/sitemap.xml)

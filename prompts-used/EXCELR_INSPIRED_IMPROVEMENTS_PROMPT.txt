@@ -1,0 +1,155 @@
+=====================================================================
+PLACEONIX — CONVERSION/TRUST UPGRADES INSPIRED BY EXCELR.IN
+Paste into your IDE agent. Reuses existing design system only — no new
+frameworks, no visual style change (ExcelR's look is dated; we're only
+taking the MECHANISMS, not the aesthetic).
+=====================================================================
+
+CONTEXT — confirmed in code already:
+- public/index.html has its own inline <style> block for the homepage.
+- public/assets/css/site.css is the shared stylesheet for all course pages,
+  and already has: .wa-float (WhatsApp floating button), .site-nav /
+  .has-dropdown / .dropdown (hover dropdown menus), .hero-card (course
+  snapshot card, now sticky on desktop per a prior pass), .mini-nav (in-page
+  anchor chips, added in a prior pass), .badge / .chip / .card patterns, and
+  the --indigo/--grad design tokens.
+- Do not introduce a new animation/carousel library (no Swiper, no Slick).
+  Build any carousel/marquee with plain CSS (transform/animation) or minimal
+  vanilla JS, consistent with the rest of the site.
+- Never fabricate trust content: no invented review counts, star ratings,
+  company logos Placeonix hasn't actually worked with, or LinkedIn profiles
+  that don't exist. Anywhere real data isn't available, insert
+  <!-- TODO: real data needed --> and list it in the final report rather than
+  making something up.
+
+=====================================================================
+PART 1 — HOMEPAGE HERO: ADD A COURSE-FINDER WIDGET
+=====================================================================
+Inspired by ExcelR's "I'm looking for [Course] / My location is [City] →
+Search" hero widget — it turns the hero from a static headline into an
+immediate self-service tool.
+
+1. Add a compact two-field widget near the existing hero CTAs (Enroll Now /
+   Explore Programs) on the homepage:
+   - "I'm looking for" — dropdown of course categories (SAP, Data Science,
+     GenAI, Full Stack, DevOps/Cloud, Java Backend, Cybersecurity, UI/UX, or
+     "Not sure yet").
+   - A single "Find My Course →" button (Placeonix is one Hyderabad location,
+     so skip ExcelR's second "location" dropdown — not relevant here).
+2. On submit: route the visitor either to that course's page directly (if a
+   single clear match, e.g. "SAP" could still need a second-level choice —
+   consider a simple two-step: pick category, then pick the specific course
+   from a short list that appears inline) or scroll/anchor to the enquiry
+   form with the program pre-selected in "Program of Interest".
+3. Style entirely with existing tokens: white/glass card matching the
+   existing hero-card style, indigo primary button, same border-radius and
+   shadow variables already defined in :root. Must look like it was always
+   part of this design, not a bolted-on widget.
+4. Make sure this widget works and looks right at mobile widths too (it will
+   likely need to stack full-width below the hero text on narrow screens,
+   consistent with the existing course-hero-grid mobile behavior).
+
+=====================================================================
+PART 2 — HIRING PARTNER / COMPANY LOGO CAROUSEL
+=====================================================================
+1. Add a new homepage section (and optionally on the Placements/#internship
+   section) — a horizontally auto-scrolling row of real hiring-partner or
+   placement-company logos, similar in mechanism to ExcelR's continuous logo
+   marquee.
+2. IMPORTANT: only use logos of companies Placeonix has a genuine, confirmed
+   placement/hiring relationship with. Do NOT populate this with generic
+   recognizable brands (Amazon, Infosys, etc.) unless Placeonix can actually
+   confirm that relationship — that would be fabricating trust signals. If
+   real logos/permissions aren't available yet, build the component with
+   <!-- TODO: real partner logos + usage permission --> placeholders and
+   ask me for the actual list rather than inventing one.
+3. Build the scroll effect with a simple CSS keyframe animation (translateX
+   loop, duplicated logo set for seamless looping) — no JS library needed.
+   Pause the animation on hover/focus for accessibility.
+
+=====================================================================
+PART 3 — UPGRADE TESTIMONIALS WITH REAL VERIFICATION SIGNALS
+=====================================================================
+Inspired by ExcelR's testimonial cards, which include a LinkedIn badge icon
+on the photo alongside name + real company + real title.
+
+1. For each EXISTING real testimonial (Rahul K., Priya S., Venkat M. — from
+   the homepage), if Placeonix has the student's actual LinkedIn profile URL
+   and permission to link it, add a small LinkedIn icon badge on the photo/
+   avatar that links out to their profile — this is what makes a testimonial
+   verifiable instead of just asserted text.
+2. Do NOT add a LinkedIn badge or icon to any testimonial where you don't have
+   a real, confirmed profile URL — a badge with no real link behind it is
+   worse than no badge (it implies false verification). Mark any testimonial
+   missing this as <!-- TODO: confirm LinkedIn URL + permission -->.
+3. If real student photos aren't available (flagged in the earlier site
+   audit), keep using initials-avatars as today rather than stock photos —
+   a labeled initials avatar is more honest than a generic stock face.
+
+=====================================================================
+PART 4 — EMBED THE REAL GOOGLE LOCATION + RATING
+=====================================================================
+Inspired by ExcelR's embedded Google Map showing their live star rating (e.g.
+"4.6 ★ (5,776)") directly inside the map card on their Locations section.
+
+1. On the Contact section (already has the real address: Kapil Kavuri Hub,
+   No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana 500032),
+   embed a real Google Maps iframe for that address (standard <iframe
+   src="https://www.google.com/maps/embed?..."> — no API key required for the
+   basic embed).
+2. If Placeonix has a real, live Google Business Profile with actual reviews,
+   pull in the genuine rating/review count as a small badge near the map
+   (e.g. "4.x ★ (N reviews) — Google"), linking out to the real profile. If
+   no Business Profile exists yet or the rating can't be confirmed, do NOT
+   show a rating at all — an unverified or invented star rating is a
+   trust-destroying move, not a trust-building one. Mark
+   <!-- TODO: confirm Google Business Profile + rating --> instead.
+
+=====================================================================
+PART 5 — PROACTIVE WHATSAPP NUDGE (upgrade the existing .wa-float button)
+=====================================================================
+Inspired by ExcelR's "We're Online! How can we help you to..." bubble that
+pops up on its own after a few seconds, rather than waiting for a click.
+
+1. The site already has a .wa-float button (bottom-right). Add a small
+   dismissible chat-bubble tooltip that appears next to it automatically
+   after ~5-6 seconds on a page (e.g. "👋 Questions about a course? Chat with
+   us"), with a visible close (×) control.
+2. Use sessionStorage (not localStorage) so it shows once per browser session
+   per visitor, not on every single page navigation within that session, and
+   never shows again if the visitor dismisses it.
+3. Keep copy short, honest, and non-manipulative — no fake "X people viewing
+   this" or fabricated urgency, just a genuine help prompt.
+4. Respect prefers-reduced-motion for the appear/dismiss transition.
+
+=====================================================================
+PART 6 — COURSE CARD INFO DENSITY (homepage program cards)
+=====================================================================
+Inspired by ExcelR showing Duration + Mode directly on the course card before
+a visitor clicks in.
+1. Confirm every homepage program card already shows duration (most do via
+   the existing hero-badges/tag pattern) — if any card is missing a visible
+   duration/mode indicator, add it consistently across all 21+ cards so a
+   visitor can compare options at a glance without opening each one.
+
+=====================================================================
+CHECK GATE (apply after all parts)
+=====================================================================
+  [ ] Hero course-finder widget works, routes correctly, and matches the
+      existing visual design (not a visibly different "bolted-on" style).
+  [ ] Logo carousel either shows only real, permitted partner logos, or is
+      left as a clearly marked TODO with no fabricated logos.
+  [ ] No testimonial has a LinkedIn badge without a real, confirmed URL.
+  [ ] Map embed shows the real address; no invented star rating anywhere.
+  [ ] WhatsApp nudge appears once per session, is dismissible, and doesn't
+      reappear after being closed.
+  [ ] All of the above works at mobile widths (375px) with no overflow.
+  [ ] Nothing else on the page regressed (quick homepage + one course page
+      smoke test).
+
+FINAL DELIVERABLE: append to docs/audit/ a short
+"excelr-inspired-improvements-report.md" listing what was built, what's
+running live, and every TODO left for real data (partner logos, LinkedIn
+URLs, Google rating) that only Placeonix can supply.
+
+Start with Part 1 now.

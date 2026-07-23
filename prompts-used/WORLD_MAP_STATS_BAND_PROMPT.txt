@@ -1,0 +1,58 @@
+=====================================================================
+PLACEONIX — DOTTED WORLD MAP ON THE TRUST-STATS BAND
+Paste into your IDE agent.
+=====================================================================
+
+CONTEXT: public/index.html has an inline <style> block (homepage only,
+separate from public/assets/css/site.css). The "Trust Stats" band
+(2,000+ Learners / 100+ Corporate Clients / 5+ Years of Industry
+Experience) is the section with id="trustStats", styled by the
+.trust-stats / .trust-stats-wrap rules in that inline block, currently
+around line 595-618.
+
+A world-map dot-matrix PNG already exists at
+public/assets/img/world-dots-white.png (white dots, transparent
+background, generated from a real world map silhouette — not
+placeholder art) and is already wired in as a background on
+.trust-stats::before, but the current result doesn't look right on the
+live page. Fix it — likely causes: image not visible/too faint, wrong
+size/position (contain vs cover), aspect ratio mismatch with the band's
+actual width/height, or it's being covered by the ::after circle /
+stat content z-index.
+
+DO THIS:
+1. Open public/index.html, find `.trust-stats::before` in the inline
+   <style> block. Confirm the background-image path resolves correctly
+   from index.html's own location (it should be
+   "assets/img/world-dots-white.png" relative to /public — verify by
+   opening that URL directly in the browser to confirm the file loads).
+2. Fix the sizing/position: try `background-size: cover` (fills the
+   whole band edge-to-edge) instead of `contain` if the map currently
+   looks small/floating in a corner. Test both and use whichever fills
+   the purple band naturally without heavy distortion.
+3. Increase opacity if the dots are too faint to see against the
+   purple gradient (currently opacity: .5 on the whole ::before layer)
+   — try .3-.6 range and pick what reads clearly but doesn't fight the
+   stat numbers for attention.
+4. Confirm z-index/stacking: .trust-stat-num and .trust-stat-lbl (the
+   actual numbers/labels) must render ABOVE the map background, not
+   under it — .trust-stat already has position:relative; z-index:1,
+   confirm the map ::before layer has a LOWER stacking (no z-index, or
+   z-index:0) so it stays behind the text.
+5. Keep the bottom-left decorative circle (.trust-stats::after) as-is
+   unless it now visually clashes with the map — your call once you
+   see it rendered.
+6. Verify at both desktop (1440px) and mobile (375px, where the band
+   goes to a single column per the existing @media 640px rule) — the
+   map should still look intentional at mobile width, not stretched or
+   cropped oddly. Adjust background-position if needed per breakpoint.
+
+CHECK GATE:
+  [ ] World map dots are clearly visible against the purple gradient
+      band on the live homepage, not just theoretically present in CSS.
+  [ ] Stat numbers/labels are fully legible on top of the map (no
+      contrast/readability issue introduced).
+  [ ] Looks correct at both 1440px and 375px widths.
+  [ ] No other part of the homepage regressed (quick scroll-through).
+
+Report back with a screenshot of the fixed band before moving on.

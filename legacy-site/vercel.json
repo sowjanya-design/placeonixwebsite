@@ -1,0 +1,160 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    },
+    {
+      "source": "/logo.jpeg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js|woff2|jpg|jpeg|png|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/courses/sap-btp-training.html",
+      "destination": "/courses/sap/sap-btp.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-cpi-training.html",
+      "destination": "/courses/sap/sap-cpi.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-capm-training.html",
+      "destination": "/courses/sap/sap-capm.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-rap-training.html",
+      "destination": "/courses/sap/sap-rap.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-ui5-fiori-training.html",
+      "destination": "/courses/sap/sap-ui5-fiori.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-abap-training.html",
+      "destination": "/courses/sap/sap-abap.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-fico-training.html",
+      "destination": "/courses/sap/sap-fico.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-mm-training.html",
+      "destination": "/courses/sap/sap-mm.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-sd-training.html",
+      "destination": "/courses/sap/sap-sd.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-basis-training.html",
+      "destination": "/courses/sap/sap-basis.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/data-science-training.html",
+      "destination": "/courses/technology/data-science.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/generative-ai-training.html",
+      "destination": "/courses/technology/generative-ai.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/cloud-computing-training.html",
+      "destination": "/courses/technology/cloud-computing.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/full-stack-training.html",
+      "destination": "/courses/technology/full-stack.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/java-backend-training.html",
+      "destination": "/courses/technology/java-backend.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/cyber-security-training.html",
+      "destination": "/courses/technology/cyber-security.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/ui-ux-design-training.html",
+      "destination": "/courses/technology/ui-ux-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-integration-expert-combo.html",
+      "destination": "/courses/combo/sap-integration-expert.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/ai-data-science-combo.html",
+      "destination": "/courses/combo/ai-data-science.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/cloud-dev-bundle-combo.html",
+      "destination": "/courses/combo/cloud-dev-bundle.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-functional-analyst-combo.html",
+      "destination": "/courses/combo/sap-functional-analyst.html",
+      "permanent": true
+    },
+    {
+      "source": "/courses/sap-full-stack-program-combo.html",
+      "destination": "/courses/combo/sap-full-stack-program.html",
+      "permanent": true
+    }
+  ]
+}

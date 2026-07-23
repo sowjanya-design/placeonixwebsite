@@ -1,0 +1,150 @@
+=====================================================================
+PLACEONIX — LEAD POPUP + ONE-AT-A-TIME CURRICULUM ACCORDION + ANIMATED STATS
+Paste into your IDE agent. Reuses the existing indigo design system only.
+=====================================================================
+
+CONTEXT: same two-stylesheet setup as before — public/index.html has its own
+inline <style> block, public/assets/css/site.css is shared by all course
+pages. Apply each part to BOTH places where relevant, and check both after
+each change (this is exactly the kind of change that drifted between the two
+stylesheets last time — don't repeat that).
+
+=====================================================================
+PART 1 — LEAD-CAPTURE POPUP (inspired by the ExcelR "Career Guidance" modal)
+=====================================================================
+Build a popup modal matching the referenced design: headline "It all starts
+here. Unlock your potential by interacting with our Career Guidance Team."
+(reword slightly to match Placeonix's voice if you like, keep the intent),
+fields for Name*, Email*, Mobile Number*, Course Name* (make this an actual
+dropdown of real Placeonix programs, not free text — reuse the same course
+list already used in the enquiry form's "Program of Interest" dropdown), a
+required "I agree to the Terms & Privacy Policy of Placeonix" checkbox
+(linking to real Terms/Privacy pages if they exist, or the placeholder ones
+already in the footer), and a Submit button.
+
+1. Style entirely with the existing design system — indigo primary button,
+   existing input styling, existing card/shadow tokens. You do NOT need to
+   copy ExcelR's blue/red color scheme or the stock photo — a clean version
+   in Placeonix's own indigo palette, optionally with a simple illustration
+   or none at all, is fine and more on-brand. Include a visible close (×)
+   control in the corner.
+2. Wire the submit action to the SAME backend endpoint the main enquiry form
+   already uses (server.js / api/applications.js /api/applications) so leads
+   from this popup land in the same place as the main contact form — do not
+   build a second, disconnected submission path.
+3. Validate required fields (name, email format, phone format, course
+   selected, checkbox ticked) before allowing submit, consistent with how the
+   main form already validates.
+
+=====================================================================
+PART 2 — TIMED APPEARANCE (clarifying the request before building it)
+=====================================================================
+The request was "make this form appear every 30 seconds when anyone opens the
+website." Read literally, a popup that RE-INTERRUPTS every 30 seconds while
+someone is reading the site is aggressive and drives visitors away — that is
+almost certainly not the intent, and it's not the pattern ExcelR itself
+actually uses (their own popup appears once, after a delay, not on a repeating
+timer). Build it the way that actually converts, and treat the "30 seconds"
+as the ONE-TIME delay before it first appears:
+
+1. Show the popup ONCE, 30 seconds after a visitor lands on the homepage (or
+   any page, your call — homepage is the highest-traffic entry point, so
+   starting there is reasonable).
+2. Use sessionStorage (not localStorage) to make sure it does not show again
+   on later page navigations within the same visit, and does not reappear if
+   the visitor already submitted the form or explicitly closed it.
+3. Do NOT make it repeat every 30 seconds indefinitely — that pattern
+   measurably increases bounce rate and would actively hurt conversion, the
+   opposite of the goal. If you genuinely want re-prompting behavior later,
+   the sane version is "show again on a future NEW session after some days
+   have passed," not "every 30 seconds in the same visit" — flag this to me
+   explicitly if you think the literal every-30-seconds behavior is still
+   wanted after reading this, rather than silently building the aggressive
+   version.
+4. Respect prefers-reduced-motion for the modal's open/close transition.
+
+=====================================================================
+PART 3 — CURRICULUM ACCORDION: ONLY ONE WEEK/MODULE OPEN AT A TIME
+=====================================================================
+Currently, each course page's curriculum section uses native <details class="mod">
+elements (see the #curriculum section in any course page, e.g.
+public/courses/sap/sap-btp.html) — by default, native <details> elements are
+all independent, so multiple weeks/modules can stay open simultaneously.
+Fix: opening a new week/module should automatically close whichever one was
+previously open, so only one is expanded at a time.
+
+1. Preferred fix (simplest, no JS): give every <details class="mod"> element
+   within the same curriculum block a shared `name` attribute, e.g.
+   `<details class="mod" name="curriculum-sap-btp">`. Modern browsers (current
+   Chrome, Edge, Safari 17+, Firefox 129+) natively treat same-`name`
+   <details> elements as an exclusive accordion group — opening one closes
+   the others, with zero JavaScript.
+2. Add a small vanilla-JS fallback (a shared function, included once in the
+   site's common script, not duplicated per page) for older browsers that
+   don't support the `name` grouping: on a `toggle` event, if a details
+   element was just opened, find its siblings with the same accordion
+   container/class and close (`.open = false`) any others that are open.
+3. Apply this to EVERY course/combo page's curriculum accordion — this is a
+   shared pattern, so fix it once in a way that applies everywhere (a shared
+   snippet/partial or a global script hook), not per-page copy-paste.
+4. Verify: on any course page, open Module/Week 1, then click Module/Week 3 —
+   Module 1 should auto-collapse. Keyboard operation (Tab + Enter/Space on
+   the summary) must also trigger the same auto-close behavior, not just
+   mouse clicks.
+
+=====================================================================
+PART 4 — ANIMATED STATS BAND (inspired by ExcelR's count-up stats section)
+=====================================================================
+Add a homepage section showing animated "counting up" stats when scrolled
+into view, similar to ExcelR's "1170+ Learners / 350+ Corporate Clients / 10+
+Years" band. USE THESE REAL FIGURES, PROVIDED DIRECTLY BY THE CLIENT — do not
+substitute or invent different numbers:
+  - 2000+ Learners
+  - 100+ Corporate Clients
+  - 5+ Years of Industry Experience
+
+1. Build a section with 3 large stat numbers (matching the site's existing
+   heavy/bold number styling used elsewhere, e.g. the stat-band component
+   already in site.css) that count up from 0 to their final value when the
+   section scrolls into the viewport (IntersectionObserver-triggered, plain
+   JS, no animation library needed — a simple requestAnimationFrame or
+   setInterval count-up over ~1.2-1.6 seconds is enough).
+2. Only trigger the count-up once per page load (don't re-trigger every time
+   the user scrolls past it up and down).
+3. Respect prefers-reduced-motion: if set, show the final numbers immediately
+   with no counting animation.
+4. Style with the existing indigo design tokens — do not copy ExcelR's grey
+   world-map background graphic (it reads as a stock corporate-deck asset,
+   not particularly premium); a clean version using the existing --grad /
+   --chip / --line tokens, or a subtle Placeonix-brand pattern, fits the
+   site's identity better. Place this section on the homepage, somewhere
+   reasonable relative to the existing "Why Placeonix" / stats-band content
+   (don't duplicate the existing hero stat cards — this should read as a
+   distinct, larger trust-building band, e.g. positioned near testimonials or
+   just above the final CTA).
+5. NOTE FOR THE FUTURE: if these three numbers ever change, they should live
+   in one place (the same shared constants pattern already used to fix the
+   earlier 98%/100% stat-contradiction bug) so they can't drift out of sync
+   with any other place they might be quoted on the site.
+
+=====================================================================
+CHECK GATE (apply after all parts)
+=====================================================================
+  [ ] Lead popup opens once, 30 seconds after page load, on both a fresh
+      visit and confirmed NOT to reappear on subsequent page navigations in
+      the same session.
+  [ ] Popup submits to the same backend as the main contact form (verify a
+      submission actually arrives, don't just check the UI closes).
+  [ ] Popup is fully responsive at 375px width.
+  [ ] On every course page, opening one week/module auto-closes any other
+      open one — verified by mouse AND keyboard.
+  [ ] New animated stats section shows 2000+ Learners / 100+ Corporate
+      Clients / 5+ Years, counts up once on scroll-into-view, and shows final
+      numbers immediately if prefers-reduced-motion is set.
+  [ ] Both index.html's inline styles and site.css were checked/updated
+      consistently — no drift between homepage and course-page styling for
+      anything touched in this pass.
+  [ ] Quick regression: homepage and 2 course pages still load clean, no
+      console errors, no broken layout at 375px and 1440px.
+
+Start with Part 1 now.

@@ -9,8 +9,11 @@ small Express backend for the enquiry form's email delivery.
 ```
 public/                  Everything served to the browser
   index.html              Homepage
-  courses/                22 course + combo landing pages, plus the
-                           SAP BTP vs SAP ABAP comparison page
+  courses/                22 course + combo landing pages, grouped into
+                           sap/, technology/, combo/ subfolders, plus the
+                           SAP BTP vs SAP ABAP comparison page (flat, not a
+                           course). Old flat URLs 301-redirect to the new
+                           nested ones — see docs/audit/nav-and-urlchange-report.md
   assets/css/site.css     Shared stylesheet used by every page in courses/
   assets/img/curriculum/  Per-course "curriculum at a glance" visuals
   assets/img/             Logo variants (transparent / white, for light

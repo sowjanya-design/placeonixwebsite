@@ -1,0 +1,68 @@
+=====================================================================
+PLACEONIX — ADD REAL PHOTOGRAPHY TO REPLACE EMOJI-ONLY TRUST SECTIONS
+Paste into your IDE agent.
+=====================================================================
+
+CONTEXT
+The homepage's "Why Placeonix" and "Why Choose Placeonix" sections (Max 30 Per
+Batch, Real-Time Projects, Internship Access, Placement Support / Expert
+Trainers, Portfolio Ready, 50+ Companies) currently use only emoji as icons
+(👥💻🚀🎯 etc.) inside .card .ico. This was flagged in the earlier site audit
+as looking unprofessional and being an accessibility issue (emoji read
+literally by screen readers). A real, professional photo depicting mentor-led,
+real-system training would substantially raise perceived credibility here.
+
+ASSET
+A photo has been provided showing a mentor presenting a network/system
+architecture diagram on a screen to a small group of professionals in a modern
+office — the tone and subject (enterprise systems, real diagrams, mentor-led)
+matches this site's SAP/cloud/enterprise training positioning well. Save it as
+public/assets/img/mentor-session.jpg (optimize/compress for web, target
+<200KB, provide a responsive srcset if the source resolution allows it).
+If no image file is available yet, stop and tell me rather than using a
+placeholder — do not ship a broken <img> tag or a generic stock substitute
+without checking first.
+
+WHAT TO BUILD
+1. On the homepage, directly below the "Learn from Industry Professionals" /
+   "Why Choose Placeonix" section (the one with Expert Trainers / Portfolio
+   Ready / 50+ Companies cards), add a two-column band: the photo on one side,
+   and on the other a short credibility block — a headline like "Train on
+   Real Enterprise Systems, Not Just Slides" with 2-3 lines reinforcing the
+   "Real BTP Access" / "Real System Access" badges already used across the
+   course pages, plus a CTA ("Book Free Counselling" or similar, matching
+   existing button styles).
+2. Use the site's existing design tokens only (site.css :root variables —
+   --indigo, --grad, --radius, --shadow-md, the .grid-2/.card patterns already
+   in use). Do not introduce new colors or a different visual style.
+3. Make the image responsive: full-width stacked above the text on mobile,
+   side-by-side on desktop (reuse the existing .course-hero-grid or
+   .grid-2 responsive pattern already defined for other two-column sections,
+   collapsing at the 900px breakpoint like everything else on the site).
+4. Add descriptive, honest alt text (e.g. "Placeonix mentor guiding students
+   through a real system architecture during a live training session") — do
+   not claim it's a specific real Placeonix classroom photo unless it actually
+   is; if it's stock/generic photography, the alt text should still describe
+   what's shown without implying a false specific claim (e.g. avoid "Our
+   Hyderabad classroom" if this isn't literally that room).
+5. Lazy-load the image (loading="lazy") since it's below the fold.
+6. While in this section, also do a light pass replacing 2-3 of the most
+   prominent emoji icons elsewhere on the homepage (the four "Why Placeonix"
+   cards and "Why Choose Placeonix" cards) with simple SVG/line icons matching
+   the indigo color scheme, consistent with how .card .ico is already styled
+   as a colored icon tile — this doesn't require new photography, just cleans
+   up the accessibility/professionalism issue at the same time while you're
+   in this part of the page. Keep this scoped to the homepage's existing card
+   icons only, not a full icon-system overhaul.
+
+CHECK
+  [ ] Image loads correctly, is compressed (<200KB), and has real alt text.
+  [ ] New section matches existing design tokens exactly (no new colors/
+      shadows/fonts introduced).
+  [ ] Responsive at 375px, 768px, 1024px — no overflow, correct stacking.
+  [ ] At least the 3-4 most prominent emoji icons on the homepage are replaced
+      with simple on-brand SVG icons.
+  [ ] No console errors, no broken image path.
+
+Start once the image file is confirmed to exist at
+public/assets/img/mentor-session.jpg (or tell me if it doesn't).
