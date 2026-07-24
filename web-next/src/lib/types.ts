@@ -2,7 +2,12 @@ export type HeroFact = { label: string; value: string };
 export type HeroAction = { text: string; href: string };
 export type DemandCard = { icon: string; title: string; body: string };
 export type CareerRow = { role: string; experience: string; salary: string };
-export type CurriculumModule = { week: string; title: string; items: string[]; open: boolean };
+export type CurriculumModule = {
+  week: string;
+  title: string;
+  items: string[];
+  open: boolean;
+};
 export type RelatedLink = { href: string; title: string; body: string };
 export type FaqItem = { q: string; a: string };
 
@@ -18,7 +23,7 @@ export type CourseMeta = {
 };
 
 export type Course = {
-  category: 'sap' | 'technology' | 'combo';
+  category: "sap" | "technology" | "combo";
   slug: string;
   url: string;
   meta: CourseMeta;
@@ -36,7 +41,12 @@ export type Course = {
   curriculumImageAlt: string;
   intro: { heading: string; paragraphs: string[] };
   demand: { heading: string; desc: string; cards: DemandCard[] };
-  careers: { heading: string; desc: string; rows: CareerRow[]; footnote: string } | null;
+  careers: {
+    heading: string;
+    desc: string;
+    rows: CareerRow[];
+    footnote: string;
+  } | null;
   curriculum: { heading: string; desc: string; modules: CurriculumModule[] };
   tools: { heading: string; tags: string[] };
   projects: { heading: string; items: string[] };

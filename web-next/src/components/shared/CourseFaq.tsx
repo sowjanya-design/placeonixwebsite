@@ -1,4 +1,4 @@
-import type { FaqItem } from '@/lib/types';
+import type { FaqItem } from "@/lib/types";
 
 export default function CourseFaq({ items }: { items: FaqItem[] }) {
   return (

@@ -1,38 +1,46 @@
-import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.placeonix.com'),
+  metadataBase: new URL("https://www.placeonix.com"),
   title: {
-    default: 'Placeonix — SAP & IT Training and Placement Institute in Hyderabad',
-    template: '%s',
+    default:
+      "Placeonix — SAP & IT Training and Placement Institute in Hyderabad",
+    template: "%s",
   },
-  description: 'SAP & IT training and placement institute in Hyderabad. Training · Placement · Future.',
+  description:
+    "SAP & IT training and placement institute in Hyderabad. Training · Placement · Future.",
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
-  themeColor: '#4f46e5',
+  themeColor: "#4f46e5",
 };
 
-import RevealObserver from '@/components/layout/RevealObserver';
+import RevealObserver from "@/components/layout/RevealObserver";
+import LeadPopup from "@/components/home/LeadPopup";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={inter.className}>
       <body>
         <RevealObserver />
+        <LeadPopup />
         {children}
       </body>
     </html>

@@ -1,23 +1,40 @@
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { fullName, email, phone, program, message, qualification, graduationYear, location, website } = body;
+  const {
+    fullName,
+    email,
+    phone,
+    program,
+    message,
+    qualification,
+    graduationYear,
+    location,
+    website,
+  } = body;
 
   if (website) {
-    // Honeypot field filled, quietly reject as spam
-    return NextResponse.json({ success: true, message: 'Application submitted successfully.' });
+    return NextResponse.json({
+      success: true,
+      message: "Application submitted successfully.",
+    });
   }
 
   if (!fullName || !email || !phone || !program) {
     return NextResponse.json(
-      { success: false, message: 'Name, email, phone, and program are required.' },
-      { status: 400 }
+      {
+        success: false,
+        message: "Name, email, phone, and program are required.",
+      },
+      { status: 400 },
     );
   }
 
-  const submittedAt = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+  const submittedAt = new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+  });
 
   const adminHtml = `
     <h2>New Placeonix Application</h2>
@@ -25,10 +42,10 @@ export async function POST(req: NextRequest) {
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Phone:</strong> ${phone}</p>
     <p><strong>Program:</strong> ${program}</p>
-    <p><strong>Qualification:</strong> ${qualification || '-'}</p>
-    <p><strong>Graduation Year:</strong> ${graduationYear || '-'}</p>
-    <p><strong>Location:</strong> ${location || '-'}</p>
-    <p><strong>Message:</strong> ${message || '-'}</p>
+    <p><strong>Qualification:</strong> ${qualification || "-"}</p>
+    <p><strong>Graduation Year:</strong> ${graduationYear || "-"}</p>
+    <p><strong>Location:</strong> ${location || "-"}</p>
+    <p><strong>Message:</strong> ${message || "-"}</p>
     <p><strong>Submitted At:</strong> ${submittedAt}</p>
   `;
 
@@ -45,7 +62,7 @@ export async function POST(req: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 587),
-      secure: process.env.SMTP_SECURE === 'true',
+      secure: process.env.SMTP_SECURE === "true",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -54,7 +71,9 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"Placeonix Website" <${process.env.SMTP_USER}>`,
-      to: process.env.ADMIN_EMAILS || 'enquiry@placeonix.com, support@placeonix.com',
+      to:
+        process.env.ADMIN_EMAILS ||
+        "enquiry@placeonix.com, support@placeonix.com",
       subject: `New Application - ${program}`,
       html: adminHtml,
     });
@@ -62,16 +81,19 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Placeonix" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: 'Application received - Placeonix',
+      subject: "Application received - Placeonix",
       html: studentHtml,
     });
 
-    return NextResponse.json({ success: true, message: 'Application submitted successfully.' });
+    return NextResponse.json({
+      success: true,
+      message: "Application submitted successfully.",
+    });
   } catch (error) {
-    console.error('Email error:', error);
+    console.error("Email error:", error);
     return NextResponse.json(
-      { success: false, message: 'Unable to send application email.' },
-      { status: 500 }
+      { success: false, message: "Unable to send application email." },
+      { status: 500 },
     );
   }
 }
