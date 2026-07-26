@@ -63,7 +63,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-abap-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-abap-training.png",
     "curriculumImageAlt": "SAP ABAP on S/4HANA training curriculum overview — Eclipse ADT, ABAP Cloud, CDS Views, AMDP, RAP, 8-12 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP ABAP course",
@@ -412,7 +412,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-basis-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-basis-training.png",
     "curriculumImageAlt": "SAP BASIS training curriculum overview — Installation, Transport Management, User Administration, Monitoring, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP BASIS course",
@@ -772,7 +772,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-btp-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-btp-training.png",
     "curriculumImageAlt": "SAP BTP training curriculum overview — BTP Cockpit, HANA Cloud, CAP, Fiori/UI5, Integration Suite, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP BTP course",
@@ -1125,7 +1125,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-capm-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-capm-training.png",
     "curriculumImageAlt": "SAP CAPM training curriculum overview — CDS, Node.js, OData v4, HANA Cloud, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP CAPM course",
@@ -1471,7 +1471,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-cpi-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-cpi-training.png",
     "curriculumImageAlt": "SAP CPI training curriculum overview — Integration Suite, iFlow Designer, Groovy, API Management, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP CPI course",
@@ -1819,7 +1819,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-fico-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-fico-training.png",
     "curriculumImageAlt": "SAP FICO training curriculum overview — GL, AP/AR, Asset Accounting, Cost Center, CO-PA, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP FICO course",
@@ -2173,7 +2173,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-mm-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-mm-training.png",
     "curriculumImageAlt": "SAP MM training curriculum overview — Procurement, PR/PO, Inventory Management, MRP, Pricing, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP MM course",
@@ -2531,7 +2531,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-rap-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-rap-training.png",
     "curriculumImageAlt": "SAP RAP training curriculum overview — ADT, CDS Views, Behavior Definitions, OData v4, ABAP Cloud, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP RAP course",
@@ -2877,7 +2877,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-sd-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-sd-training.png",
     "curriculumImageAlt": "SAP SD training curriculum overview — Sales Order Processing, Pricing, Delivery, Billing, Credit Management, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP SD course",
@@ -3236,7 +3236,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-ui5-fiori-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-ui5-fiori-training.png",
     "curriculumImageAlt": "SAP UI5/Fiori training curriculum overview — SAPUI5, Fiori Elements, Fiori Launchpad, OData, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this SAP UI5 / Fiori course",
@@ -3582,7 +3582,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/cloud-computing-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/cloud-computing-training.png",
     "curriculumImageAlt": "Cloud Computing and DevOps training curriculum overview — AWS, Azure, Docker, Kubernetes, CI/CD, 7-9 week roadmap",
     "intro": {
       "heading": "What you learn in this Cloud Computing & DevOps course",
@@ -3938,7 +3938,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/cyber-security-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/cyber-security-training.png",
     "curriculumImageAlt": "Cyber Security training curriculum overview — Ethical Hacking, Web App Security, Penetration Testing, OWASP, 7-9 week roadmap",
     "intro": {
       "heading": "What you learn in this Cyber Security course",
@@ -4289,7 +4289,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/data-science-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/data-science-training.png",
     "curriculumImageAlt": "Data Science training curriculum overview — Python, Statistics, Pandas, SQL, Machine Learning, 8-10 week roadmap",
     "intro": {
       "heading": "What you learn in this Data Science course",
@@ -4629,7 +4629,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/full-stack-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/full-stack-training.png",
     "curriculumImageAlt": "Full Stack Web Development training curriculum overview — HTML/CSS/JS, React, Node.js, Databases, 9-12 week roadmap",
     "intro": {
       "heading": "What you learn in this Full Stack course",
@@ -4981,7 +4981,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/generative-ai-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/generative-ai-training.png",
     "curriculumImageAlt": "Generative AI training curriculum overview — LLM Fundamentals, Prompt Engineering, RAG, AI Agents, 6-8 week roadmap",
     "intro": {
       "heading": "What you learn in this Generative AI course",
@@ -5317,7 +5317,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/java-backend-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/java-backend-training.png",
     "curriculumImageAlt": "Java Backend Development training curriculum overview — Core Java, Spring Boot, Spring Data JPA, REST APIs, roadmap",
     "intro": {
       "heading": "What you learn in this Java Backend course",
@@ -5632,7 +5632,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/ui-ux-design-training.jpg",
+    "curriculumImage": "/assets/img/curriculum/ui-ux-design-training.png",
     "curriculumImageAlt": "UI/UX Design training curriculum overview — Design Thinking, Figma, Visual Design, Prototyping, Portfolio, roadmap",
     "intro": {
       "heading": "What you learn in this UI/UX Design course",
@@ -6245,7 +6245,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/cloud-dev-bundle-combo.jpg",
+    "curriculumImage": "/assets/img/curriculum/cloud-dev-bundle-combo.png",
     "curriculumImageAlt": "Cloud Dev Bundle combo curriculum overview — DevOps and Full Stack Web Development combined training roadmap",
     "intro": {
       "heading": "What you learn in this combo",
@@ -6543,7 +6543,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-full-stack-program-combo.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-full-stack-program-combo.png",
     "curriculumImageAlt": "SAP Full Stack Program curriculum overview — SAP BTP, CAPM, UI5/Fiori and CPI combined flagship training roadmap",
     "intro": {
       "heading": "What you learn in the flagship program",
@@ -6852,7 +6852,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-functional-analyst-combo.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-functional-analyst-combo.png",
     "curriculumImageAlt": "SAP Functional Analyst combo curriculum overview — SAP FICO, MM and SD combined training roadmap",
     "intro": {
       "heading": "What you learn in this combo",
@@ -7150,7 +7150,7 @@
         "href": "#curriculum"
       }
     ],
-    "curriculumImage": "/assets/img/curriculum/sap-integration-expert-combo.jpg",
+    "curriculumImage": "/assets/img/curriculum/sap-integration-expert-combo.png",
     "curriculumImageAlt": "SAP Integration Expert combo curriculum overview — SAP CPI and SAP BTP combined training roadmap",
     "intro": {
       "heading": "What you learn in this combo",
