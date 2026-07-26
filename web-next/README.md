@@ -70,4 +70,51 @@ We've recently undergone a massive wave of UI/UX improvements to make the platfo
 
 ---
 
+## 📁 Project File Structure
+
+To help you navigate the codebase, here is a breakdown of our perfectly organized file structure and the purpose of each directory:
+
+```text
+placeonixwebsite/
+└── web-next/                  # The root Next.js application directory
+    ├── public/                # Static assets (images, icons, fonts) served directly to the browser
+    │   ├── assets/img/        # All optimized images (curriculum covers, company logos, thematic photos)
+    │   ├── background.jpeg    # Global background patterns
+    │   └── logo.jpeg          # Site logos and favicons
+    │
+    ├── src/                   # The core source code for the application
+    │   ├── app/               # Next.js App Router (Defines all pages, routes, and global layouts)
+    │   │   ├── api/           # Backend API routes (e.g., /api/applications for form submissions)
+    │   │   ├── courses/       # Dynamic routing for individual course pages (e.g., /courses/[category]/[slug])
+    │   │   ├── globals.css    # Global stylesheet, design system variables, and global components (e.g., LeadPopup)
+    │   │   ├── home.css       # Scoped stylesheet specifically for the complex homepage layout
+    │   │   ├── layout.tsx     # The root HTML layout wrapper (includes MegaNav, Footer, WhatsApp Float)
+    │   │   └── page.tsx       # The main Landing Page / Homepage
+    │   │
+    │   ├── components/        # Reusable React components (Organized by feature area)
+    │   │   ├── home/          # Components strictly used on the homepage (TrustStats, CourseFinder, etc.)
+    │   │   ├── layout/        # Core layout components (MegaNav, SiteFooter, RevealObserver)
+    │   │   ├── shared/        # Components used across multiple pages (ProgramCard, CourseFaq)
+    │   │   └── ui/            # Generic UI elements (BackToTop, CurriculumAccordion, WhatsAppFloat)
+    │   │
+    │   ├── data/              # JSON databases acting as our Headless CMS
+    │   │   ├── courses.json   # The master database of all courses, curriculum details, and FAQs
+    │   │   ├── home.json      # The content for the homepage (Hero text, stats, journey cards)
+    │   │   └── nav.ts         # The structured data powering the MegaNav dropdowns
+    │   │
+    │   └── lib/               # Utility functions and shared TypeScript types
+    │       ├── courses.ts     # Helper functions to fetch and filter course data from JSON
+    │       └── types.ts       # Global TypeScript interfaces to ensure strict type safety
+    │
+    ├── next.config.ts         # Next.js configuration and build settings
+    └── package.json           # Project dependencies and npm scripts
+```
+
+### 💡 Naming Conventions & Organization
+- **Separation of Concerns:** All content and copy (text) is separated into `src/data/` JSON files so non-technical team members can update text without touching React components.
+- **Component Modularity:** Components are strictly grouped by domain (e.g., `home/`, `layout/`, `shared/`) so you instantly know where a component belongs and if it's safe to reuse elsewhere.
+- **Global vs Scoped CSS:** `globals.css` holds our CSS variables (colors/fonts) and true global components. Complex page-specific styles are kept in their own files (like `home.css`) to prevent global namespace pollution.
+
+---
+
 *Thank you for contributing to Placeonix! If you have any questions, feel free to open an issue or reach out to the team.*
