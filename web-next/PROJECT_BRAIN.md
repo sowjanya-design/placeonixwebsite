@@ -270,3 +270,25 @@ history is why — it's not something to "restore from git," the current version
    `web-next/src/app/home.css` (homepage-only, imported directly in `page.tsx`).
 6. Always verify visual changes with an actual screenshot at ~1780px and ~390px viewports
    before reporting a design task complete.
+
+## 11. Recent Major Refactors & Cleanups (July 2026)
+
+This project recently underwent a massive pre-launch cleanup and premium UI overhaul to prepare for production. If you are picking this up, here is what was just accomplished:
+
+### 🧹 The "Great Purge" (Zero Legacy Code)
+- **Root Directory Eradicated**: The repository previously had a massive amount of tech debt tracked in Git at the root level (e.g. `legacy-site/`, a redundant `public/` folder, old Express `api/` routes, `scripts/`, `prompts-used/`, `docs/`, `design-assets/`, and outdated root configs like `server.js`, `package.json`, and `vercel.json`).
+- **Pristine State**: We ran a strict `git rm -rf` on over 105 legacy files and 22,000+ lines of old code. The remote Git repository is now **100% clean**. It strictly contains only the `web-next/` directory and basic repo documentation (`README.md`, `.gitignore`).
+
+### 🎨 Premium UI/UX Polish
+- **Global Lead-Capture Popup**: The `LeadPopup` was decoupled from the homepage and moved to global layout. It now triggers on a strict **30-second timer globally across all pages** to maximize lead generation, tracking dismissals via `sessionStorage`.
+- **Photography Upgrade**: We stripped out abstract purple gradients in the "Your Journey Starts Here" cards and replaced them with highly contextual, premium photography (trainers teaching, students coding, corporate handshakes).
+- **Navigation Call-To-Action**: The main button in the `MegaNav` was updated from "Apply Now" to **"Book a Demo Class"** per user strategy.
+- **Terminology Update**: Across the site, we standardized the terminology from "Domains" to "Courses" for clarity.
+
+### 📚 Curriculum Infographics Migration
+- **High-Res Images**: The user uploaded 22 brand new, highly detailed infographic images for every single course page (mostly converting from `.jpg` to `.png`).
+- **JSON Automation**: These were migrated into `web-next/public/assets/img/curriculum/`, and `src/data/courses.json` was programmatically updated via PowerShell regex to point to the precise file extensions (`.png` / `.jpg`).
+
+### 🚀 Local Port Sharing Protocol
+- **No IDE Tunnels**: The user's local Antigravity IDE `code-tunnel.exe` is broken/missing (`ENOENT`).
+- **Solution**: To share the localhost preview with stakeholders, we actively use `npx tunnelmole 3000` (Localtunnel/Pinggy are historically blocked or flaky). The permanent, recommended solution for stakeholder review is pushing to `main` and relying on the automatic Vercel deployment.
