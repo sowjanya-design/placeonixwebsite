@@ -106,6 +106,20 @@ export default function ApplicationForm() {
           placeholder="Your degree, background, Experience or any questions…"
         />
       </div>
+      <label className="lead-popup-agree">
+        <input type="checkbox" required name="agreeTerms" />
+        <span>
+          I agree to the{" "}
+          <a href="/terms" target="_blank" rel="noopener">
+            Terms
+          </a>{" "}
+          &amp;{" "}
+          <a href="/privacy-policy" target="_blank" rel="noopener">
+            Privacy Policy
+          </a>{" "}
+          of Placeonix.
+        </span>
+      </label>
       <button type="submit" className="f-btn" disabled={submitting}>
         {submitting ? "Submitting…" : "Submit Application →"}
       </button>
