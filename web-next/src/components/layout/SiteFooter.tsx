@@ -13,6 +13,7 @@ export default function SiteFooter() {
               alt="Placeonix"
               width={180}
               height={66}
+              style={{ width: "auto", height: "64px" }}
             />
             <p className="muted">
               SAP &amp; IT training and placement institute in Hyderabad.

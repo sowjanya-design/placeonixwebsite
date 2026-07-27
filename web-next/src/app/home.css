@@ -2154,6 +2154,7 @@ a.prog-card::after {
   }
   .nav-logo {
     height: 42px;
+    width: auto;
   }
   .mobile-menu-btn {
     display: flex;
@@ -2335,6 +2336,7 @@ nav {
 }
 .nav-logo {
   height: 46px !important;
+  width: auto !important;
   object-fit: contain;
   background: transparent !important;
 }

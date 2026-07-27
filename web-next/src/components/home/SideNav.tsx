@@ -106,6 +106,7 @@ export default function SideNav() {
             alt="Placeonix"
             width={140}
             height={38}
+            style={{ width: "auto", height: "38px" }}
           />
           <button
             className="side-nav-close"

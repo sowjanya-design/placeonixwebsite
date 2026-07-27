@@ -3,6 +3,8 @@ import LegalPage from "@/components/layout/LegalPage";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions | Placeonix",
+  description:
+    "Terms and conditions governing enrolment, fees, batches, placement assistance and use of Placeonix training programs and the website.",
   alternates: { canonical: "/terms" },
 };
 

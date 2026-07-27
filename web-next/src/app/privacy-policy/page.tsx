@@ -3,6 +3,8 @@ import LegalPage from "@/components/layout/LegalPage";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Placeonix",
+  description:
+    "How Placeonix collects, uses, stores, shares and protects personal information across enquiries, enrolment, training, placement assistance and the website.",
   alternates: { canonical: "/privacy-policy" },
 };
 
