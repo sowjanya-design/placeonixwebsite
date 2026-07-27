@@ -242,10 +242,9 @@ export default function TermsPage() {
             <>
               <p>
                 Refunds, course transfers, batch transfers and cancellations
-                are governed by the Placeonix{" "}
-                <a href="/refund-policy">Refund and Cancellation Policy</a>{" "}
-                published on our website and any specific written conditions
-                provided during enrolment.
+                are governed by the Placeonix Refund and Cancellation Policy
+                and any specific written conditions provided during
+                enrolment.
               </p>
               <p>The Refund and Cancellation Policy forms part of these Terms.</p>
               <p>

@@ -135,8 +135,7 @@ export default function SiteFooter() {
           <span>© 2026 Placeonix. All rights reserved.</span>
           <span>
             <Link href="/privacy-policy">Privacy Policy</Link> ·{" "}
-            <Link href="/terms">Terms</Link> ·{" "}
-            <Link href="/refund-policy">Refund Policy</Link>
+            <Link href="/terms">Terms</Link>
           </span>
         </div>
       </div>
