@@ -706,7 +706,7 @@ a.prog-card {
 }
 .combo-card .prog-tag {
   background: #efe6ff;
-  color: #5b21b6;
+  color: #6632d4;
 }
 .combo-featured {
   position: relative;
@@ -1137,7 +1137,11 @@ a.prog-card {
 .trust-stat-num {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
-  color: var(--indigo);
+  background: linear-gradient(135deg, #6632d4, #9155f1 55%, #b481fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(167, 139, 250, 0.35));
   letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 0.8rem;
@@ -2296,6 +2300,12 @@ a.prog-card::after {
   --slate-dk: #3730a3;
   --slate-lt: #f1f2ff;
   --slate-mid: #7c73ff;
+  --violet-deep-a: #6632d4;
+  --violet-deep-b: #7b41e5;
+  --violet-mid-a: #9155f1;
+  --violet-mid-b: #a26cf5;
+  --lavender-a: #b481fa;
+  --lavender-b: #cfb4f7;
 }
 html,
 body {
@@ -2343,10 +2353,10 @@ nav {
 .f-btn,
 .course-modal-footer a,
 .syllabus-close-sticky button {
-  background: linear-gradient(135deg, #4f46e5, #4238d6) !important;
+  background: linear-gradient(135deg, #6632d4, #7b41e5) !important;
   color: #fff !important;
   border-radius: 8px !important;
-  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.22);
+  box-shadow: 0 12px 24px rgba(102, 50, 212, 0.25);
 }
 .btn-secondary,
 .cover-btn-outline,

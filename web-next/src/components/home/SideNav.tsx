@@ -188,6 +188,11 @@ export default function SideNav() {
             </a>
           </li>
           <li>
+            <Link href="/internships" onClick={() => setOpen(false)}>
+              All Internship Tracks
+            </Link>
+          </li>
+          <li>
             <a href="#testimonials" onClick={() => setOpen(false)}>
               Alumni
             </a>

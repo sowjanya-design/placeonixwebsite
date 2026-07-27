@@ -88,6 +88,9 @@ export default function MegaNav() {
             <Link href="/blog">Blog</Link>
           </li>
           <li>
+            <Link href="/internships">Internships</Link>
+          </li>
+          <li>
             <Link href="/#internship">Placements</Link>
           </li>
           <li>

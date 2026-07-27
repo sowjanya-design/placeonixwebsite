@@ -5,6 +5,8 @@ import SideNav from "@/components/home/SideNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import CourseFinder from "@/components/home/CourseFinder";
 import TrustStats from "@/components/home/TrustStats";
+import InternshipTracks from "@/components/home/InternshipTracks";
+import CertificateShowcase from "@/components/home/CertificateShowcase";
 import ApplicationForm from "@/components/home/ApplicationForm";
 import WaNudgeFloat from "@/components/home/WaNudgeFloat";
 import BackToTop from "@/components/ui/BackToTop";
@@ -238,40 +240,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="int-bg" id="internship">
-          <div className="inner">
-            <div className="int-grid">
-              <div className="reveal">
-                <div className="sec-eyebrow">{internship.eyebrow}</div>
-                <h2>{internship.heading}</h2>
-                <p className="sec-desc">{internship.desc}</p>
-                <ul className="check-list">
-                  {internship.checklist.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="reveal">
-                <div className="int-table">
-                  <div className="int-th">
-                    <span>Internship Track</span>
-                    <span>Status</span>
-                  </div>
-                  {internship.rows.map((r) => (
-                    <div className="int-row" key={r.name}>
-                      <div className="i-ico">{r.icon}</div>
-                      <div>
-                        <div className="i-name">{r.name}</div>
-                        <div className="i-sub">{r.sub}</div>
-                      </div>
-                      <span className={r.badgeClass}>{r.status}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <InternshipTracks
+          copy={{
+            eyebrow: internship.eyebrow,
+            heading: internship.heading,
+            desc: internship.desc,
+            checklist: internship.checklist,
+          }}
+        />
+
+        <CertificateShowcase />
 
         <section className="partners-bg" aria-label="Experienced Trainers">
           <div className="inner">

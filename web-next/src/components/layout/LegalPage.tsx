@@ -8,11 +8,13 @@ export type LegalSection = { heading: string; body: React.ReactNode };
 
 export default function LegalPage({
   title,
+  effectiveDate,
   disclaimer,
   sections,
 }: {
   title: string;
-  disclaimer: string;
+  effectiveDate?: string;
+  disclaimer?: string;
   sections: LegalSection[];
 }) {
   return (
@@ -20,7 +22,7 @@ export default function LegalPage({
       <MegaNav />
       <main>
         <section className="section">
-          <div className="inner prose" style={{ maxWidth: 820 }}>
+          <div className="inner prose legal-doc" style={{ maxWidth: 820 }}>
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <ol>
                 <li>
@@ -32,14 +34,19 @@ export default function LegalPage({
             <div className="sec-hdr" style={{ marginTop: "1.4rem" }}>
               <span className="eyebrow">Legal</span>
               <h1>{title}</h1>
+              {effectiveDate && (
+                <p className="legal-doc-meta">{effectiveDate}</p>
+              )}
             </div>
-            <div className="placeholder" style={{ marginBottom: "2rem" }}>
-              <strong>Draft — pending legal review.</strong> {disclaimer}
-            </div>
+            {disclaimer && (
+              <div className="placeholder" style={{ marginBottom: "2rem" }}>
+                <strong>Draft — pending legal review.</strong> {disclaimer}
+              </div>
+            )}
             {sections.map((s, i) => (
-              <div key={i}>
+              <div key={i} className="legal-doc-section">
                 <h2>{s.heading}</h2>
-                <p>{s.body}</p>
+                {s.body}
               </div>
             ))}
           </div>

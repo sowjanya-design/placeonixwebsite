@@ -1,0 +1,241 @@
+=====================================================================
+PLACEONIX (Next.js app in web-next/) — CERTIFICATE SHOWCASE
++ FULL INTERACTIVE "/internships" HUB PAGE
+Paste into your IDE agent.
+=====================================================================
+
+CONTEXT (confirmed in code):
+- This is the Next.js App Router rebuild at web-next/, not the old
+  static public/ site — work only inside web-next/.
+- The homepage internship section lives in
+  web-next/src/app/page.tsx (~line 241-270), rendering data from
+  web-next/src/data/home.json under the "internship" key (eyebrow,
+  heading, desc, checklist[], rows[] — each row has icon/name/sub/
+  status/badgeClass). Styled via the shared global CSS (search for
+  .int-bg / .int-grid / .int-table / .int-row / .i-badge classes).
+- Course detail pages already use a dynamic route pattern at
+  web-next/src/app/courses/[category]/[slug]/page.tsx, driven by data
+  in web-next/src/lib/courses.ts / src/lib/types.ts — this is the
+  reference pattern to follow for building a new dynamic internships
+  route.
+- Certificate images: I will save PNG/JPG image(s) of the real
+  certificate design into web-next/public/assets/img/certificates/
+  (create this folder) — reference them from there, e.g.
+  /assets/img/certificates/sap-fico-sample.png. Use the actual
+  provided image, do not invent or redraw the certificate.
+
+=====================================================================
+PART 1 — CERTIFICATE SHOWCASE ON THE WEBSITE
+=====================================================================
+Add a "Certificate You'll Receive" showcase so visitors can see
+exactly what their completion certificate looks like before enrolling.
+
+1. Add a new section (homepage, placed logically near the internship/
+   placements area, OR as its own component reusable on course pages —
+   your call, but it must appear on the homepage at minimum) titled
+   something like "The Certificate You'll Earn" with a short line of
+   copy (e.g. "A verifiable certificate of completion, awarded at the
+   end of every program — with a unique certificate number you can
+   verify online.").
+2. Display the certificate image prominently (from
+   /assets/img/certificates/, using next/image for optimization) in a
+   framed/card presentation consistent with the site's existing card
+   style (rounded corners, shadow token, subtle border — reuse
+   existing --shadow/--radius tokens, do not invent a new visual
+   style).
+3. Add a small feature list next to or below the image, driven by
+   real elements actually visible on the certificate: Certificate
+   Number (unique per student), Verified badge/seal, Issue date,
+   Authorised signature, and a "Verify this certificate" URL pattern
+   (the sample shows www.placeonix.com/verify/PLX-CERT-2026-00002 —
+   note as <!-- TODO: confirm whether a real /verify/[id] lookup page
+   exists or is planned; if not built yet, do not fake a working
+   verification, just show the sample static image and mark this
+   TODO for a future real build).
+4. Do NOT imply this specific sample certificate (Priya / SAP FICO /
+   PLX-CERT-2026-00002) is a real named alumna's certificate on the
+   live site if it's actually a placeholder/demo sample — caption it
+   generically as "Sample certificate" unless told this exact
+   certificate belongs to a real, consenting student who's fine with
+   it being shown publicly with their real name. Flag this to me
+   explicitly rather than assuming.
+5. Responsive: image + feature list should stack cleanly on mobile
+   (375px), image should not overflow or blur (use next/image with
+   proper width/height/sizes).
+
+CHECK GATE — PART 1:
+  [ ] Certificate section renders on the homepage with the real
+      provided image, styled consistently with the rest of the site.
+  [ ] Works at 375px and 1440px, image renders crisp (next/image, not
+      a stretched raw <img>).
+  [ ] Flagged back to me if the sample certificate's name/number
+      should be genericized before going live.
+
+=====================================================================
+PART 2 — REBUILD THE HOMEPAGE INTERNSHIP SECTION TO MATCH THE NEW
+LOOK (as shown in the reference screenshot)
+=====================================================================
+The current homepage internship section (page.tsx ~line 241, styled
+via .int-bg/.int-grid/.int-table) is the OLD two-column text+table
+layout. Replace it with the newer, more polished look already shown in
+the reference screenshot: a clean card list where each internship
+track is a full-width row with: a colored icon tile on the left
+(unique background tint per category — e.g. violet for dev roles,
+green for data, blue for cloud, orange/amber for security), the role
+title + tech-stack subtitle in the middle, and a colored status pill
++ "Apply by [date]" on the right, inside a bordered card/panel headed
+"Internship Tracks" with a "View all tracks →" button in the top-right
+of the panel header.
+
+1. Rework the JSX in page.tsx's internship section (or extract it into
+   a new component, e.g. src/components/home/InternshipTracks.tsx, if
+   that's cleaner — follow whatever pattern nearby home components
+   already use, e.g. check src/components/home/ for the existing
+   convention before deciding).
+2. Extend the data in home.json's "internship.rows" (or restructure it
+   if needed) so each row supports: icon (can stay emoji/icon
+   component), tint/color category, name, tech subtitle, a status
+   label (e.g. "Available for selected batches" / "Subject to
+   eligibility" / "Limited Vacancies") with a matching color (green /
+   blue / amber), and an "Apply by [date]" line. Use the SAME real
+   tracks already defined (Frontend, Backend, Data Analyst, SAP
+   Functional, Cloud Ops, Security Testing) — just enrich the data
+   shape, don't invent new tracks without checking with me first.
+3. Keep the left-hand "Experience Before You Graduate" copy block
+   largely as-is (heading, description, checklist) but restyle to
+   match the new reference look if needed (bullet icons in colored
+   circular tiles, as shown).
+4. Add an "Explore Internships →" primary button (indigo, matches
+   existing --indigo button style) below the left copy block. This
+   button must link to the new `/internships` page built in Part 3 —
+   NOT an anchor scroll.
+5. Add a "View all tracks →" small button in the internship panel's
+   header (top-right, as shown in the reference) — same destination,
+   `/internships`.
+
+CHECK GATE — PART 2:
+  [ ] Homepage internship section visually matches the reference
+      layout (icon tiles, status pills with color coding, apply-by
+      dates, panel header with "View all tracks").
+  [ ] "Explore Internships" and "View all tracks" both link to
+      /internships.
+  [ ] Renders correctly at 375px (cards stack, no overflow) and at
+      1440px+.
+  [ ] No hardcoded/invented internship tracks beyond the real ones
+      already in home.json — data enrichment only, not new content
+      fabricated without confirmation.
+
+=====================================================================
+PART 3 — BUILD THE FULL INTERACTIVE "/internships" PAGE
+=====================================================================
+Build a dedicated, fully interactive internships hub page at
+web-next/src/app/internships/page.tsx, matching the reference
+screenshot: hero header ("Explore Internships" + description + "Apply
+Now" / "Talk to Us" buttons + an info callout card on the right),
+search bar, filter chips (All / SAP / Development / Data / Cloud /
+Security), a "Batch Availability" dropdown, a scrollable list of
+internship track cards (icon, title, tech tags, one-line description,
+Eligibility / Duration / Mode columns, and a colored status pill),
+a right-hand "What to expect" panel with icon+text bullets, and three
+bottom panels: "Who can apply?", "How the process works" (4-step
+horizontal flow with icons), and "FAQs" (accordion).
+
+1. Follow the SAME dynamic-route/data-driven pattern already used for
+   course pages (src/app/courses/[category]/[slug]/page.tsx +
+   src/lib/courses.ts) — create an equivalent src/lib/internships.ts
+   (or extend an existing lib file if more consistent with the
+   codebase) holding the internship track data (name, tags, tech
+   stack, description, eligibility, duration, mode, category, status,
+   apply-by date) as the single source of truth, imported by both the
+   homepage section (Part 2) and this new page — do not duplicate the
+   data in two places.
+2. Hero section: "INTERNSHIPS" eyebrow, "Explore Internships" H1,
+   description line, "Apply Now →" primary button (wire to the same
+   backend/contact endpoint the main enquiry form already uses — check
+   src/app/api/applications/ for the existing pattern) and "Talk to
+   Us" secondary button (e.g. tel: or WhatsApp link, matching what
+   exists elsewhere on the site). Info callout box on the right:
+   "Internship availability, stipend, project exposure and full-time
+   conversion depend on current openings and documented partner
+   requirements." — reuse this exact honesty/caveat language, don't
+   soften it into an overpromise.
+3. Build the search + filter bar:
+   - Search input filters the track list client-side by name/tags/
+     tech-stack text (use React state, "use client" component).
+   - Filter chips (All / SAP / Development / Data / Cloud / Security)
+     filter by category — active chip visually highlighted (as shown,
+     violet fill on "All").
+   - "Batch Availability" dropdown filters by status (e.g. Available /
+     Subject to eligibility / Limited).
+   - All three filters should combine (AND logic) and update the list
+     live with no page reload.
+4. Track list: each row shows icon tile (colored per category, same
+   palette as Part 2), title + tech stack, one-line description,
+   Eligibility ("Final year / Graduate"), Duration ("8–12 weeks"),
+   Mode (Hybrid/Online/Offline), and a colored status pill on the
+   right. Make each row clickable/expandable OR link to a detail
+   state — your call on interactivity depth, but it must feel
+   "interactive" per the request, not a static list: at minimum, hover
+   states and the live filtering above satisfy this; a per-track
+   expand-for-more-detail accordion is a nice add if time allows.
+5. Right-hand "What to expect" panel: 4 bullet rows with icon +
+   heading, matching the reference (mentor guidance, practical
+   assignments, interview prep, certificate on completion) — reuse
+   real copy already implied by the homepage checklist where it
+   overlaps, don't contradict it.
+6. Bottom panels:
+   - "Who can apply?" — checklist matching existing eligibility copy
+     (final-year students, recent graduates, relevant streams,
+     willingness to learn).
+   - "How the process works" — 4-step horizontal flow with icons
+     (Explore tracks → Check eligibility → Apply → Screening &
+     onboarding), each with a one-line caption, as shown in the
+     reference.
+   - "FAQs" — accordion component (reuse the site's existing
+     accordion/details pattern from course pages if one already exists
+     as a shared component in src/components/; otherwise build a
+     simple one using the same `<details>`-based exclusive-accordion
+     pattern used elsewhere on the site). Include at least: "Is every
+     internship paid?", "Will I get a certificate?", "How often are
+     openings updated?" — answer honestly and consistently with the
+     info-callout caveat from step 2 (don't claim every internship is
+     paid/guaranteed if that's not confirmed true).
+7. SEO basics for the new route: proper <title>/meta description via
+   Next.js metadata export, and add this page to the sitemap if the
+   project has a sitemap generator (check for
+   next-sitemap.config.js / app/sitemap.ts).
+8. Add `/internships` to the main nav (MegaNav.tsx) if it isn't
+   already reachable from there.
+
+CHECK GATE — PART 3:
+  [ ] /internships loads with hero, search, filter chips, batch
+      dropdown, track list, "What to expect" panel, and all 3 bottom
+      panels, matching the reference screenshot's structure.
+  [ ] Search + category filter + batch-availability filter all work
+      together live, no reload, no console errors.
+  [ ] FAQ accordion opens/closes correctly (and only one open at a
+      time, consistent with the accordion pattern already fixed
+      elsewhere on the site).
+  [ ] Internship data lives in ONE shared source used by both the
+      homepage section and this page (no duplicated/drifting data).
+  [ ] Responsive at 375px: filters stack sensibly, cards remain
+      readable, no horizontal overflow.
+  [ ] Page has proper title/meta and is linked from the nav.
+
+=====================================================================
+FINAL CHECK GATE (whole task)
+=====================================================================
+  [ ] Certificate showcase live on homepage with the real image,
+      properly captioned (generic "sample" language unless confirmed
+      otherwise).
+  [ ] Homepage internship section rebuilt to match the new reference
+      layout, both CTAs pointing to /internships.
+  [ ] /internships is a fully working, interactive hub page per Part 3.
+  [ ] No regressions on homepage or existing course pages — quick
+      smoke test at 375px and 1440px.
+  [ ] npm run build passes with no type errors (this is a Next.js/TS
+      app — run the build, don't just eyeball it).
+
+Start with Part 1 now (drop the certificate image(s) into
+web-next/public/assets/img/certificates/ first, then build the
+showcase section around them).
