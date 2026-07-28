@@ -23,7 +23,7 @@ export default function RevealObserver() {
             io.unobserve(e.target);
           }
         }),
-      { threshold: 0, rootMargin: "0px 0px 200px 0px" },
+      { threshold: 0, rootMargin: "0px 0px 600px 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();

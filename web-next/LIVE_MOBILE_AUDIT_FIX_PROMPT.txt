@@ -1,0 +1,157 @@
+=====================================================================
+PLACEONIX (web-next/) — LIVE MOBILE AUDIT RESULTS (checked directly
+against https://placeonixwebsite.vercel.app at a real 400x545 mobile
+viewport, Pixel 9 UA, via Chrome) + FIX LIST
+Paste into your IDE agent.
+=====================================================================
+
+I drove an actual mobile-emulated Chrome session against the live
+deployed site (not a code guess this time) and scrolled the full
+homepage. Most sections render cleanly at mobile width — nav collapses
+correctly, hero + course-finder widget stack fine, the 3-category
+program cards look right, internship track rows wrap correctly. Three
+real, confirmed issues below, in priority order.
+
+=====================================================================
+ISSUE 1 (HIGH — content accuracy) — Trust Stats band shows WRONG
+figures, contradicting the client-approved numbers
+=====================================================================
+CONFIRMED: web-next/src/app/page.tsx, line ~22-26:
+
+  const TRUST_STATS = [
+    { num: "2,000+", label: "Learners" },
+    { num: "150+", label: "Corporate Clients" },
+    { num: "4+", label: "Years of Industry Experience" },
+  ];
+
+The live site currently displays "2,000+ Learners / 150+ Corporate
+Clients / 4+ Years of Industry Experience" (confirmed via live
+screenshot, count-up animation lands on these exact values).
+
+THE CLIENT-APPROVED REAL FIGURES ARE:
+  - 2,000+ Learners  (this one is already correct)
+  - 100+ Corporate Clients  (currently wrongly shows 150+)
+  - 5+ Years of Industry Experience  (currently wrongly shows 4+)
+
+FIX: change TRUST_STATS in page.tsx to:
+  const TRUST_STATS = [
+    { num: "2,000+", label: "Learners" },
+    { num: "100+", label: "Corporate Clients" },
+    { num: "5+", label: "Years of Industry Experience" },
+  ];
+
+Grep the whole web-next/src tree for "150+" and "4+" near "Corporate
+Clients" / "Years" in case these wrong figures are duplicated anywhere
+else (e.g. structured data / JSON-LD, meta description, another
+component) and fix every occurrence — don't just fix the one spot,
+confirm there's no second drifted copy.
+
+=====================================================================
+ISSUE 2 (MEDIUM — mobile layout) — World-map background in the Trust
+Stats band looks wrong/heavy at mobile width
+=====================================================================
+CONFIRMED: web-next/src/app/home.css, `.trust-stats` (~line 1094) and
+`.trust-stats::before` (~line 1105-1116) apply ONE shared world-map
+mask-image (`/assets/img/world-dots-white.png`, mask-size: contain)
+positioned absolutely (inset: -50px) behind the whole 3-column stat
+grid. At desktop width this is one elegant shared map behind all 3
+numbers side by side.
+
+At the mobile breakpoint (`@media (max-width: 640px)`, ~line 1188),
+`.trust-stats` switches to `grid-template-columns: 1fr` (stats stack
+vertically), but `.trust-stats::before` isn't given a corresponding
+mobile-specific rule. On the live mobile render, this results in the
+world map appearing to repeat/loom large behind EACH stacked stat
+number individually rather than reading as one cohesive band graphic
+— it looks heavy, oversized, and disconnected from the numbers rather
+than a subtle background texture (confirmed via live screenshot: the
+map graphic dominates visually between "2,000+ Learners" and "150+
+Corporate Clients", taking up far more vertical space than the text
+content itself).
+
+FIX: add a mobile-specific override for `.trust-stats::before` inside
+the existing `@media (max-width: 640px)` block (or a new one) that
+either (a) sets a fixed, smaller mask-size (e.g. `mask-size: 140%` or
+similar tuned value — test visually) so the map reads as a subtle
+background texture rather than a dominant graphic at narrow widths, or
+(b) reduces `opacity` further on mobile (currently 0.15 on desktop —
+confirm whether it needs to go lower when the same map is stretched
+over a much taller, narrower box), or (c) simplifies to a much lower
+`inset` value so it doesn't bleed dramatically wider than the content.
+Test at 375px and 414px and pick whichever reads as "clean and
+premium," not "a giant world map crammed between numbers."
+
+=====================================================================
+ISSUE 3 (MEDIUM — recurring, not new) — Scroll-reveal blank/white
+flash is STILL happening, confirmed on this pass too
+=====================================================================
+This was already flagged in an earlier audit (LIVE_CHECK_UPDATE
+history) and is STILL reproducible: scrolling down the homepage at
+mobile width produces a fully blank white screenshot momentarily
+between sections, even with a full 1-second pause inserted before
+capturing — meaning it isn't purely a "scrolled too fast" artifact,
+it's a real, repeatable rendering gap tied to the `.reveal` /
+IntersectionObserver fade-in pattern re-triggering or mistiming on
+every section transition, not just an occasional edge case.
+
+FIX (if not already fully applied — this needs to actually be
+re-verified, not assumed fixed from a prior pass): find the shared
+reveal/IntersectionObserver logic (check
+web-next/src/components/layout/RevealObserver.tsx) and:
+1. Confirm the initial CSS state for `.reveal` elements is NOT
+   `opacity: 0` with a long trigger distance — shorten the trigger
+   rootMargin so content becomes visible well before it's fully
+   scrolled into view, not exactly as it enters the viewport.
+2. Confirm `prefers-reduced-motion` fully disables this animation
+   (immediate full-opacity render) — test with that OS setting on.
+3. Test specifically at mobile scroll speeds (flick-scroll on an
+   actual touch device or Chrome's touch-emulation mode, not just
+   mouse-wheel scroll in desktop devtools) since mobile momentum
+   scrolling moves through sections much faster than a
+   mouse-wheel/trackpad scroll.
+
+=====================================================================
+NOTED BUT LIKELY FINE — verify, don't assume
+=====================================================================
+- The "Experienced Trainers From Top Companies" logo marquee
+  (page.tsx ~line 254, `.partners-track` / `.partner-tile` in
+  home.css ~960-990): a static screenshot mid-animation showed a tile
+  with clipped text (e.g. "Accenture" reading as "enture"). This is
+  very likely just a normal mid-scroll capture of the infinite
+  marquee (`animation: partners-scroll 24s linear infinite`) and NOT
+  a real bug — a continuously scrolling track will always show a
+  partially-clipped tile at the viewport edge at any given instant.
+  Do NOT "fix" this by changing the marquee mechanics. DO verify one
+  real gap: `.partners-track-wrap:hover` pauses the marquee (line
+  ~986) but hover doesn't exist on touch devices — mobile users have
+  no way to pause the marquee to read a specific logo. Consider
+  adding a pause-on-touch (e.g. `:active` or a tap-to-toggle) for
+  mobile, or confirm this is an acceptable trade-off since the logos
+  aren't individually critical to read.
+- Hamburger nav menu: I attempted to click it live and hit a tool
+  error mid-click, so I could NOT confirm whether the mobile drawer
+  opens correctly on this pass (earlier code-based audit found no
+  issue, but that was code-inspection, not a live click-test). VERIFY
+  this explicitly: open the hamburger on a real phone or Chrome
+  device-toolbar and confirm the SAP/Technology/Combo dropdown groups
+  expand correctly inside the drawer.
+
+=====================================================================
+CHECK GATE
+=====================================================================
+  [ ] Trust Stats band shows 2,000+ / 100+ / 5+ exactly, matching the
+      client-approved figures, with no stale "150+"/"4+" copy left
+      anywhere else in the codebase.
+  [ ] World-map background in the Trust Stats band reads as a subtle,
+      intentional texture at 375px/414px — not an oversized graphic
+      dominating the section.
+  [ ] Scroll-reveal blank-flash is actually gone when flick-scrolling
+      at real mobile speed (touch-emulated or real device), not just
+      "should be fixed per an earlier pass."
+  [ ] Hamburger nav drawer confirmed working live on mobile (open,
+      dropdown groups expand, closes on link click).
+  [ ] Quick regression: homepage still loads clean at 1440px after
+      these fixes (no accidental desktop regression from mobile-only
+      CSS changes).
+
+Start with Issue 1 (it's a one-line data fix) then move to Issue 2.

@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 const TRUST_STATS = [
   { num: "2,000+", label: "Learners" },
-  { num: "150+", label: "Corporate Clients" },
-  { num: "4+", label: "Years of Industry Experience" },
+  { num: "100+", label: "Corporate Clients" },
+  { num: "5+", label: "Years of Industry Experience" },
 ];
 
 const partnerLogos = [

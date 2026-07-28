@@ -1,0 +1,223 @@
+=====================================================================
+PLACEONIX (web-next/, Next.js) — MOBILE RESPONSIVENESS AUDIT + FIX LOOP
+Paste into your IDE agent.
+=====================================================================
+
+NOTE ON HOW THIS AUDIT WAS DONE: I tried to drive a live 375px-wide
+Chrome session against https://placeonixwebsite.vercel.app to screenshot
+real mobile rendering, but the remote browser session I had access to
+would not actually shrink below its 1280px viewport (window.innerWidth
+stayed 1280 even after resizing/reloading), so I could not capture real
+mobile screenshots this pass. Instead, this is a direct source-code
+audit of every responsive breakpoint and layout component in
+web-next/src — it's grounded in the actual CSS/component structure, not
+guesswork, but you should still visually confirm each item below on a
+real device or Chrome DevTools device toolbar (which will work
+correctly for you locally) as you fix it, since a code read can miss
+things a live render reveals.
+
+CONTEXT: styles live in web-next/src/app/globals.css and
+web-next/src/app/home.css (two files, some class names like
+.prog-grid, .int-table, .trust-stats appear in BOTH — check both files
+for every selector you touch, this project has a documented history of
+one stylesheet getting fixed while the other one drifts). Breakpoints
+already in use: 1080px, 1000px, 960px, 900px, 860px, 768px, 640px,
+560px, 480px — no consistent single breakpoint scale, which itself is
+worth normalizing if you have time (see Part 6).
+
+Key components to check (web-next/src/components/):
+  layout/MegaNav.tsx        — main nav + mobile hamburger drawer
+  layout/MiniNav.tsx        — sticky in-page anchor chips (course pages)
+  layout/SiteFooter.tsx     — footer
+  home/TrustStats.tsx       — animated stat band (world-map bg just added)
+  home/InternshipTracks.tsx — homepage internship card list (recently rebuilt)
+  home/CertificateShowcase.tsx — certificate image showcase (recently added)
+  home/CourseFinder.tsx     — hero course-finder widget
+  home/LeadPopup.tsx        — 30s-delayed lead capture modal
+  home/WaNudgeFloat.tsx     — WhatsApp nudge bubble
+  home/ApplicationForm.tsx  — main enquiry form
+  shared/ProgramCard.tsx    — course/program card (grid item)
+  shared/CourseFaq.tsx      — FAQ accordion
+  ui/CurriculumAccordion.tsx, ui/BackToTop.tsx, ui/WhatsAppFloat.tsx
+
+=====================================================================
+PART 1 — NAV + HEADER AT MOBILE WIDTH
+=====================================================================
+1. In MegaNav.tsx / globals.css (.site-nav, .nav-menu, .nav-toggle,
+   lines ~211-244 and ~1241-1262): confirm the hamburger toggle
+   actually shows below 768px (or whatever the real intended
+   breakpoint is) and the full horizontal .nav-menu is hidden — this
+   exact class of bug (nav breakpoint mismatch between two
+   stylesheets) has happened before on this project, so treat it as
+   HIGH RISK even though it "should" be fixed. Load the site at 375px
+   in real DevTools device mode and confirm visually.
+2. Confirm the mobile drawer itself (.nav-menu.open, line ~1256) is
+   scrollable if content is taller than the viewport, closes on
+   link-click, closes on outside-tap, and doesn't trap focus
+   incorrectly for keyboard/screen-reader users.
+3. Confirm the SAP Courses / Technology Courses / Combo Programs
+   dropdown groups render correctly as expanded sections (not
+   hover-dependent, since hover doesn't exist on touch) inside the
+   mobile drawer.
+4. Check header height/logo sizing at 375px doesn't crowd the phone
+   icon / hamburger icon — there's limited horizontal space with logo
+   + phone number + social icons + hamburger all in one row per the
+   current design; confirm nothing wraps awkwardly or overlaps.
+
+=====================================================================
+PART 2 — HERO SECTION + COURSE FINDER WIDGET
+=====================================================================
+1. The homepage hero has a large headline + a floating stat card
+   (.hero-card, line ~387 mobile override exists, ~441 desktop) that
+   sits visually overlapping a background photo on desktop. At mobile
+   width, confirm .hero-card stacks BELOW the hero text/photo cleanly
+   (not overlapping, not cut off) — the existing @media(max-width:900px)
+   .hero-card rule (line ~387) needs to be checked against the CURRENT
+   hero-card content (it now includes "Max 30 / 21 Courses / 3 Batches
+   / 6 Days / 100%" stat tiles plus a "100% Placement" pill at the
+   bottom — confirm ALL of that content fits without overflow at
+   375px, not just the top portion).
+2. Confirm CourseFinder.tsx (the "I'm looking for [course]" hero
+   widget) stacks its dropdown + button full-width on mobile and
+   doesn't get visually squeezed next to the hero photo.
+3. Confirm hero background photo doesn't cause horizontal scroll at
+   any mobile width (globals.css line 53 and home.css line 32 both set
+   overflow-x:hidden on some root element already — verify this is
+   actually preventing overflow and not just masking a deeper layout
+   bug that still causes content clipping).
+
+=====================================================================
+PART 3 — TRUST STATS BAND (world map background)
+=====================================================================
+This section was just modified to add a world-map dot background
+(TrustStats.tsx / .trust-stats, home.css ~line 1094-1186). Specifically
+verify at mobile:
+1. The map background image doesn't get so zoomed/cropped by
+   background-size that it looks like a meaningless blur at 375px width
+   — since the band goes to single-column layout at mobile (existing
+   rule near home.css line 1186), the aspect ratio of the map relative
+   to the band changes a lot between desktop and mobile.
+2. Stat numbers/labels remain fully legible above the map at 375px
+   (adequate contrast, no overlap).
+3. No layout shift/janky reflow when the count-up animation triggers
+   on scroll-into-view at mobile scroll speeds.
+
+=====================================================================
+PART 4 — COURSE/PROGRAM CARD GRIDS
+=====================================================================
+1. .prog-grid appears in both globals.css (~1054, with mobile override
+   ~1189/1198) AND home.css (~621, with overrides ~1482/1503) — resolve
+   which one actually wins in the cascade for the homepage vs. the new
+   /courses hub pages, and make sure BOTH contexts collapse to a single
+   column (or clean 2-column where appropriate) below ~640px with no
+   card content getting clipped or a horizontal scrollbar appearing.
+2. Category cards (the new 3-card SAP/Technology/Combo layout from the
+   homepage restructure) should NOT use the old 21-card grid spacing
+   assumptions — confirm padding/gap still looks intentional with only
+   3 items at mobile width, not stretched.
+3. ProgramCard.tsx: confirm tag/badge + meta row (⏱ duration, icon +
+   label chips) wraps cleanly on narrow cards instead of overflowing
+   the card boundary.
+
+=====================================================================
+PART 5 — INTERNSHIP TRACKS + INTERNSHIPS PAGE + TABLES
+=====================================================================
+1. InternshipTracks.tsx / .int-table (home.css ~865): the internship
+   row layout (icon tile + name/sub + status pill) must stack or
+   compress sensibly at 375px — icon tile, two-line text block, and a
+   status pill + date all in one row is tight; confirm the pill either
+   wraps to its own line or the row switches to a 2-line layout on
+   mobile rather than truncating the status text.
+2. If /internships (the new interactive hub page) has been built yet:
+   confirm the search bar + filter chip row + "Batch Availability"
+   dropdown wrap or scroll horizontally in a controlled way (a
+   deliberate horizontal chip-scroll with visible affordance is fine;
+   chips silently clipped off-screen is not) — check for any
+   `overflow-x: auto` pattern already used elsewhere (globals.css lines
+   376, 803) and reuse that same pattern for consistency instead of
+   inventing a new one.
+3. Any place using a literal HTML `<table>` (check int-table markup —
+   confirm whether it's a real <table> or a div-grid) needs either
+   horizontal scroll wrapping or a stacked-card mobile fallback — real
+   tables are a classic mobile-overflow source.
+
+=====================================================================
+PART 6 — MODALS, FLOATING ELEMENTS, AND STICKY OVERLAP
+=====================================================================
+1. LeadPopup.tsx (the 30-second "It All Starts Here" career-guidance
+   modal, confirmed via live screenshot to have Full Name / Email /
+   Mobile / Course dropdown / checkbox / submit): at 375px confirm the
+   modal fits within the viewport height without needing to scroll past
+   the visible close (×) button, and that background-scroll is locked
+   while it's open (test: open on a long page, try to scroll the page
+   behind it).
+2. Confirm WhatsAppFloat.tsx, BackToTop.tsx, and WaNudgeFloat.tsx don't
+   visually stack/overlap each other in the bottom-right corner at
+   mobile width when more than one is visible at once (e.g. WhatsApp
+   float + nudge bubble + back-to-top all appearing together after
+   scrolling partway down a long page).
+3. Confirm MiniNav.tsx (sticky in-page anchor chips on course pages)
+   doesn't overlap the WhatsApp float or get hidden behind the main
+   nav's sticky header — check actual pixel stacking (z-index +
+   top-offset math), not just "it has position:sticky so it's fine."
+
+=====================================================================
+PART 7 — CERTIFICATE SHOWCASE + FORMS
+=====================================================================
+1. CertificateShowcase.tsx: confirm the certificate image (a wide
+   landscape-orientation image) doesn't get so small on a 375px screen
+   that certificate text is illegible — consider a tap-to-zoom/lightbox
+   behavior if the image is genuinely unreadable at mobile card width,
+   rather than just shrinking it further.
+2. ApplicationForm.tsx and any other form (contact section, lead popup)
+   — confirm every input is comfortably tappable (min ~44px touch
+   target height) and the keyboard doesn't obscure the submit button on
+   real mobile browsers when focused (test tab-through on an actual
+   phone if possible, not just visually in DevTools).
+
+=====================================================================
+PART 8 — BREAKPOINT CONSISTENCY (LOWER PRIORITY, DO LAST)
+=====================================================================
+The project currently mixes 1080/1000/960/900/860/768/640/560/480px
+breakpoints across globals.css and home.css with no single scale. This
+isn't necessarily wrong (content-based breakpoints are legitimate) but
+audit for cases where the SAME component has different breakpoints in
+the two files (e.g. .prog-grid switching at 900px in one file and a
+different value in the other) — that mismatch causes visible layout
+"jumps" at certain widths where one file's rule has kicked in and the
+other hasn't. Fix any such mismatches you find; don't do a wholesale
+breakpoint-scale rewrite unless asked.
+
+=====================================================================
+CHECK GATE — RUN THIS AT 375px, 390px, AND 768px IN REAL CHROME DEVICE
+MODE FOR EVERY ITEM ABOVE (not just visual skim — actually interact:
+open the nav drawer, trigger the lead popup, scroll to the stats band,
+open an FAQ accordion, submit-test a form)
+=====================================================================
+  [ ] Nav: hamburger shows correctly below the real breakpoint, drawer
+      opens/closes/scrolls correctly, dropdown groups expand inline.
+  [ ] Hero: hero-card stat tiles + course finder widget stack cleanly
+      below the hero text/photo, no overlap, no horizontal scroll.
+  [ ] Trust stats band: world map background looks intentional (not a
+      meaningless crop) at 375px, numbers stay legible.
+  [ ] Course/program card grids: single-column (or clean 2-col) at
+      mobile, no clipped content, no horizontal scrollbar.
+  [ ] Internship track rows: status pill + apply-by date don't
+      truncate or overflow the row at 375px.
+  [ ] /internships page (if built): search/filter/dropdown row is
+      usable at mobile (scroll or wrap, not silently clipped).
+  [ ] Lead popup modal: fully visible + closeable + scroll-locked
+      behind it at 375px.
+  [ ] No overlap between WhatsApp float / back-to-top / WA nudge
+      bubble / mini-nav at any scroll position on mobile.
+  [ ] Certificate image legible at mobile card width (or has a
+      zoom/lightbox fallback).
+  [ ] All form inputs comfortably tappable, submit button never
+      hidden behind the mobile keyboard.
+  [ ] No component has visibly mismatched breakpoints between
+      globals.css and home.css causing a layout "jump."
+
+Report back with screenshots (or a short screen recording) at 375px
+for each section fixed, since this pass was done from source code
+without a working live mobile render on my end — I want to actually see
+the corrected result before we call this done.

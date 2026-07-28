@@ -1191,6 +1191,18 @@ a.prog-card {
   .trust-stat:not(:first-child)::before {
     display: none;
   }
+  /* The desktop map uses mask-size:contain, which scales to the tallest
+     box dimension — once stats stack to 1 column the box becomes much
+     taller than wide, so "contain" blows the map up to loom behind each
+     stat individually instead of reading as one subtle band texture. */
+  .trust-stats::before {
+    inset: 0;
+    opacity: 0.1;
+    -webkit-mask-size: 260px;
+    mask-size: 260px;
+    -webkit-mask-position: center top;
+    mask-position: center top;
+  }
 }
 .cta-wrap {
   padding: 5rem 6%;
