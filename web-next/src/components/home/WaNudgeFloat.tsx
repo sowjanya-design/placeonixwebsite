@@ -9,9 +9,15 @@ export default function WaNudgeFloat() {
 
   useEffect(() => {
     if (sessionStorage.getItem(KEY)) return;
-    const t = setTimeout(() => setShow(true), 5500);
-    return () => clearTimeout(t);
+    const showTimer = setTimeout(() => setShow(true), 5500);
+    return () => clearTimeout(showTimer);
   }, []);
+
+  useEffect(() => {
+    if (!show) return;
+    const hideTimer = setTimeout(() => setShow(false), 8000);
+    return () => clearTimeout(hideTimer);
+  }, [show]);
 
   function dismiss() {
     setShow(false);

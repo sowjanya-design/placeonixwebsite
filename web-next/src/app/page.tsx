@@ -313,7 +313,7 @@ export default function HomePage() {
               {testimonials.map((t) => (
                 <div className="testi-card reveal" key={t.name}>
                   <div className="testi-stars">★★★★★</div>
-                  <blockquote>&quot;{t.quote}&quot;</blockquote>
+                  <blockquote>{t.quote}</blockquote>
                   <div className="testi-author">
                     <div className={t.avatarClass}>{t.initials}</div>
                     <div>

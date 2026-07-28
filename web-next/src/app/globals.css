@@ -1268,7 +1268,7 @@ a.prog-card {
     bottom: 92px;
   }
   .to-top {
-    bottom: 92px;
+    bottom: 160px;
   }
 }
 @media (max-width: 560px) {
@@ -1542,7 +1542,7 @@ textarea {
   min-height: 90px;
 }
 .f-btn {
-  background: var(--slate);
+  background: var(--grad);
   color: #fff;
   padding: 0.85rem;
   border: none;
@@ -1551,13 +1551,14 @@ textarea {
   font-size: 0.9rem;
   cursor: pointer;
   font-family: "Inter", sans-serif;
+  box-shadow: 0 12px 24px rgba(102, 50, 212, 0.25);
   transition:
-    background 0.2s,
+    box-shadow 0.2s,
     transform 0.15s;
 }
 .f-btn:hover {
-  background: var(--slate-dk);
   transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(102, 50, 212, 0.32);
 }
 
 .lead-popup-overlay {
@@ -1904,6 +1905,26 @@ textarea {
   text-align: right;
   min-width: 150px;
   margin-left: auto;
+}
+@media (max-width: 640px) {
+  .intern-panel-head {
+    flex-wrap: wrap;
+  }
+  .intern-panel-head-left {
+    flex-basis: 100%;
+  }
+  .intern-row {
+    flex-wrap: wrap;
+  }
+  .intern-row-main {
+    flex-basis: calc(100% - 44px - 1.1rem);
+  }
+  .intern-row-status {
+    flex-basis: 100%;
+    text-align: left;
+    margin-left: calc(44px + 1.1rem);
+    margin-top: 0.5rem;
+  }
 }
 .status-pill {
   display: inline-block;
