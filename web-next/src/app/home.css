@@ -257,6 +257,20 @@ body {
   background: var(--warm-white3);
   color: var(--slate);
 }
+.side-nav-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem 1.3rem;
+  border-top: 1px solid var(--line2);
+}
+.side-nav-contact .nav-phone {
+  font-size: 0.88rem;
+}
+.side-nav-contact .nav-phone span {
+  display: inline !important;
+}
 .side-nav-cta {
   display: block;
   margin: 1rem 1.3rem 1.3rem;
