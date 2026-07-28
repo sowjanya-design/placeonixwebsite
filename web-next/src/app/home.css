@@ -111,8 +111,8 @@ body {
     display: none;
   }
 }
-@media (max-width: 640px) {
-  .nav-right {
+@media (max-width: 480px) {
+  .nav-phone {
     display: none;
   }
 } /* ── Sidebar menu ── */
