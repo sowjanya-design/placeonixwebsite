@@ -57,16 +57,6 @@ export default function SideNav() {
                 <path d="M17.5 6.5h.01" />
               </svg>
             </a>
-            <button
-              className="mobile-menu-btn"
-              type="button"
-              aria-label="Open menu"
-              aria-expanded={open}
-              aria-controls="sideNav"
-              onClick={() => setOpen(true)}
-            >
-              ☰
-            </button>
             <a
               href="#"
               aria-label="Placeonix on LinkedIn"
@@ -86,6 +76,16 @@ export default function SideNav() {
                 <circle cx="4" cy="4" r="2" />
               </svg>
             </a>
+            <button
+              className="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={open}
+              aria-controls="sideNav"
+              onClick={() => setOpen(true)}
+            >
+              ☰
+            </button>
           </div>
         </div>
       </nav>
