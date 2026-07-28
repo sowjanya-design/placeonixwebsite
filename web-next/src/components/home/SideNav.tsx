@@ -20,16 +20,6 @@ export default function SideNav() {
           style={{ width: "auto", height: "54px" }}
           priority
         />
-        <button
-          className="mobile-menu-btn"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded={open}
-          aria-controls="sideNav"
-          onClick={() => setOpen(true)}
-        >
-          ☰
-        </button>
         <div className="nav-right">
           <a href="tel:+919949494020" className="nav-phone">
             <svg
@@ -67,6 +57,16 @@ export default function SideNav() {
                 <path d="M17.5 6.5h.01" />
               </svg>
             </a>
+            <button
+              className="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded={open}
+              aria-controls="sideNav"
+              onClick={() => setOpen(true)}
+            >
+              ☰
+            </button>
             <a
               href="#"
               aria-label="Placeonix on LinkedIn"
