@@ -156,13 +156,7 @@ export default async function CategoryHubPage({ params }: Props) {
             style={{ maxWidth: "1200px", margin: "0 auto" }}
           >
             <div
-              className="prog-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  cat === "combo" ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
-                gap: "1.5rem",
-              }}
+              className={`prog-grid prog-grid-cat${cat === "combo" ? " prog-grid-cat-combo" : ""}`}
             >
               {courses.map((course) => (
                 <ProgramCard course={course} key={course.slug} />

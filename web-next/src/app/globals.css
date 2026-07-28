@@ -1199,6 +1199,26 @@ a.prog-card {
     grid-template-columns: 1fr;
   }
 }
+/* Category hub grid (SAP/Technology = 4-up, Combo = 2-up on desktop) —
+   was previously an inline style that ignored these breakpoints entirely. */
+.prog-grid-cat {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.prog-grid-cat-combo {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 1000px) {
+  .prog-grid-cat {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .prog-grid-cat,
+  .prog-grid-cat-combo {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
