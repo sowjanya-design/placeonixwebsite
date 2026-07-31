@@ -16,9 +16,9 @@ export default function MegaNav() {
             src="/assets/img/logo-transparent.png"
             className="nav-logo"
             alt="Placeonix — IT Training & Placement Institute"
-            width={160}
-            height={46}
-            style={{ width: "auto", height: "46px" }}
+            width={300}
+            height={80}
+            style={{ width: "auto", height: "90px" }}
             priority
           />
         </Link>

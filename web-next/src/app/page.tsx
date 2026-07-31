@@ -77,7 +77,7 @@ export default function HomePage() {
               <p>{hero.body}</p>
               <div className="clean-actions">
                 <a href="#contact" className="clean-btn-primary">
-                  Enroll Now →
+                  Enroll Now!
                 </a>
                 <Link href="/courses" className="clean-btn-secondary">
                   Explore Programs

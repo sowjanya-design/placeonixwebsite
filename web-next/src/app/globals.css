@@ -81,9 +81,9 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--ink);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  color: #000 ;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.18;
 }
 h1 {
@@ -92,12 +92,14 @@ h1 {
 }
 h2 {
   font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin-bottom: 0.8rem;
 }
 h3 {
   font-size: 1.16rem;
+  color:rgb(98, 7, 151)
 }
 p {
-  color: var(--slate);
+  color: rgb(107, 11, 163);
 }
 
 .inner {
@@ -106,10 +108,11 @@ p {
   padding: 0 6%;
 }
 .section {
-  padding: 4.6rem 0;
+  padding: 1rem 0;
 }
 .section-tight {
   padding: 3.2rem 0;
+  margin-top: -1.2em;
 }
 .bg-soft {
   background: var(--bg2);
@@ -121,11 +124,11 @@ p {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--indigo-deep);
-  font-weight: 800;
-  font-size: 0.74rem;
-  letter-spacing: 2px;
+  gap: 0.5rem;
+  color: #a944e4;
+  font-weight:700;
+  font-size: 0.94rem;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   margin-bottom: 0.9rem;
 }
@@ -133,11 +136,12 @@ p {
   content: "";
   width: 18px;
   height: 2px;
-  background: var(--indigo);
+  background: #a944e4;
 }
 .sec-desc {
-  color: var(--muted);
-  font-size: 0.98rem;
+  color: rgb(107, 11, 163);
+  font-size: 1rem;
+  padding: 1rem;
   max-width: 620px;
 }
 .sec-hdr {
@@ -171,7 +175,7 @@ p {
     box-shadow 0.18s ease;
 }
 .btn-primary {
-  background: var(--grad);
+  background: #a944e4;
   color: #fff !important;
   box-shadow: 0 12px 24px rgba(102, 50, 212, 0.25);
 }
@@ -182,7 +186,7 @@ p {
 .btn-outline {
   background: #fff;
   color: var(--ink2) !important;
-  border-color: var(--indigo);
+  border-color: #a944e4;
 }
 .btn-outline:hover {
   transform: translateY(-2px);
@@ -242,10 +246,10 @@ header {
 }
 .nav-menu a:hover,
 .nav-menu a:focus {
-  color: var(--indigo);
+  color: #a944e4;
 }
 .nav-cta {
-  background: var(--grad);
+  background: #a944e4;
   color: #fff !important;
   padding: 0.6rem 1.3rem;
   border-radius: 8px;
@@ -309,8 +313,13 @@ header {
 /* ── Breadcrumb ── */
 .breadcrumb {
   font-size: 0.82rem;
-  color: var(--muted);
-  padding: 1.1rem 0 0;
+  color: #000;
+  padding: 0.7rem 0 0;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: -0.2rem;
+  margin-bottom: 1.6rem;
 }
 .breadcrumb ol {
   list-style: none;
@@ -323,7 +332,7 @@ header {
   text-decoration: none;
 }
 .breadcrumb a:hover {
-  color: var(--indigo);
+  color: #a944e4;
 }
 .breadcrumb li + li::before {
   content: "›";
@@ -357,7 +366,7 @@ header {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--ink2);
-  background: var(--chip);
+  background:#a359c82f;
   padding: 0.42rem 0.95rem;
   border-radius: 999px;
   text-decoration: none;
@@ -367,7 +376,7 @@ header {
     color 0.2s;
 }
 .mini-nav a:hover {
-  background: var(--indigo);
+  background: #a944e4;
   color: #fff;
 }
 @media (max-width: 768px) {
@@ -393,7 +402,7 @@ header {
 
 /* ── Course hero ── */
 .course-hero {
-  padding: 3rem 0 3.4rem;
+  padding: 2rem 0 3.4rem;
   background:
     radial-gradient(circle at 8% 14%, rgba(79, 70, 229, 0.09), transparent 30%),
     radial-gradient(
@@ -414,7 +423,7 @@ header {
 }
 .course-hero p.lead {
   font-size: 1.08rem;
-  color: var(--slate);
+  color: #6b0ba3;
   max-width: 560px;
   margin-bottom: 1.8rem;
 }
@@ -425,8 +434,8 @@ header {
   margin-bottom: 1.8rem;
 }
 .badge {
-  background: var(--chip);
-  color: var(--indigo-deep);
+  background:#a359c82f;
+  color: #000;
   border: 1px solid #e1e4ff;
   padding: 0.34rem 0.8rem;
   border-radius: 999px;
@@ -443,7 +452,8 @@ header {
   border: 1px solid var(--line);
   border-radius: 18px;
   box-shadow: var(--shadow-md);
-  padding: 1.6rem;
+  padding: 1em;
+  margin-top: 2.5arem;
   backdrop-filter: blur(12px);
 }
 .hero-card h2 {
@@ -478,7 +488,7 @@ header {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  color: var(--indigo);
+  color: #a944e4;
 }
 .hero-facts span:last-child {
   color: var(--ink2);
@@ -502,6 +512,7 @@ header {
 }
 .card {
   background: #fff;
+  text-decoration: none;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1.5rem;
@@ -528,10 +539,11 @@ header {
 }
 .card h3 {
   margin-bottom: 0.5rem;
+  text-decoration: none !important;
 }
 .card p {
   font-size: 0.92rem;
-  color: var(--muted);
+  color: #000;
 }
 .prose p {
   margin-bottom: 1.1rem;
@@ -592,7 +604,7 @@ header {
   padding: 0 1.3rem;
 }
 .mod[open] {
-  border-color: var(--indigo);
+  border-color: #a944e4;
 }
 .mod summary {
   cursor: pointer;
@@ -610,7 +622,7 @@ header {
 .mod summary::after {
   content: "+";
   margin-left: auto;
-  color: var(--indigo);
+  color: #a944e4;
   font-size: 1.4rem;
   transition: transform 0.2s;
 }
@@ -618,8 +630,8 @@ header {
   transform: rotate(45deg);
 }
 .mod .wk {
-  background: var(--chip);
-  color: var(--indigo-deep);
+  background: #a359c82f;
+  color: #000;
   font-size: 0.72rem;
   font-weight: 800;
   padding: 0.25rem 0.6rem;
@@ -628,7 +640,7 @@ header {
 }
 .mod ul {
   margin: 0 0 1.1rem 1.4rem;
-  color: var(--slate);
+  color: rgb(98, 7, 151);
   font-size: 0.93rem;
 }
 .mod li {
@@ -817,8 +829,8 @@ table.tbl {
   border-bottom: 1px solid var(--line2);
 }
 .tbl th {
-  background: var(--chip);
-  color: var(--indigo-deep);
+  background: #a359c82f;
+  color: #000;
   font-weight: 800;
 }
 .tbl tr:last-child td {
@@ -832,7 +844,7 @@ table.tbl {
   gap: 0.55rem;
 }
 .tag {
-  background: #fff;
+  background: #a359c82f;
   border: 1px solid var(--line);
   color: var(--ink2);
   padding: 0.45rem 0.9rem;
@@ -851,7 +863,7 @@ table.tbl {
   font-size: 0.9rem;
 }
 .placeholder strong {
-  color: var(--indigo-deep);
+  color: rgb(98, 7, 151) ;
 }
 
 /* ── FAQ ── */
@@ -887,7 +899,7 @@ table.tbl {
 }
 .faq-item summary::after {
   content: "+";
-  color: var(--indigo);
+  color: #a944e4;
   font-size: 1.4rem;
   transition: transform 0.2s;
 }
@@ -1089,17 +1101,17 @@ a.prog-card {
   color: var(--indigo-deep);
 }
 .pt-slate {
-  color: var(--indigo-deep);
-  background: var(--chip);
+  color: #000;
+  background: #a944e43a;
 }
 .pt-warm {
-  color: #7c5c30;
-  background: #fdf4e7;
+  color: #000;
+  background: #a944e45f;
 }
 .prog-card h3 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--ink);
+  color: #620797 !important;
   margin-bottom: 0.4rem;
 }
 .prog-card p {
@@ -1160,7 +1172,7 @@ a.prog-card {
 }
 .sap-highlight {
   grid-column: 1 / -1;
-  background: linear-gradient(135deg, #4f46e5, #3730a3);
+  background: linear-gradient(135deg, #a944e4, #5ca6ef89);
   border-color: #4f46e5;
   color: #fff;
 }
@@ -1196,26 +1208,6 @@ a.prog-card {
 }
 @media (max-width: 560px) {
   .prog-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Category hub grid (SAP/Technology = 4-up, Combo = 2-up on desktop) —
-   was previously an inline style that ignored these breakpoints entirely. */
-.prog-grid-cat {
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-.prog-grid-cat-combo {
-  grid-template-columns: repeat(2, 1fr);
-}
-@media (max-width: 1000px) {
-  .prog-grid-cat {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 560px) {
-  .prog-grid-cat,
-  .prog-grid-cat-combo {
     grid-template-columns: 1fr;
   }
 }
@@ -1288,7 +1280,7 @@ a.prog-card {
     bottom: 92px;
   }
   .to-top {
-    bottom: 160px;
+    bottom: 92px;
   }
 }
 @media (max-width: 560px) {
@@ -1324,7 +1316,7 @@ a.prog-card {
 
 /* ── CATEGORY HUB MODAL ── */
 .category-banner {
-  background-color: var(--indigo);
+  background:linear-gradient(135deg, rgba(151, 15, 218, 0.804), rgba(134, 17, 202, 0.275), rgba(151, 15, 218, 0.804)) !important;;
   color: white;
   padding: 4rem 4rem 3rem 4rem;
   position: relative;
@@ -1375,7 +1367,8 @@ a.prog-card {
   max-width: 800px;
   opacity: 0.9;
   line-height: 1.6;
-  color: white;
+  color: black;
+  font-weight: 500;
 }
 
 .category-featured-card {
@@ -1431,9 +1424,9 @@ a.prog-card {
   justify-content: center;
 }
 .cfc-pill {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--indigo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color:#a944e4;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
@@ -1458,7 +1451,7 @@ a.prog-card {
   border: 1px solid var(--line);
   border-radius: 6px;
   font-weight: 600;
-  color: var(--indigo);
+  color: #a944e4;
   text-decoration: none;
   width: max-content;
   transition: background 0.2s;
@@ -1499,10 +1492,10 @@ a.prog-card {
 .prog-card-link {
   display: block;
   margin-top: 1.5rem;
-  font-weight: 700;
-  color: var(--indigo);
+  font-weight: 600;
+  color: #a944e4;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
 }
@@ -1562,7 +1555,7 @@ textarea {
   min-height: 90px;
 }
 .f-btn {
-  background: var(--grad);
+  background: var(--slate);
   color: #fff;
   padding: 0.85rem;
   border: none;
@@ -1571,14 +1564,13 @@ textarea {
   font-size: 0.9rem;
   cursor: pointer;
   font-family: "Inter", sans-serif;
-  box-shadow: 0 12px 24px rgba(102, 50, 212, 0.25);
   transition:
-    box-shadow 0.2s,
+    background 0.2s,
     transform 0.15s;
 }
 .f-btn:hover {
+  background: var(--slate-dk);
   transform: translateY(-1px);
-  box-shadow: 0 16px 30px rgba(102, 50, 212, 0.32);
 }
 
 .lead-popup-overlay {
@@ -1633,7 +1625,7 @@ textarea {
   color: var(--ink2);
 }
 .lead-popup-eyebrow {
-  color: #6632d4;
+  color: #a944e4;
   font-weight: 800;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -1671,7 +1663,7 @@ textarea {
   accent-color: #6632d4;
 }
 .lead-popup-agree a {
-  color: var(--slate);
+  color:#a944e4;
   text-decoration: underline;
 }
 @media (max-width: 480px) {
@@ -1738,7 +1730,7 @@ textarea {
   flex-shrink: 0;
   border-radius: 10px;
   background: var(--chip);
-  color: var(--violet-deep-a);
+  color: #a944e4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1762,7 +1754,7 @@ textarea {
    ========================================================================== */
 .intern-panel {
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid #a944e4;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -1794,7 +1786,7 @@ textarea {
   height: 44px;
   flex-shrink: 0;
   border-radius: 12px;
-  background: var(--grad);
+  background: #a944e4;
   color: #fff;
   display: flex;
   align-items: center;
@@ -1926,26 +1918,6 @@ textarea {
   min-width: 150px;
   margin-left: auto;
 }
-@media (max-width: 640px) {
-  .intern-panel-head {
-    flex-wrap: wrap;
-  }
-  .intern-panel-head-left {
-    flex-basis: 100%;
-  }
-  .intern-row {
-    flex-wrap: wrap;
-  }
-  .intern-row-main {
-    flex-basis: calc(100% - 44px - 1.1rem);
-  }
-  .intern-row-status {
-    flex-basis: 100%;
-    text-align: left;
-    margin-left: calc(44px + 1.1rem);
-    margin-top: 0.5rem;
-  }
-}
 .status-pill {
   display: inline-block;
   font-size: 0.72rem;
@@ -2012,7 +1984,7 @@ textarea {
   flex-wrap: wrap;
 }
 .internships-callout {
-  background: var(--chip);
+  background: #f0eaf1;
   border: 1px solid #e0dcff;
   border-radius: var(--radius);
   padding: 1.4rem;
@@ -2028,7 +2000,7 @@ textarea {
   height: 34px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--grad);
+  background: #a944e4;
   color: #fff;
   display: flex;
   align-items: center;
@@ -2093,7 +2065,7 @@ textarea {
   border-color: var(--violet-deep-a);
 }
 .filter-chip.active {
-  background: var(--grad);
+  background: #a944e4;
   border-color: transparent;
   color: #fff;
 }
@@ -2146,7 +2118,7 @@ textarea {
   height: 36px;
   border-radius: 10px;
   background: var(--chip);
-  color: var(--violet-deep-a);
+  color:#a944e4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2198,7 +2170,7 @@ textarea {
   height: 32px;
   border-radius: 9px;
   background: var(--chip);
-  color: var(--violet-deep-a);
+  color: #a944e4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2247,8 +2219,8 @@ textarea {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--chip);
-  color: var(--violet-deep-a);
+  background: #f1f2ff93;
+  color: #a944e4;
   display: flex;
   align-items: center;
   justify-content: center;
