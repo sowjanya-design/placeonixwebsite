@@ -10,6 +10,7 @@ export type CurriculumModule = {
 };
 export type RelatedLink = { href: string; title: string; body: string };
 export type FaqItem = { q: string; a: string };
+export type IntroVideo = { src: string; poster?: string };
 
 export type CourseMeta = {
   title: string;
@@ -39,7 +40,7 @@ export type Course = {
   heroActions: HeroAction[];
   curriculumImage: string;
   curriculumImageAlt: string;
-  intro: { heading: string; paragraphs: string[] };
+  intro: { heading: string; paragraphs: string[]; video?: IntroVideo };
   demand: { heading: string; desc: string; cards: DemandCard[] };
   careers: {
     heading: string;

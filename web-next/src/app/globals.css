@@ -560,6 +560,25 @@ header {
 .prose li {
   margin-bottom: 0.5rem;
 }
+/* ── Course intro video (16:9, scales with column width — no media
+   query needed since aspect-ratio does the responsive work) ── */
+.intro-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  background: #0b1020;
+  margin-bottom: 1.8rem;
+}
+.intro-video-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 .legal-doc-meta {
   color: var(--muted);
   font-size: 0.9rem;

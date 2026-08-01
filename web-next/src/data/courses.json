@@ -70,7 +70,11 @@
       "paragraphs": [
         "SAP ABAP remains the backbone of custom development across the SAP ecosystem, and its role has evolved significantly with S/4HANA. Modern ABAP development now centers on Core Data Services (CDS), AMDP and the RESTful ABAP Programming Model (RAP) — a shift driven by SAP's clean-core strategy and the need for HANA-optimised, cloud-ready custom code.",
         "This course takes you from core ABAP syntax to building modern, HANA-optimised applications. You will work with internal tables and modularization, write object-oriented ABAP, model data with CDS views and annotations, build AMDP procedures, and get a solid introduction to RAP. Every concept is reinforced with lab work on Eclipse ADT so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-abap.mp4",
+        "poster": "/assets/video/courses/sap-abap-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP ABAP skills are in demand",
@@ -419,7 +423,11 @@
       "paragraphs": [
         "SAP BASIS is the technical backbone that keeps every SAP landscape — ECC, S/4HANA, BW, CRM and more — installed, connected, secure and performing well. Every organisation running SAP needs administrators who can manage transports, users, authorizations and system health, which makes BASIS one of the most stable and consistently in-demand SAP career paths.",
         "This course takes you from landscape fundamentals to real administration tasks. You will install and configure system clients, set up the Transport Management System, create users and authorization roles, monitor system performance, schedule and troubleshoot background jobs, and get hands-on with HANA administration basics. Every concept is reinforced with lab work on a live SAP system so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-basis.mp4",
+        "poster": "/assets/video/courses/sap-basis-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP BASIS skills are in demand",
@@ -779,7 +787,11 @@
       "paragraphs": [
         "SAP Business Technology Platform is the foundation of SAP's modern cloud strategy. As enterprises adopt S/4HANA and the \"clean core\" approach, custom logic and integrations move out of the core system and onto BTP. That shift has made BTP one of the most valuable skill areas in the SAP ecosystem.",
         "This course takes you from platform fundamentals to building and deploying real applications. You will provision services in the BTP cockpit, model and query data in HANA Cloud, build services with the Cloud Application Programming (CAP) model, design Fiori user interfaces, and connect systems using the Integration Suite. Every concept is reinforced with lab work so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-btp.mp4",
+        "poster": "/assets/video/courses/sap-btp-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP BTP skills are in demand",
@@ -1132,7 +1144,11 @@
       "paragraphs": [
         "The Cloud Application Programming Model (CAPM/CAP) is SAP's recommended framework for building enterprise-grade services on BTP. It combines Core Data Services (CDS) for declarative domain modeling with the flexibility of Node.js or Java, giving developers a modern, cloud-native way to extend SAP systems without touching the core.",
         "This course takes you from CDS fundamentals to deploying full applications. You will model entities and services in CDS, implement business logic in Node.js, expose OData services, persist data in HANA Cloud, secure services with authorization annotations, and package and deploy applications using MTA to Cloud Foundry — all through guided, hands-on labs in Business Application Studio."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-capm.mp4",
+        "poster": "/assets/video/courses/sap-capm-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP CAPM skills are in demand",
@@ -1478,7 +1494,11 @@
       "paragraphs": [
         "SAP Cloud Platform Integration (CPI), delivered today through the BTP Integration Suite, is SAP's strategic cloud integration tool. As organisations retire on-premise SAP PI/PO landscapes and connect an expanding mix of SAP and non-SAP applications, CPI has become the standard for building reliable, monitored integration flows.",
         "This course takes you from integration fundamentals to building production-style iFlows. You will configure adapters, design message mappings, write Groovy and JavaScript scripts for custom logic, secure integrations with security artifacts, expose APIs through API Management, and monitor and troubleshoot flows in a real tenant — building practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-cpi.mp4",
+        "poster": "/assets/video/courses/sap-cpi-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP CPI skills are in demand",
@@ -1826,7 +1846,11 @@
       "paragraphs": [
         "SAP FICO is one of the most widely implemented modules in the SAP ecosystem, forming the financial backbone of every SAP-run enterprise. As organisations migrate to S/4HANA Finance and Central Finance, the need for consultants who understand both accounting processes and SAP configuration has never been higher.",
         "This course takes you from core accounting concepts to full module configuration. You will configure General Ledger and New GL, set up Accounts Payable and Accounts Receivable, manage Asset Accounting and Bank Accounting, and work through Controlling processes including cost center accounting, internal orders, profit center accounting, product costing and profitability analysis. Every concept is reinforced with lab work on a live system so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-fico.mp4",
+        "poster": "/assets/video/courses/sap-fico-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP FICO skills are in demand",
@@ -2180,7 +2204,11 @@
       "paragraphs": [
         "SAP Materials Management is the backbone of every SAP logistics landscape, governing how organisations procure, receive, store and pay for the materials and services they need. As supply chains digitize and enterprises roll out S/4HANA, MM remains one of the most consistently hired functional modules in the SAP ecosystem.",
         "This course takes you from procurement fundamentals to configuring and running full materials management processes. You will set up organizational structures, process purchase requisitions and orders, manage inventory movements, run MRP, configure pricing procedures and perform invoice verification. Every concept is reinforced with lab work on a real SAP system so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-mm.mp4",
+        "poster": "/assets/video/courses/sap-mm-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP MM skills are in demand",
@@ -2538,7 +2566,11 @@
       "paragraphs": [
         "The ABAP RESTful Application Programming Model (RAP) is SAP's strategic model for building modern OData v4 services and Fiori applications directly on the ABAP stack. As S/4HANA replaces classic ABAP development patterns, RAP has become the standard skill for on-stack and embedded extensibility.",
         "This course takes you from CDS view modeling to full behavior-driven application development. You will define service bindings, build managed and unmanaged RAP Business Objects, implement validations, determinations and actions, handle drafts for transactional apps, and connect your services to Fiori Elements UIs — through guided, hands-on labs on a live S/4HANA system."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-rap.mp4",
+        "poster": "/assets/video/courses/sap-rap-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP RAP skills are in demand",
@@ -2884,7 +2916,11 @@
       "paragraphs": [
         "SAP SD (Sales and Distribution) is the module that runs the order-to-cash process for organizations that sell products or services — from the moment a customer places an order through pricing, delivery, billing and cash collection. It is one of the most widely implemented SAP modules because every company with a sales function needs it.",
         "This course takes you from organizational structure and master data to configuring the complete sales cycle. You will process sales orders, build pricing procedures using the condition technique, run availability checks, manage deliveries and billing, configure credit management, and understand how SD changes in S/4HANA with Fiori apps and Advanced ATP. Every concept is reinforced with lab work so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-sd.mp4",
+        "poster": "/assets/video/courses/sap-sd-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP SD skills are in demand",
@@ -3243,7 +3279,11 @@
       "paragraphs": [
         "SAPUI5 and Fiori together form SAP's standard front-end technology and design language, used across S/4HANA, BTP and cloud applications. Every modern SAP application a business user touches is built on this stack, making UI5/Fiori one of the most consistently in-demand SAP skill sets.",
         "This course takes you from MVC fundamentals to building and deploying production-style apps. You will build XML views and controllers, bind data using OData v2/v4, use Fiori Elements to generate standard floorplans from annotations, build custom freestyle apps where Fiori Elements does not fit, and configure and deploy apps to the Fiori Launchpad — all reinforced with hands-on labs."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-ui5-fiori.mp4",
+        "poster": "/assets/video/courses/sap-ui5-fiori-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP UI5 / Fiori skills are in demand",
@@ -3589,7 +3629,11 @@
       "paragraphs": [
         "Cloud platforms and DevOps practices now sit at the core of how modern software is built, deployed and operated. Nearly every organisation running production workloads relies on AWS or Azure, and teams that can containerize, automate and monitor deployments are the ones shipping reliably at scale.",
         "This course takes you from cloud and networking fundamentals to building production-style deployment pipelines. You will provision infrastructure on AWS and Azure, containerize applications with Docker, orchestrate them with Kubernetes, automate builds and releases with Jenkins/GitHub Actions, and provision infrastructure as code using Terraform. Every concept is reinforced with lab work so you leave with practical, demonstrable experience."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/cloud-computing.mp4",
+        "poster": "/assets/video/courses/cloud-computing-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Cloud & DevOps skills are in demand",
@@ -3945,7 +3989,11 @@
       "paragraphs": [
         "Cyberattacks are growing in frequency and sophistication, and every organisation — from startups to large enterprises — now needs people who can find and fix security weaknesses before attackers do. Cyber security has become one of the most resilient, high-demand career paths in IT.",
         "This course takes you from networking and security fundamentals to practical, hands-on offensive and defensive skills. You will perform reconnaissance and scanning, assess web applications against the OWASP Top 10, use industry-standard tools like Nmap, Burp Suite, Wireshark and Metasploit, and learn the basics of security operations (SOC). All exploitation and hacking practice happens in an isolated, controlled lab environment, so you build real skills safely and ethically."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/cyber-security.mp4",
+        "poster": "/assets/video/courses/cyber-security-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Cyber Security skills are in demand",
@@ -4296,7 +4344,11 @@
       "paragraphs": [
         "Data Science combines programming, statistics and machine learning to turn raw data into decisions. As every industry — finance, healthcare, retail, SAP and IT services alike — invests in analytics and AI, the ability to clean, analyse and model data has become one of the most transferable and in-demand skillsets in tech.",
         "This course takes you from Python fundamentals to building real machine learning models. You will wrangle data with pandas and numpy, visualize insights with matplotlib, seaborn and Power BI, query data with SQL, and train and evaluate regression, classification and clustering models with scikit-learn. Every concept is reinforced with lab work on real datasets so you leave with a portfolio of demonstrable projects."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/data-science.mp4",
+        "poster": "/assets/video/courses/data-science-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Data Science skills are in demand",
@@ -4636,7 +4688,11 @@
       "paragraphs": [
         "Full stack developers who can work confidently across the front end, back end and database layer are consistently among the most sought-after hires in software teams of every size, from early-stage startups to large enterprises.",
         "This course takes you from web fundamentals to building and deploying complete applications. You will master HTML/CSS/JavaScript and responsive design, build modern interfaces with React, create REST APIs with Node.js and Express, work with MongoDB and SQL databases, add authentication, and deploy your applications live — using Git/GitHub as your daily workflow throughout. Every concept is reinforced with coding practice so you leave with a deployed, portfolio-ready capstone project."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/full-stack.mp4",
+        "poster": "/assets/video/courses/full-stack-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Full Stack skills are in demand",
@@ -4988,7 +5044,11 @@
       "paragraphs": [
         "Generative AI, powered by large language models, has moved from research labs into everyday products — copilots, chatbots, document assistants and autonomous agents. Organisations across every sector are hiring for the ability to design prompts, build retrieval-augmented systems and ship LLM-powered applications, making GenAI one of the fastest-growing skill areas in tech.",
         "This course takes you from transformer and LLM fundamentals to building real applications. You will practice prompt engineering techniques, build Retrieval-Augmented Generation (RAG) systems with vector databases, explore fine-tuning basics, build apps using LangChain-style frameworks, and design AI agents that use tools. Every concept is reinforced with lab work using real OpenAI and Anthropic APIs so you leave with working, demonstrable projects."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/generative-ai.mp4",
+        "poster": "/assets/video/courses/generative-ai-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Generative AI skills are in demand",
@@ -5324,7 +5384,11 @@
       "paragraphs": [
         "Java remains one of the most widely used languages for enterprise backend systems, and Spring Boot is the de facto standard for building production APIs on top of it. This course builds a strong foundation in Core Java — syntax, object-oriented programming, collections and Java 8 features — before moving into database work with SQL, and then into Spring Boot, Spring Data JPA, validation, security basics and API testing.",
         "Every concept is reinforced with hands-on exercises. You finish by building a backend API mini-project with database integration and an authentication flow, and get an overview of microservices architecture and cloud deployment so you understand how real engineering teams ship backend services."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/java-backend.mp4",
+        "poster": "/assets/video/courses/java-backend-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Java backend skills are in demand",
@@ -5639,7 +5703,11 @@
       "paragraphs": [
         "Every digital product needs someone who can turn user needs into usable, well-crafted interfaces. This course starts with the design thinking process and user research methods — interviews, personas and empathy maps — before moving into information architecture, wireframing and Figma.",
         "From there you build visual design skills (typography, colour theory, spacing and hierarchy), learn to build and use design systems, and create interactive prototypes. The course closes with usability testing, a mobile app project, a website project, and a portfolio case study you can present to employers."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/ui-ux-design.mp4",
+        "poster": "/assets/video/courses/ui-ux-design-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why UI/UX skills are in demand",
@@ -5944,7 +6012,11 @@
       "paragraphs": [
         "Analytics and AI roles increasingly overlap — data scientists are expected to understand generative AI, and AI practitioners need strong data fundamentals. This combo starts with Python, statistics, exploratory data analysis and SQL, moves through classical machine learning (regression, classification), then introduces generative AI concepts — LLMs, prompt engineering and responsible AI — plus practical use cases like chatbots and document analysis.",
         "Three mini-projects and a full capstone (data pipeline, model/prototype, AI integration, dashboard/report) give you portfolio-ready, demonstrable work across both disciplines."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/ai-data-science.mp4",
+        "poster": "/assets/video/courses/ai-data-science-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why AI + Data Science skills are in demand",
@@ -6252,7 +6324,11 @@
       "paragraphs": [
         "Application developers who can also deploy and operate their own systems are in high demand. This combo starts with frontend fundamentals (HTML/CSS/JS, React) and backend development (Node.js/Express, REST APIs, databases), then moves into Docker, CI/CD pipelines, AWS/Azure fundamentals, cloud deployment and Kubernetes basics.",
         "You build multiple mini-projects and a full capstone that spans frontend, backend, database integration, containerization and cloud deployment — the same skill combination used by full stack engineers on modern product teams."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/cloud-dev-bundle.mp4",
+        "poster": "/assets/video/courses/cloud-dev-bundle-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why Cloud Dev skills are in demand",
@@ -6550,7 +6626,11 @@
       "paragraphs": [
         "Most SAP developers specialise in one layer of the stack. This program is built to take you across all of them: SAP BTP and HANA Cloud as the foundation, the Cloud Application Programming (CAP) model for backend services, SAP UI5/Fiori for the front end, and SAP CPI for connecting SAP and non-SAP systems — plus the security (XSUAA) and deployment practices that tie it all together.",
         "You build three mini-projects across the CAP backend, the UI5/Fiori front end and a CPI integration flow, then combine everything into a full capstone application — designed, built, secured, integrated and deployed end to end, giving you the strongest possible portfolio for SAP full stack developer roles."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-full-stack-program.mp4",
+        "poster": "/assets/video/courses/sap-full-stack-program-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why full-stack SAP developers are in demand",
@@ -6859,7 +6939,11 @@
       "paragraphs": [
         "Real SAP business processes rarely stay inside one module — procurement (MM) and sales (SD) both post accounting entries into finance (FICO). This combo builds each module individually and then connects them: FI/CO foundations, GL/AP/AR/asset processes, the full procurement cycle in MM, the full order-to-cash cycle in SD, and the integration points between all three.",
         "Beyond configuration knowledge, you practise the analyst side of the role — requirement gathering, writing functional specifications, test scenarios, UAT support and production ticket handling — through case studies that mirror real client engagements."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-functional-analyst.mp4",
+        "poster": "/assets/video/courses/sap-functional-analyst-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP Functional Analyst skills are in demand",
@@ -7157,7 +7241,11 @@
       "paragraphs": [
         "SAP CPI (Cloud Integration) runs on the SAP BTP Integration Suite, so treating them as one connected skill set — rather than two separate topics — reflects how integration consultants actually work. This combo takes you from enterprise integration concepts through IFlow development, adapters, message mapping and Groovy scripting, then into BTP's subaccounts, destinations, connectivity and security model.",
         "You finish with two enterprise-style integration projects, exposure to production support scenarios, and interview preparation focused on SAP integration consultant roles."
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/courses/sap-integration-expert.mp4",
+        "poster": "/assets/video/courses/sap-integration-expert-poster.jpg"
+      }
     },
     "demand": {
       "heading": "Why SAP integration skills are in demand",

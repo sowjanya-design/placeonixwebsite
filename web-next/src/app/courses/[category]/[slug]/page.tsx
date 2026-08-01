@@ -7,6 +7,7 @@ import {
   getCourse,
   getCoursesByCategory,
   categoryLabels,
+  publicFileExists,
 } from "@/lib/courses";
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
@@ -327,6 +328,19 @@ export default async function CoursePage({ params }: Props) {
                 <span className="eyebrow">Introduction</span>
                 <h2>{course.intro.heading}</h2>
               </div>
+              {course.intro.video &&
+                publicFileExists(course.intro.video.src) && (
+                  <div className="intro-video-frame">
+                    <video
+                      controls
+                      playsInline
+                      preload="none"
+                      poster={course.intro.video.poster}
+                    >
+                      <source src={course.intro.video.src} type="video/mp4" />
+                    </video>
+                  </div>
+                )}
               {course.intro.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
