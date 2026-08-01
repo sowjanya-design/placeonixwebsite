@@ -94,7 +94,7 @@ export default function MegaNav() {
             <Link href="/#contact">Contact</Link>
           </li>
           <li>
-            <Link href="/#contact" className="nav-cta">
+            <Link href="/?intent=demo#contact" className="nav-cta">
               Book a Demo Class
             </Link>
           </li>

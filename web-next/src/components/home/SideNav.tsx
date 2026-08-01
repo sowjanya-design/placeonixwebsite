@@ -263,7 +263,7 @@ export default function SideNav() {
           </div>
         </div>
         <a
-          href="#contact"
+          href="?intent=demo#contact"
           className="side-nav-cta"
           onClick={() => setOpen(false)}
         >

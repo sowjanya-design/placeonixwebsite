@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
     graduationYear,
     location,
     website,
+    intent,
   } = body;
 
   if (website) {
@@ -74,7 +75,7 @@ export async function POST(req: NextRequest) {
       to:
         process.env.ADMIN_EMAILS ||
         "enquiry@placeonix.com, support@placeonix.com",
-      subject: `New Application - ${program}`,
+      subject: intent === "demo" ? "Interested for Demo" : "Interested for Course",
       html: adminHtml,
     });
 

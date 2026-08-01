@@ -37,6 +37,8 @@ export default function ApplicationForm() {
     const formData = Object.fromEntries(
       new FormData(formRef.current).entries(),
     );
+    const intent = new URLSearchParams(window.location.search).get("intent");
+    if (intent) formData.intent = intent;
     try {
       const res = await fetch("/api/applications", {
         method: "POST",
