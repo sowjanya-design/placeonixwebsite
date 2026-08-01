@@ -93,63 +93,13 @@ export default async function CategoryHubPage({ params }: Props) {
           <p>{c.description}</p>
         </section>
 
-        <section className="category-featured-card">
-          <div className="cfc-video">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={
-                cat === "sap"
-                  ? "/assets/img/sap-thematic.png"
-                  : "/assets/img/tech-thematic.png"
-              }
-              alt="Video Thumbnail"
-            />
-            <div className="cfc-play">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-          <div className="cfc-content">
-            <div className="cfc-pill">FREE INTRO VIDEO</div>
-            <h2>
-              {cat === "sap"
-                ? "Which SAP course is right for you?"
-                : "Which Technology path is right for you?"}
-            </h2>
-            <p className="cfc-desc">
-              {cat === "sap"
-                ? "3-minute guide to all 10 SAP domains — before you enroll."
-                : "3-minute guide to all 6 Tech paths — before you enroll."}
-            </p>
-            <Link href="#watch" className="cfc-btn">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Watch free
-            </Link>
-          </div>
-          <div className="cfc-image">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={
-                cat === "sap"
-                  ? "/assets/img/sap-thematic.png"
-                  : "/assets/img/tech-thematic.png"
-              }
-              alt="Thematic Graphic"
-            />
-          </div>
-        </section>
-
         <section
           className="section"
-          style={{ paddingTop: 0, paddingLeft: "2rem", paddingRight: "2rem" }}
+          style={{
+            paddingTop: "2.5rem",
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
+          }}
         >
           <div
             className="inner"
