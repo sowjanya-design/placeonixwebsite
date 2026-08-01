@@ -15,9 +15,9 @@ export default function SideNav() {
           src="/assets/img/logo-transparent.png"
           className="nav-logo"
           alt="Placeonix — IT Training & Placement Institute"
-          width={160}
-          height={54}
-          style={{ width: "auto", height: "54px" }}
+          width={220}
+          height={74}
+          style={{ width: "auto", height: "100px" }}
           priority
         />
         <div className="nav-right">

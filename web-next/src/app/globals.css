@@ -224,8 +224,8 @@ header {
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
 }
 .site-nav .nav-logo {
-  height: 46px;
-  width: auto;
+  height: 120px !important;
+  width: auto !important;
   object-fit: contain;
 }
 .nav-menu {
@@ -343,12 +343,12 @@ header {
 
 /* ── In-page mini-nav (anchor chips) ── */
 /* top offset matches the real header height (.site-nav padding + the
-   90px .nav-logo — see MegaNav.tsx) so this doesn't stick underneath
+   120px .nav-logo — see MegaNav.tsx) so this doesn't stick underneath
    the sticky header; header height is constant across breakpoints
    since neither the logo size nor nav padding change on mobile. */
 .mini-nav {
   position: sticky;
-  top: 120px;
+  top: 149px;
   z-index: 90;
   display: flex;
   gap: 0.6rem;
@@ -1253,6 +1253,9 @@ a.prog-card {
   }
 }
 @media (max-width: 768px) {
+  .site-nav .nav-logo {
+    height: 46px !important;
+  }
   .nav-toggle {
     display: block;
   }
