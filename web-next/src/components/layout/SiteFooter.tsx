@@ -61,9 +61,6 @@ export default function SiteFooter() {
                   SAP Functional Analyst
                 </Link>
               </li>
-              <li>
-                <Link href="/courses/sap-btp-vs-sap-abap">SAP BTP vs ABAP</Link>
-              </li>
             </ul>
           </div>
           <div>

@@ -2560,7 +2560,7 @@ form,
   display: inline-block;
 }
 .clean-hero h1 {
-  font-size: 60px;
+  font-size: clamp(2.15rem, 6vw, 3.75rem);
   line-height: 1.12;
   font-weight: 900;
   letter-spacing: -0.027em;

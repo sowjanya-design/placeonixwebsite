@@ -216,6 +216,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2.75rem;
   padding: 0.9rem 6%;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
@@ -230,7 +231,7 @@ header {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 2rem;
   list-style: none;
 }
 .nav-menu > li {
@@ -341,9 +342,13 @@ header {
 }
 
 /* ── In-page mini-nav (anchor chips) ── */
+/* top offset matches the real header height (.site-nav padding + the
+   90px .nav-logo — see MegaNav.tsx) so this doesn't stick underneath
+   the sticky header; header height is constant across breakpoints
+   since neither the logo size nor nav padding change on mobile. */
 .mini-nav {
   position: sticky;
-  top: 76px;
+  top: 120px;
   z-index: 90;
   display: flex;
   gap: 0.6rem;
@@ -381,7 +386,6 @@ header {
 }
 @media (max-width: 768px) {
   .mini-nav {
-    top: 62px;
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -395,7 +399,7 @@ header {
 @media (min-width: 901px) {
   .hero-card {
     position: sticky;
-    top: 92px;
+    top: 136px;
     align-self: start;
   }
 }
@@ -453,7 +457,7 @@ header {
   border-radius: 18px;
   box-shadow: var(--shadow-md);
   padding: 1em;
-  margin-top: 2.5arem;
+  margin-top: 2.5rem;
   backdrop-filter: blur(12px);
 }
 .hero-card h2 {
@@ -1474,6 +1478,12 @@ a.prog-card {
 }
 
 @media (max-width: 900px) {
+  .category-banner {
+    padding: 2.6rem 1.5rem 2rem;
+  }
+  .category-banner h1 {
+    font-size: 1.9rem;
+  }
   .category-featured-card {
     flex-direction: column;
     margin: 2rem 1.5rem;
@@ -1966,6 +1976,12 @@ textarea {
   }
   .intern-row-status {
     margin-left: auto;
+  }
+  /* Same squeeze as .intern-row above: badge + name + status pill don't
+     fit on one line at phone widths, so wrap the status onto its own
+     row instead of crushing the name/tags column down to a sliver. */
+  .intern-row-full-head {
+    flex-wrap: wrap;
   }
 }
 
