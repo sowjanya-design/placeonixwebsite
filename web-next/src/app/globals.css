@@ -99,7 +99,7 @@ h3 {
   color:rgb(98, 7, 151)
 }
 p {
-  color: rgb(107, 11, 163);
+  color: var(--slate);
 }
 
 .inner {
@@ -139,7 +139,7 @@ p {
   background: #a944e4;
 }
 .sec-desc {
-  color: rgb(107, 11, 163);
+  color: var(--muted);
   font-size: 1rem;
   padding: 1rem;
   max-width: 620px;
@@ -427,7 +427,7 @@ header {
 }
 .course-hero p.lead {
   font-size: 1.08rem;
-  color: #6b0ba3;
+  color: var(--slate);
   max-width: 560px;
   margin-bottom: 1.8rem;
 }
@@ -1587,7 +1587,7 @@ textarea {
   min-height: 90px;
 }
 .f-btn {
-  background: var(--slate);
+  background: #a944e4;
   color: #fff;
   padding: 0.85rem;
   border: none;
@@ -1601,7 +1601,7 @@ textarea {
     transform 0.15s;
 }
 .f-btn:hover {
-  background: var(--slate-dk);
+  background: #8f2fc4;
   transform: translateY(-1px);
 }
 

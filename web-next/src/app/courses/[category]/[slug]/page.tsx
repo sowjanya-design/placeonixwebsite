@@ -323,7 +323,7 @@ export default async function CoursePage({ params }: Props) {
 
         {course.intro.paragraphs.length > 0 && (
           <section className="section">
-            <div className="inner prose" style={{ maxWidth: 820 }}>
+            <div className="inner prose">
               <div className="sec-hdr">
                 <span className="eyebrow">Introduction</span>
                 <h2>{course.intro.heading}</h2>
@@ -480,23 +480,6 @@ export default async function CoursePage({ params }: Props) {
             </div>
           </section>
         )}
-
-        <section className="section bg-soft">
-          <div className="inner">
-            <div className="sec-hdr">
-              <span className="eyebrow">Student Reviews</span>
-              <h2>What our {course.h1} learners say</h2>
-            </div>
-            <div className="placeholder">
-              <strong>Reviews section ready for your real data.</strong> Add
-              genuine, consented student reviews here (name, role, company,
-              quote). Once real reviews exist we will add <code>Review</code>{" "}
-              and <code>AggregateRating</code> schema — we deliberately avoid
-              publishing invented reviews or ratings, which violate
-              Google&apos;s guidelines and can trigger a penalty.
-            </div>
-          </div>
-        </section>
 
         {siblings.length > 0 && (
           <section className="section">

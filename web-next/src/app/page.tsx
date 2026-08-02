@@ -41,7 +41,6 @@ const partnerLogos = [
 export default function HomePage() {
   const {
     hero,
-    features,
     visCards,
     processSteps,
     internship,
@@ -108,14 +107,37 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="feat-bg" id="features">
+        <section className="vis-bg" id="features">
           <div className="inner">
-            <div className="feat-grid reveal">
-              {features.map((f) => (
-                <div className="feat-item" key={f.title}>
-                  <div className="feat-ico">{f.icon}</div>
-                  <h3>{f.title}</h3>
-                  <p>{f.body}</p>
+            <div className="journey-header reveal">
+              <span className="journey-tag">Why Choose Placeonix</span>
+              <h2>Your Journey Starts Here</h2>
+              <p>
+                B.Tech / B.E. / BCA / MCA passout? We bridge the gap between
+                your degree and your first IT job.
+              </p>
+            </div>
+            <div className="vis-grid reveal">
+              {visCards.map((c, i) => (
+                <div className="vis-card" key={c.title}>
+                  <div className="journey-img-wrap">
+                    <img
+                      src={
+                        i === 0
+                          ? "/assets/img/journey-1.jpg"
+                          : i === 1
+                            ? "/assets/img/journey-2.png"
+                            : "/assets/img/journey-3.jpg"
+                      }
+                      alt={c.title}
+                      className="journey-img"
+                    />
+                  </div>
+                  <div className="vis-content">
+                    <div className="vis-pill">{c.pill}</div>
+                    <h3>{c.title}</h3>
+                    <p>{c.body}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -197,43 +219,6 @@ export default function HomePage() {
                   <div className="proc-n">{s.n}</div>
                   <h4>{s.title}</h4>
                   <p>{s.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="vis-bg">
-          <div className="inner">
-            <div className="journey-header reveal">
-              <span className="journey-tag">Why Choose Placeonix</span>
-              <h2>Your Journey Starts Here</h2>
-              <p>
-                B.Tech / B.E. / BCA / MCA passout? We bridge the gap between
-                your degree and your first IT job.
-              </p>
-            </div>
-            <div className="vis-grid reveal">
-              {visCards.map((c, i) => (
-                <div className="vis-card" key={c.title}>
-                  <div className="journey-img-wrap">
-                    <img
-                      src={
-                        i === 0
-                          ? "/assets/img/journey-1.jpg"
-                          : i === 1
-                            ? "/assets/img/journey-2.png"
-                            : "/assets/img/journey-3.jpg"
-                      }
-                      alt={c.title}
-                      className="journey-img"
-                    />
-                  </div>
-                  <div className="vis-content">
-                    <div className="vis-pill">{c.pill}</div>
-                    <h3>{c.title}</h3>
-                    <p>{c.body}</p>
-                  </div>
                 </div>
               ))}
             </div>
