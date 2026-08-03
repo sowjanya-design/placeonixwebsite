@@ -12,6 +12,7 @@ import {
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import CallFloat from "@/components/ui/CallFloat";
 import BackToTop from "@/components/ui/BackToTop";
 import MiniNav from "@/components/layout/MiniNav";
 import CurriculumAccordion from "@/components/ui/CurriculumAccordion";
@@ -563,6 +564,7 @@ export default async function CoursePage({ params }: Props) {
       <WhatsAppFloat
         message={`Hi Placeonix, I'm interested in the ${course.h1}.`}
       />
+      <CallFloat />
       <BackToTop />
       <div className="sticky-cta">
         <a href="tel:+919949494020" className="btn btn-outline">

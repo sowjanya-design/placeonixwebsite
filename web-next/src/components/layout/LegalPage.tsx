@@ -1,6 +1,7 @@
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import CallFloat from "@/components/ui/CallFloat";
 import BackToTop from "@/components/ui/BackToTop";
 import Link from "next/link";
 
@@ -54,6 +55,7 @@ export default function LegalPage({
       </main>
       <SiteFooter />
       <WhatsAppFloat message="Hi Placeonix, I have a question." />
+      <CallFloat />
       <BackToTop />
     </>
   );

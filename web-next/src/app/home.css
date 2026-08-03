@@ -1397,6 +1397,14 @@ a.prog-card {
   justify-content: flex-end;
   background: transparent;
 }
+/* Homepage's WhatsApp button sits inside .wa-container (right:89px, 56px
+   wide) instead of the plain .wa-float used elsewhere, so the shared
+   .call-float offset (tuned for that simpler right:18px case) needs a
+   homepage-specific override to actually land beside it, not on top of it. */
+#home-scope .call-float {
+  right: 157px;
+  bottom: 30px;
+}
 .wa-float {
   width: 56px;
   height: 56px;

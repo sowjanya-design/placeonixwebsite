@@ -1077,6 +1077,25 @@ table.tbl {
 .wa-float:hover {
   transform: scale(1.06);
 }
+.call-float {
+  position: fixed;
+  right: 84px;
+  bottom: 84px;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 26px rgba(102, 50, 212, 0.4);
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.call-float:hover {
+  transform: scale(1.06);
+}
 .to-top {
   position: fixed;
   right: 18px;
@@ -1338,8 +1357,12 @@ a.prog-card {
   .wa-float {
     bottom: 92px;
   }
-  .to-top {
+  .call-float {
     bottom: 92px;
+    right: 84px;
+  }
+  .to-top {
+    bottom: 160px;
   }
 }
 @media (max-width: 560px) {
