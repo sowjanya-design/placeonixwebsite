@@ -5,6 +5,7 @@ import { getCoursesByCategory, categoryLabels } from "@/lib/courses";
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import CallFloat from "@/components/ui/CallFloat";
 import BackToTop from "@/components/ui/BackToTop";
 import ProgramCard from "@/components/shared/ProgramCard";
 import type { Course } from "@/lib/types";
@@ -117,6 +118,7 @@ export default async function CategoryHubPage({ params }: Props) {
       </main>
       <SiteFooter />
       <WhatsAppFloat message={`Hi Placeonix, I'm interested in ${c.wa}.`} />
+      <CallFloat />
       <BackToTop />
     </>
   );

@@ -1397,9 +1397,17 @@ a.prog-card {
   justify-content: flex-end;
   background: transparent;
 }
+/* The actual on-screen position of the WhatsApp button is set by .wa-float's
+   own right:70px below (the flex container above is a zero-width wrapper and
+   doesn't affect layout). Call stacks directly above it in the same column,
+   with a thin gap, so WhatsApp's own spot never moves. */
+#home-scope .call-float {
+  right: 70px;
+  bottom: 95px;
+}
 .wa-float {
-  width: 56px;
-  height: 56px;
+  width: 55px;
+  height: 55px;
   right: 70px;
   bottom: 30px;
   border-radius: 50%;

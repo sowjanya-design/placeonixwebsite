@@ -9,6 +9,7 @@ import InternshipTracks from "@/components/home/InternshipTracks";
 import CertificateShowcase from "@/components/home/CertificateShowcase";
 import ApplicationForm from "@/components/home/ApplicationForm";
 import WaNudgeFloat from "@/components/home/WaNudgeFloat";
+import CallFloat from "@/components/ui/CallFloat";
 import BackToTop from "@/components/ui/BackToTop";
 import "./home.css";
 
@@ -346,6 +347,7 @@ export default function HomePage() {
 
         <SiteFooter />
         <WaNudgeFloat />
+        <CallFloat />
         <BackToTop />
       </div>
     </>

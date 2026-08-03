@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import CallFloat from "@/components/ui/CallFloat";
 import BackToTop from "@/components/ui/BackToTop";
 import CourseFaq from "@/components/shared/CourseFaq";
 import InternshipsBrowser from "@/components/internships/InternshipsBrowser";
@@ -214,6 +215,7 @@ export default function InternshipsPage() {
       </main>
       <SiteFooter />
       <WhatsAppFloat message="Hi Placeonix, I'd like to know more about internships." />
+      <CallFloat />
       <BackToTop />
     </>
   );
