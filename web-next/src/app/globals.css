@@ -1060,11 +1060,11 @@ table.tbl {
 /* ── Floating actions: WhatsApp + sticky CTA + back-to-top ── */
 .wa-float {
   position: fixed;
-  right: 18px;
+  right: 84px;
   bottom: 84px;
   z-index: 90;
-  width: 56px;
-  height: 56px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background: #25d366;
   display: flex;
@@ -1079,7 +1079,7 @@ table.tbl {
 }
 .call-float {
   position: fixed;
-  right: 84px;
+  right: 18px;
   bottom: 84px;
   z-index: 90;
   width: 56px;
@@ -1356,10 +1356,11 @@ a.prog-card {
   }
   .wa-float {
     bottom: 92px;
+    right: 84px;
   }
   .call-float {
     bottom: 92px;
-    right: 84px;
+    right: 18px;
   }
   .to-top {
     bottom: 160px;
