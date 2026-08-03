@@ -1,0 +1,234 @@
+{
+  "hero": {
+    "eyebrowTag": "Training | Placement | Future",
+    "h1": "Where Talent Meets <strong>Opportunity</strong>",
+    "subhead": "SAP Training in Hyderabad with 100% Placement Assistance — plus Data Science, Generative AI, Cloud & Full Stack courses.",
+    "body": "Placeonix is an industry-focused SAP & IT training and placement institute in Hyderabad. Industry-focused programs in SAP, Cloud, Data Science and Full Stack — built to grow in-demand skills and launch your IT career with real placement support.",
+    "stats": [
+      {
+        "icon": "👥",
+        "value": "Max 30",
+        "label": "Per Batch"
+      },
+      {
+        "icon": "🎓",
+        "value": "21",
+        "label": "Career-Focused Courses"
+      },
+      {
+        "icon": "💼",
+        "value": "3",
+        "label": "Batches Per Day"
+      },
+      {
+        "icon": "👥",
+        "value": "6",
+        "label": "Days Per Week"
+      },
+      {
+        "icon": "📈",
+        "value": "100%",
+        "label": "Placement Assistance"
+      }
+    ],
+    "assist": {
+      "title": "100% Placement Assistance",
+      "body": "Resume, mock interviews, job referrals and career guidance.",
+      "ctaText": "Apply Now",
+      "ctaHref": "#contact"
+    }
+  },
+  "features": [
+    {
+      "icon": "👥",
+      "title": "Max 30 Per Batch",
+      "body": "Small cohorts ensure individual attention, direct trainer feedback, and no one falls behind."
+    },
+    {
+      "icon": "💻",
+      "title": "Real-Time Projects",
+      "body": "Work on live industry projects and build a portfolio that genuinely impresses recruiters."
+    },
+    {
+      "icon": "🚀",
+      "title": "Internship Access",
+      "body": "Eligible students receive interview preparation, job referrals and continued placement guidance."
+    },
+    {
+      "icon": "🎯",
+      "title": "Placement Support",
+      "body": "Resume, mock interviews, LinkedIn, recruiter connects — we stay until you land the role."
+    }
+  ],
+  "visCards": [
+    {
+      "pill": "Expert Trainers",
+      "title": "Learn from Industry Professionals",
+      "body": "Trainers with 5–15 years of hands-on IT experience guide every student with practical learning."
+    },
+    {
+      "pill": "Portfolio Ready",
+      "title": "Build Projects That Get You Hired",
+      "body": "Graduate with 3–5 real projects that help you explain your skills clearly in interviews."
+    },
+    {
+      "pill": "50+ Companies",
+      "title": "Get Placed in Top IT Companies",
+      "body": "From startups to MNCs, our placement support helps you connect with the right opportunities."
+    }
+  ],
+  "processSteps": [
+    {
+      "n": "01",
+      "title": "Apply & Enroll",
+      "body": "Tell us your goals. We match you to the right programme and batch."
+    },
+    {
+      "n": "02",
+      "title": "Structured Training",
+      "body": "Instructor-led sessions, weekend workshops and recorded replays."
+    },
+    {
+      "n": "03",
+      "title": "Live Project Work",
+      "body": "Real deliverables and deadlines — skills that show up in interviews."
+    },
+    {
+      "n": "04",
+      "title": "Internship (Selected)",
+      "body": "Top students placed with partner companies during the programme."
+    },
+    {
+      "n": "05",
+      "title": "Placement & Beyond",
+      "body": "Interviews, referrals and follow-up until you receive your offer."
+    }
+  ],
+  "internship": {
+    "eyebrow": "Internship Programme",
+    "heading": "Experience Before You Graduate",
+    "desc": "Eligible students receive interview preparation, job referrals and continued placement guidance.",
+    "checklist": [
+      "Official internship letters and experience certificates",
+      "Work on live products used by real customers",
+      "Mentored by senior developers and team leads",
+      "Internships that can convert to full-time offers",
+      "Stipend-based roles at select partner companies",
+      "Flexible schedule aligned with training hours"
+    ],
+    "rows": [
+      {
+        "icon": "🌐",
+        "name": "Frontend Developer Intern",
+        "sub": "React · TypeScript · Tailwind",
+        "status": "Open",
+        "badgeClass": "i-badge ib-open"
+      },
+      {
+        "icon": "⚙️",
+        "name": "Backend Engineer Intern",
+        "sub": "Node.js · Express · PostgreSQL",
+        "status": "Open",
+        "badgeClass": "i-badge ib-open"
+      },
+      {
+        "icon": "📊",
+        "name": "Data Analyst Intern",
+        "sub": "Python · Pandas · Power BI",
+        "status": "Open",
+        "badgeClass": "i-badge ib-open"
+      },
+      {
+        "icon": "🏢",
+        "name": "SAP Functional Intern",
+        "sub": "SAP FICO · MM · SD",
+        "status": "Open",
+        "badgeClass": "i-badge ib-open"
+      },
+      {
+        "icon": "☁️",
+        "name": "Cloud Ops Intern",
+        "sub": "AWS · Docker · Linux",
+        "status": "Limited",
+        "badgeClass": "i-badge ib-ltd"
+      },
+      {
+        "icon": "🔐",
+        "name": "Security Testing Intern",
+        "sub": "OWASP · Burp Suite · Kali",
+        "status": "Limited",
+        "badgeClass": "i-badge ib-ltd"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "quote": "\"The small batch made all the difference. My trainer knew my weak areas personally and fixed them before interviews. Placed at an MNC within 2 weeks of finishing.\"",
+      "initials": "RK",
+      "avatarClass": "t-av",
+      "name": "Rahul K.",
+      "role": "Junior Dev @ TCS · Full Stack"
+    },
+    {
+      "quote": "\"Got an internship mid-programme that became a full-time role. The live project experience set my portfolio apart from every other fresher I competed against.\"",
+      "initials": "PS",
+      "avatarClass": "t-av ta2",
+      "name": "Priya S.",
+      "role": "Data Analyst @ Infosys · Data Science"
+    },
+    {
+      "quote": "\"The SAP FICO training was outstanding — real system access and live case studies. Cracked my first SAP consulting role within a month of completing the course.\"",
+      "initials": "VM",
+      "avatarClass": "t-av ta3",
+      "name": "Venkat M.",
+      "role": "SAP FICO Consultant @ Wipro · SAP"
+    }
+  ],
+  "trustStats": [
+    {
+      "num": "0+",
+      "label": "Learners"
+    },
+    {
+      "num": "0+",
+      "label": "Corporate Clients"
+    },
+    {
+      "num": "0+",
+      "label": "Years of Industry Experience"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which is the best SAP training institute in Hyderabad?",
+      "a": "Placeonix is a trusted SAP and IT training institute in Hyderabad's Financial District, offering SAP BTP, CPI, CAPM, RAP, UI5/Fiori, ABAP on S/4HANA, FICO, MM, SD and BASIS. With small batches of maximum 30, live real-time projects, internship access and 100% placement assistance, learners get hands-on training aligned with real hiring needs."
+    },
+    {
+      "q": "Do you provide IT training with placement in Hyderabad?",
+      "a": "Yes. Every Placeonix program includes complete placement assistance — resume building, mock interviews, LinkedIn optimisation, recruiter connects and job referrals with our partner companies. Eligible students receive interview preparation, job referrals and continued placement guidance."
+    },
+    {
+      "q": "What courses does Placeonix offer in Hyderabad?",
+      "a": "We offer SAP modules (BTP, CPI, CAPM, RAP, UI5/Fiori, ABAP, FICO, MM, SD, BASIS), Data Science & Analytics, DevOps & Cloud Engineering, Full Stack Web Development, Java Backend, Cybersecurity Fundamentals and UI/UX Design, plus combo packages such as SAP Integration Expert and AI + Data Science."
+    },
+    {
+      "q": "Where is Placeonix located in Hyderabad?",
+      "a": "Placeonix is located at Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana 500032. We are open Monday to Saturday, 9 AM – 7 PM IST. Call +91 99494 94020 or +91 91217 59191."
+    },
+    {
+      "q": "Are the training programs suitable for freshers and working professionals?",
+      "a": "Yes. Our SAP and IT courses are designed for freshers, career switchers and working professionals. Batches run 6 days a week with multiple timings per day, so you can learn alongside your job or studies."
+    },
+    {
+      "q": "Do you offer online or classroom SAP training in Hyderabad?",
+      "a": "We offer instructor-led training with real system access, live projects and personalised mentoring. Contact our admissions team to discuss classroom and online options that fit your schedule."
+    }
+  ],
+  "contact": {
+    "heading": "Let's Start Your Journey",
+    "desc": "We'll get in touch within 24 hours to discuss the best programme for your goals.",
+    "address": "Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District, Hyderabad, Telangana-500032",
+    "addressHref": "https://www.google.com/maps/search/?api=1&query=Kapil+Kavuri+Hub+Financial+District+Hyderabad",
+    "hours": "Mon – Sat, 9 AM – 7 PM IST"
+  }
+}
