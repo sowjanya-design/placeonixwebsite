@@ -1399,12 +1399,11 @@ a.prog-card {
 }
 /* The actual on-screen position of the WhatsApp button is set by .wa-float's
    own right:70px below (the flex container above is a zero-width wrapper and
-   doesn't affect layout) — .wa-float spans right:70px to 125px. Call sits
-   just inside that, closer to the corner, so it reads left-to-right as
-   [WhatsApp][Call] without moving WhatsApp's position at all. */
+   doesn't affect layout). Call stacks directly above it in the same column,
+   with a thin gap, so WhatsApp's own spot never moves. */
 #home-scope .call-float {
-  right: 4px;
-  bottom: 30px;
+  right: 70px;
+  bottom: 95px;
 }
 .wa-float {
   width: 55px;

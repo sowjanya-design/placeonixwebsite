@@ -1057,10 +1057,13 @@ table.tbl {
   color: #8b93a7;
 }
 
-/* ── Floating actions: WhatsApp + sticky CTA + back-to-top ── */
+/* ── Floating actions: WhatsApp + sticky CTA + back-to-top ──
+   Stacked in one column at the right corner: Call above WhatsApp (with a
+   thin gap), WhatsApp stays exactly at its usual corner spot, and the
+   back-to-top arrow eases in underneath once you scroll. ── */
 .wa-float {
   position: fixed;
-  right: 84px;
+  right: 18px;
   bottom: 84px;
   z-index: 90;
   width: 55px;
@@ -1080,10 +1083,10 @@ table.tbl {
 .call-float {
   position: fixed;
   right: 18px;
-  bottom: 84px;
+  bottom: 149px;
   z-index: 90;
-  width: 56px;
-  height: 56px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background: var(--grad);
   display: flex;
@@ -1110,10 +1113,23 @@ table.tbl {
   color: var(--indigo);
   font-size: 1.2rem;
   cursor: pointer;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s;
 }
 .to-top.show {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    transition: none;
+  }
 }
 .sticky-cta {
   position: fixed;
@@ -1356,14 +1372,20 @@ a.prog-card {
   }
   .wa-float {
     bottom: 92px;
-    right: 84px;
+    right: 18px;
   }
   .call-float {
-    bottom: 92px;
+    bottom: 157px;
     right: 18px;
   }
   .to-top {
-    bottom: 160px;
+    bottom: 100px;
+  }
+  /* Pages with the sticky Call/Book-Demo bar (course detail pages) need the
+     arrow pushed above the whole Call+WhatsApp stack instead, since the bar
+     eats the gap it would otherwise sit in. */
+  body:has(.sticky-cta) .to-top {
+    bottom: 222px;
   }
 }
 @media (max-width: 560px) {
