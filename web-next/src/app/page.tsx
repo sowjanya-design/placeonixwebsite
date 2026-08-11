@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import homeData from "@/data/home.json";
 import SideNav from "@/components/home/SideNav";
 import SiteFooter from "@/components/layout/SiteFooter";
@@ -15,8 +16,7 @@ import "./home.css";
 
 export const metadata: Metadata = {
   title: "SAP Training in Hyderabad with Placement | Placeonix",
-  description:
-    "Placeonix is an industry-focused SAP & IT training and placement institute in Hyderabad. Industry-focused programs in SAP, Cloud, Data Science and Full Stack — built to grow in-demand skills and launch your IT career with real placement support.",
+  description: "Placeonix is an industry-focused SAP & IT training institute in Hyderabad. Learn SAP, Cloud, and Data Science to launch your IT career with real placement.",
   alternates: { canonical: "/" },
 };
 
@@ -115,7 +115,7 @@ export default function HomePage() {
               {visCards.map((c, i) => (
                 <div className="vis-card" key={c.title}>
                   <div className="journey-img-wrap">
-                    <img
+                    <Image
                       src={
                         i === 0
                           ? "/assets/img/journey-1.jpg"
@@ -125,6 +125,8 @@ export default function HomePage() {
                       }
                       alt={c.title}
                       className="journey-img"
+                      width={400}
+                      height={250}
                     />
                   </div>
                   <div className="vis-content">
@@ -265,10 +267,12 @@ export default function HomePage() {
                     key={i}
                     aria-hidden={i >= partnerLogos.length}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={`/assets/img/company-logos/${p.file}.png`}
                       alt={p.name}
+                      width={150}
+                      height={80}
+                      style={{ objectFit: "contain" }}
                     />
                   </div>
                 ))}
