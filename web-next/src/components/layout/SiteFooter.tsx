@@ -19,14 +19,20 @@ export default function SiteFooter() {
               SAP &amp; IT training and placement institute in Hyderabad.
               Training · Placement · Future.
             </p>
-            <p className="muted" style={{ marginTop: ".8rem" }}>
-              Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District,
+            <address className="muted" style={{ marginTop: ".8rem", fontStyle: "normal" }}>
+              Kapil Kavuri Hub, No. 144, 9th Floor, 152, Financial District,<br />
               Hyderabad, Telangana-500032
-            </p>
+            </address>
             <p className="muted" style={{ marginTop: ".5rem" }}>
               <a href="tel:+919949494020">+91 99494 94020</a> ·{" "}
               <a href="mailto:support@placeonix.com">support@placeonix.com</a>
             </p>
+          </div>
+          <div style={{ marginTop: "1rem", display: "flex", gap: "10px" }}>
+            <a href="https://www.facebook.com/Placeonix" target="_blank" rel="noopener noreferrer" title="Facebook">FB</a>
+            <a href="https://twitter.com/Placeonix" target="_blank" rel="noopener noreferrer" title="X (Twitter)">X</a>
+            <a href="https://www.youtube.com/@Placeonix" target="_blank" rel="noopener noreferrer" title="YouTube">YT</a>
+            <a href="https://www.linkedin.com/company/placeonix/" target="_blank" rel="noopener noreferrer" title="LinkedIn">LI</a>
           </div>
           <div>
             <h4>SAP Courses</h4>

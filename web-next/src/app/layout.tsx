@@ -12,7 +12,7 @@ const SITE_NAME = "Placeonix";
 const DEFAULT_TITLE =
   "Placeonix — SAP & IT Training and Placement Institute in Hyderabad";
 const DEFAULT_DESCRIPTION =
-  "SAP & IT training and placement institute in Hyderabad. Training · Placement · Future.";
+  "Placeonix offers top SAP, Cloud, and IT training courses in Hyderabad. Launch your IT career with real placement support.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.placeonix.com"),
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
   name: "Placeonix",
   url: "https://www.placeonix.com",
   logo: "https://www.placeonix.com/icon-512.png",
@@ -64,15 +64,37 @@ const organizationJsonLd = {
     contactType: "admissions",
     email: "support@placeonix.com",
   },
-  sameAs: ["https://www.instagram.com/_placeonix?igsh=bTJkMW82a2E1cTNt"],
+  sameAs: [
+    "https://www.instagram.com/_placeonix?igsh=bTJkMW82a2E1cTNt",
+    "https://www.facebook.com/Placeonix",
+    "https://twitter.com/Placeonix",
+    "https://www.youtube.com/@Placeonix",
+    "https://www.linkedin.com/company/placeonix/"
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ]
 };
 
 export const viewport: Viewport = {
   themeColor: "#4f46e5",
 };
-
+import dynamic from "next/dynamic";
 import RevealObserver from "@/components/layout/RevealObserver";
-import LeadPopup from "@/components/home/LeadPopup";
+
+const LeadPopup = dynamic(() => import("@/components/home/LeadPopup"));
 
 export default function RootLayout({
   children,
@@ -81,6 +103,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEONIX" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-PLACEONIX');
+            `,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

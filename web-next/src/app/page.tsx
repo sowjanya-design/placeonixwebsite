@@ -9,14 +9,16 @@ import TrustStats from "@/components/home/TrustStats";
 import InternshipTracks from "@/components/home/InternshipTracks";
 import CertificateShowcase from "@/components/home/CertificateShowcase";
 import ApplicationForm from "@/components/home/ApplicationForm";
-import WaNudgeFloat from "@/components/home/WaNudgeFloat";
-import CallFloat from "@/components/ui/CallFloat";
-import BackToTop from "@/components/ui/BackToTop";
+import dynamic from "next/dynamic";
+
+const WaNudgeFloat = dynamic(() => import("@/components/home/WaNudgeFloat"));
+const CallFloat = dynamic(() => import("@/components/ui/CallFloat"));
+const BackToTop = dynamic(() => import("@/components/ui/BackToTop"));
 import "./home.css";
 
 export const metadata: Metadata = {
-  title: "SAP Training in Hyderabad with Placement | Placeonix",
-  description: "Placeonix is an industry-focused SAP & IT training institute in Hyderabad. Learn SAP, Cloud, and Data Science to launch your IT career with real placement.",
+  title: "Placeonix: SAP & IT Training Courses with Placement",
+  description: "Placeonix offers top SAP, Cloud, and IT training courses in Hyderabad. Launch your IT career with real placement support.",
   alternates: { canonical: "/" },
 };
 
