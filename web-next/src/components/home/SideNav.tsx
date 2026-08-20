@@ -17,7 +17,7 @@ export default function SideNav() {
           alt="Placeonix — IT Training & Placement Institute"
           width={220}
           height={74}
-          style={{ width: "auto", height: "56px" }}
+          style={{ width: "auto", height: "56px", objectFit: "contain" }}
           priority
         />
         <div className="nav-right">
@@ -106,7 +106,7 @@ export default function SideNav() {
             alt="Placeonix"
             width={140}
             height={38}
-            style={{ width: "auto", height: "38px" }}
+            style={{ width: "auto", height: "38px", objectFit: "contain" }}
           />
           <button
             className="side-nav-close"

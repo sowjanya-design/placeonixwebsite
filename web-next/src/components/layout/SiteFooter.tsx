@@ -13,7 +13,7 @@ export default function SiteFooter() {
               alt="Placeonix"
               width={180}
               height={66}
-              style={{ width: "auto", height: "64px" }}
+              style={{ width: "auto", height: "64px", objectFit: "contain" }}
             />
             <p className="muted">
               SAP &amp; IT training and placement institute in Hyderabad.
@@ -30,12 +30,10 @@ export default function SiteFooter() {
           </div>
           <div style={{ marginTop: "1rem", display: "flex", gap: "10px" }}>
             <a href="https://www.facebook.com/Placeonix" target="_blank" rel="noopener noreferrer" title="Facebook">FB</a>
-            <a href="https://twitter.com/Placeonix" target="_blank" rel="noopener noreferrer" title="X (Twitter)">X</a>
-            <a href="https://www.youtube.com/@Placeonix" target="_blank" rel="noopener noreferrer" title="YouTube">YT</a>
-            <a href="https://www.linkedin.com/company/placeonix/" target="_blank" rel="noopener noreferrer" title="LinkedIn">LI</a>
+            <a href="https://www.instagram.com/_placeonix?igsh=bTJkMW82a2E1cTNt" target="_blank" rel="noopener noreferrer" title="Instagram">IG</a>
           </div>
           <div>
-            <h4>SAP Courses</h4>
+            <div className="footer-heading">SAP Courses</div>
             <ul>
               <li>
                 <Link href="/courses/sap/sap-btp">SAP BTP</Link>
@@ -70,7 +68,7 @@ export default function SiteFooter() {
             </ul>
           </div>
           <div>
-            <h4>Other Courses</h4>
+            <div className="footer-heading">Other Courses</div>
             <ul>
               <li>
                 <Link href="/courses/technology/data-science">
@@ -118,7 +116,7 @@ export default function SiteFooter() {
             </ul>
           </div>
           <div>
-            <h4>Company</h4>
+            <div className="footer-heading">Company</div>
             <ul>
               <li>
                 <Link href="/#features">Why Placeonix</Link>

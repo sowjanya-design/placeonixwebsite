@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,9 +68,6 @@ const organizationJsonLd = {
   sameAs: [
     "https://www.instagram.com/_placeonix?igsh=bTJkMW82a2E1cTNt",
     "https://www.facebook.com/Placeonix",
-    "https://twitter.com/Placeonix",
-    "https://www.youtube.com/@Placeonix",
-    "https://www.linkedin.com/company/placeonix/"
   ],
   openingHoursSpecification: [
     {
@@ -103,9 +101,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEONIX" />
-        <script
+      <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-PLACEONIX" strategy="afterInteractive" />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -115,8 +115,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

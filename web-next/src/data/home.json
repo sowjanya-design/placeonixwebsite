@@ -222,6 +222,14 @@
     {
       "q": "Do you offer online or classroom SAP training in Hyderabad?",
       "a": "We offer instructor-led training with real system access, live projects and personalised mentoring. Contact our admissions team to discuss classroom and online options that fit your schedule."
+    },
+    {
+      "q": "How long do the SAP and IT courses take to complete?",
+      "a": "Our comprehensive courses typically take between 2 to 4 months to complete, depending on the specific program. We focus on in-depth practical training, ensuring every student has enough time to master the concepts, complete real-time projects, and prepare thoroughly for job placements."
+    },
+    {
+      "q": "Do you offer certification upon course completion?",
+      "a": "Yes, upon successful completion of your training and final projects, you will receive a verifiable certification from Placeonix. This certification is widely recognized by our hiring partners in the IT industry and adds significant value to your resume when applying for roles."
     }
   ],
   "contact": {

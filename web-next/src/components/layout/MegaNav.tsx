@@ -18,7 +18,7 @@ export default function MegaNav() {
             alt="Placeonix — IT Training & Placement Institute"
             width={400}
             height={107}
-            style={{ width: "auto", height: "60px" }}
+            style={{ width: "auto", height: "60px", objectFit: "contain" }}
             priority
           />
         </Link>

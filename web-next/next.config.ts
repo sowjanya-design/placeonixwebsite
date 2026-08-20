@@ -39,6 +39,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {
@@ -64,8 +67,9 @@ const nextConfig: NextConfig = {
         source: '/:path*',
         has: [
           {
-            type: 'host',
-            value: 'http://www.placeonix.com',
+            type: 'header',
+            key: 'x-forwarded-proto',
+            value: 'http',
           },
         ],
         destination: 'https://www.placeonix.com/:path*',
