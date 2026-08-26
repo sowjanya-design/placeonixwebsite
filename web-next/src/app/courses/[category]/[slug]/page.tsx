@@ -570,9 +570,9 @@ export default async function CoursePage({ params }: Props) {
         <a href="tel:+919949494020" className="btn btn-outline">
           Call
         </a>
-        <a href="/?intent=demo#contact" className="btn btn-primary">
+        <Link href="/?intent=demo#contact" className="btn btn-primary">
           Book Free Demo
-        </a>
+        </Link>
       </div>
     </>
   );

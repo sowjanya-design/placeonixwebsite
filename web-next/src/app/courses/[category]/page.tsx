@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCoursesByCategory, categoryLabels } from "@/lib/courses";
+import { getCoursesByCategory } from "@/lib/courses";
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";

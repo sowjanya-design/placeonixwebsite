@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import homeData from "@/data/home.json";
+import { sapLinks, technologyLinks } from "@/data/nav";
 import SideNav from "@/components/home/SideNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import CourseFinder from "@/components/home/CourseFinder";
@@ -45,8 +46,64 @@ export default function HomePage() {
   const { hero, visCards, processSteps, internship, faq, contact } =
     homeData;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f: { q: string; a: string }) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      ...sapLinks.map((link, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Course",
+          url: `https://www.placeonix.com${link.href}`,
+          name: link.label,
+          provider: {
+            "@type": "Organization",
+            name: "Placeonix",
+            sameAs: "https://www.placeonix.com",
+          },
+        },
+      })),
+      ...technologyLinks.map((link, i) => ({
+        "@type": "ListItem",
+        position: sapLinks.length + i + 1,
+        item: {
+          "@type": "Course",
+          url: `https://www.placeonix.com${link.href}`,
+          name: link.label,
+          provider: {
+            "@type": "Organization",
+            name: "Placeonix",
+            sameAs: "https://www.placeonix.com",
+          },
+        },
+      })),
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
       <div id="home-scope">
         <SideNav />
 
@@ -129,6 +186,7 @@ export default function HomePage() {
                       className="journey-img"
                       width={400}
                       height={250}
+                      sizes="(max-width: 768px) 100vw, 400px"
                     />
                   </div>
                   <div className="vis-content">
@@ -274,6 +332,7 @@ export default function HomePage() {
                       alt={p.name}
                       width={150}
                       height={80}
+                      sizes="150px"
                       style={{ objectFit: "contain" }}
                     />
                   </div>

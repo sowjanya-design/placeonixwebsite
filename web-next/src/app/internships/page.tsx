@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import MegaNav from "@/components/layout/MegaNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
@@ -103,9 +104,9 @@ export default function InternshipsPage() {
                   details, learning outcomes and application guidance.
                 </p>
                 <div className="internships-hero-actions">
-                  <a href="/#contact" className="btn btn-primary btn-lg">
+                  <Link href="/#contact" className="btn btn-primary btn-lg">
                     Apply Now →
-                  </a>
+                  </Link>
                   <a href="tel:+919949494020" className="btn btn-outline btn-lg">
                     Talk to Us
                   </a>
