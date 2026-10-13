@@ -18,8 +18,8 @@ const BackToTop = dynamic(() => import("@/components/ui/BackToTop"));
 import "./home.css";
 
 export const metadata: Metadata = {
-  title: "Placeonix: SAP & IT Training Courses with Placement",
-  description: "Placeonix offers top SAP, Cloud, and IT training courses in Hyderabad. Launch your IT career with real placement support.",
+  title: "Best SAP & IT Training Institute in Hyderabad | Placeonix",
+  description: "Placeonix is the best SAP & IT training institute in Hyderabad. Master SAP S/4HANA, BTP, FICO, Cloud, DevOps, Full Stack & AI with 100% placement support.",
   alternates: { canonical: "/" },
 };
 
