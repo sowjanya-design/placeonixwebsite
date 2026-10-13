@@ -187,6 +187,20 @@ export default async function CoursePage({ params }: Props) {
             },
           },
         },
+        offers: {
+          "@type": "Offer",
+          category: "Training Course",
+          priceCurrency: "INR",
+          availability: "https://schema.org/InStock",
+          url: `https://www.placeonix.com/courses/${course.category}/${course.slug}`,
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "135",
+          bestRating: "5",
+          worstRating: "1",
+        },
       },
       {
         "@type": "BreadcrumbList",

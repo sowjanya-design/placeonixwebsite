@@ -93,8 +93,8 @@ export default function ApplicationForm() {
         <input name="phone" type="tel" placeholder="+91 9876543210" required />
       </div>
       <div className="f-group">
-        <label>Program of Interest</label>
-        <select name="program" defaultValue="">
+        <label htmlFor="program-interest-select">Program of Interest</label>
+        <select id="program-interest-select" name="program" defaultValue="" aria-label="Program of Interest">
           <option value="">Select a program…</option>
           {PROGRAMS.map((p) => (
             <option key={p}>{p}</option>

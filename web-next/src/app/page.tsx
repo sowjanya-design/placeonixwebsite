@@ -106,6 +106,7 @@ export default function HomePage() {
       />
       <div id="home-scope">
         <SideNav />
+        <main id="main-content">
 
         <section className="clean-launch">
           <div className="clean-hero">
@@ -273,7 +274,7 @@ export default function HomePage() {
               {processSteps.map((s) => (
                 <div className="proc-step" key={s.n}>
                   <div className="proc-n">{s.n}</div>
-                  <h4>{s.title}</h4>
+                  <h3>{s.title}</h3>
                   <p>{s.body}</p>
                 </div>
               ))}
@@ -409,6 +410,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        </main>
 
         <SiteFooter />
         <WaNudgeFloat />

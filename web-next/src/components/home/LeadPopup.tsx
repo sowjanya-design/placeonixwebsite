@@ -134,8 +134,8 @@ export default function LeadPopup() {
               />
             </div>
             <div className="f-group">
-              <label>Course Name</label>
-              <select name="program" required defaultValue="">
+              <label htmlFor="lead-popup-program">Course Name</label>
+              <select id="lead-popup-program" name="program" required defaultValue="" aria-label="Course Name">
                 <option value="" disabled>
                   Select a program…
                 </option>
